@@ -19,6 +19,11 @@ $ npm i --save nest-raven raven @types/raven
 ## Quick Start
 
 ### Include Module
+Configuration can be directly provided, or taken from ENV.
+
+[Optional Settings](https://docs.sentry.io/clients/node/config/#optional-settings)
+can be provided as second argument.
+
 > app.module.ts
 
 ```ts
@@ -46,7 +51,7 @@ export class ApplicationModule implements NestModule {
 
 With this setup, sentry will pick up all exceptions (even 400 types).
 
-##### Filters
+#### Filters
 Sometimes we don't want to catch all exceptions but only 500 or those
 that we didn't handle properly. For that we can add filters on interceptor
 to filter out good exceptions.
@@ -67,12 +72,10 @@ to filter out good exceptions.
   }
 ```
 
-##### Additional data
-We can add additional data for each interceptor.
-
+#### Additional data
 Interceptor automatically adds `req` and `req.user` (as user) to additional data.
 
-Supported data:
+Other additional data can be added for each interceptor.
  * tags
  * extra
  * fingerprint
