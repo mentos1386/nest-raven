@@ -1,0 +1,40 @@
+{
+  "name": "nest-raven",
+  "version": "1.0.0",
+  "description": "Sentry Raven Module for Nest Framework",
+  "directories": {
+    "dist": "dist"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mentos1386/nest-raven.git"
+  },
+  "keywords": [
+    "nestjs",
+    "nest",
+    "raven",
+    "sentry",
+    "module"
+  ],
+  "author": "Tine Jozelj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mentos1386/nest-raven/issues"
+  },
+  "homepage": "https://github.com/mentos1386/nest-raven#readme",
+  "dependencies": {
+    "raven": "^2.4.1"
+  },
+  "devDependencies": {
+    "@nestjs/common": "^4.5.0",
+    "rxjs": "^5.5.6",
+    "@types/raven": "^2.1.5",
+    "@types/node": "^7.0.41",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.4.2"
+  }
+}
