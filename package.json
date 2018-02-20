@@ -1,12 +1,12 @@
 {
   "name": "nest-raven",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Sentry Raven Module for Nest Framework",
   "directories": {
-    "dist": "dist"
+    "lib": "lib"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && cp *.md dist && cp LICENSE dist && cp package.json dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
