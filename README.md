@@ -20,6 +20,11 @@ This's a [Raven](https://github.com/getsentry/raven-node) module for [Nest](http
 $ npm i --save nest-raven raven @types/raven
 ```
 
+### Versions
+
+ * **2.x** Is for Nest v5.x
+ * **1.x** Is for Nest v4.x
+
 ## Quick Start
 
 ### Include Module
@@ -54,6 +59,31 @@ export class ApplicationModule implements NestModule {
 ```
 
 With this setup, sentry will pick up all exceptions (even 400 types).
+
+#### Global
+If you want to set up interceptor as global, you have to follow Nest
+instructions [here](https://docs.nestjs.com/interceptors). Something like
+this:
+
+> app.module.ts
+
+```
+import { Module } from '@nestjs/common';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+
+@Module({
+  imports: [
+      RavenModule.forRoot('https://your:sdn@sentry.io/290747'),
+  ],
+  providers: [
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: RavenInterceptor(),
+    },
+  ],
+})
+export class ApplicationModule {}
+```
 
 #### Filters
 Sometimes we don't want to catch all exceptions but only 500 or those
