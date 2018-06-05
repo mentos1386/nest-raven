@@ -1,14 +1,14 @@
 import {
-  ExecutionContext, Inject, Interceptor,
+  ExecutionContext, Inject, Injectable,
   NestInterceptor,
 } from '@nestjs/common';
-import { Observable } from 'rxjs/Observable';
 import { RAVEN_SENTRY_PROVIDER } from './raven.constants';
+import { IRavenInterceptorOptions } from './raven.interfaces';
 import * as Raven from 'raven';
 import 'rxjs/add/operator/do';
-import { IRavenInterceptorOptions } from './raven.interfaces';
+import { Observable } from 'rxjs/Observable';
 
-@Interceptor()
+@Injectable()
 export abstract class AbstractRavenInterceptor implements NestInterceptor {
 
   protected abstract readonly options: IRavenInterceptorOptions = {};
@@ -19,21 +19,24 @@ export abstract class AbstractRavenInterceptor implements NestInterceptor {
   }
 
   intercept(
-    dataOrRequest: any,
     context: ExecutionContext,
-    stream$: Observable<any>,
-  ): Observable<any> | Promise<Observable<any>> {
+    call$: Observable<any>,
+  ): Observable<any> {
+    const httpRequest = context.switchToHttp().getRequest();
+    const userData = httpRequest ? httpRequest.user : null;
+
     // first param would be for events, second is for errors
-    return stream$.do(null, (exception) => {
+    return call$.do(null, (exception) => {
       if (this.shouldReport(exception)) {
         this.ravenClient.captureException(
           exception as any,
           {
-            req: dataOrRequest,
-            user: dataOrRequest.user,
+            req: httpRequest,
+            user: userData,
             tags: this.options.tags,
             fingerprint: this.options.fingerprint,
             level: this.options.level,
+            extra: this.options.extra,
           });
       }
     });

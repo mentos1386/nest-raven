@@ -7,7 +7,7 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json && cp *.md dist && cp LICENSE dist && cp package.json dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -30,11 +30,33 @@
     "raven": "^2.4.1"
   },
   "devDependencies": {
-    "@nestjs/common": "^4.5.0",
-    "rxjs": "^5.5.6",
-    "@types/raven": "^2.1.5",
+    "@nestjs/common": "^5.0.1",
+    "@nestjs/core": "^5.0.1",
+    "@nestjs/testing": "^5.0.1",
+    "@types/jest": "^23.0.0",
     "@types/node": "^7.0.41",
+    "@types/raven": "^2.5.1",
+    "jest": "^23.1.0",
+    "reflect-metadata": "^0.1.12",
+    "rxjs": "^6.0.0",
+    "rxjs-compat": "^6.0.0",
+    "supertest": "^3.1.0",
+    "ts-jest": "^22.4.6",
     "ts-node": "^3.3.0",
     "typescript": "^2.4.2"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }

@@ -4,7 +4,7 @@ import { IRavenInterceptorOptions } from './raven.interfaces';
 
 // tslint:disable-next-line:function-name
 export function RavenInterceptor(
-  options?: IRavenInterceptorOptions,
+  options: IRavenInterceptorOptions = {},
 ) {
   return mixin(class extends AbstractRavenInterceptor {
     protected readonly options = options;
