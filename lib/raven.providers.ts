@@ -6,7 +6,7 @@ export const ravenSentryProviders = [
   {
     provide: RAVEN_SENTRY_PROVIDER,
     useFactory: (config: IRavenConfig): Raven.Client => {
-      return Raven.config(config.dsn, config.options);
+      return Raven.config(config.dsn, config.options).install();
     },
     inject: [RAVEN_SENTRY_CONFIG],
   },
