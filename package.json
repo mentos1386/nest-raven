@@ -1,6 +1,6 @@
 {
   "name": "nest-raven",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Sentry Raven Module for Nest Framework",
   "directories": {
     "lib": "lib"
