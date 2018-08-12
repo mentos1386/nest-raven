@@ -9,6 +9,8 @@
 <a href="https://www.npmjs.com/package/nest-raven"><img src="https://img.shields.io/npm/v/nest-raven.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/package/nest-raven"><img src="https://img.shields.io/npm/l/nest-raven.svg" alt="Package License" /></a>
 <a href="https://www.npmjs.com/package/nest-raven"><img src="https://img.shields.io/npm/dm/nest-raven.svg" alt="NPM Downloads" /></a>
+<a href="https://travis-ci.org/mentos1386/nest-raven"><img src="https://travis-ci.org/mentos1386/nest-raven.svg?branch=master" alt="Travis build" /></a>
+<a href="https://coveralls.io/github/mentos1386/nest-raven"><img src="https://coveralls.io/repos/github/mentos1386/nest-raven/badge.svg?branch=master" alt="Coveralls" /></a>
 </p>
 
 ## Description
