@@ -1,0 +1,16 @@
+dist: trusty
+language: node_js
+node_js:
+  - 'stable'
+
+branches:
+  only:
+  - master
+  - develop
+  - /^greenkeeper/.*$/
+
+cache:
+  directories:
+    - node_modules
+
+after_success: npm run coverage
