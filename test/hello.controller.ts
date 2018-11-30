@@ -1,23 +1,24 @@
 import { Controller, Get, HttpException, HttpStatus, UseInterceptors } from '@nestjs/common';
 import { RavenInterceptor } from '../lib';
+import * as Sentry from '@sentry/types';
 
 @Controller('')
 export class HelloController {
 
   @Get('works')
-  @UseInterceptors(RavenInterceptor())
+  @UseInterceptors(new RavenInterceptor())
   works() {
     return 'Works';
   }
 
   @Get('intercepted')
-  @UseInterceptors(RavenInterceptor())
+  @UseInterceptors(new RavenInterceptor())
   intercepted() {
     throw new Error('Something bad happened');
   }
 
   @Get('filter')
-  @UseInterceptors(RavenInterceptor({
+  @UseInterceptors(new RavenInterceptor({
     filters: [
       // Filter exceptions of type HttpException. Ignore those that
       // have status code of less than 500
@@ -29,7 +30,7 @@ export class HelloController {
   }
 
   @Get('tags')
-  @UseInterceptors(RavenInterceptor({
+  @UseInterceptors(new RavenInterceptor({
     tags: { 'A': 'AAA', 'B': 'BBB' },
   }))
   tags() {
@@ -37,7 +38,7 @@ export class HelloController {
   }
 
   @Get('extra')
-  @UseInterceptors(RavenInterceptor({
+  @UseInterceptors(new RavenInterceptor({
     extra: { 'A': 'AAA', 'B': 'BBB' },
   }))
   extra() {
@@ -45,7 +46,7 @@ export class HelloController {
   }
 
   @Get('fingerprint')
-  @UseInterceptors(RavenInterceptor({
+  @UseInterceptors(new RavenInterceptor({
     fingerprint: ['A', 'B'],
   }))
   fingerprint() {
@@ -53,8 +54,8 @@ export class HelloController {
   }
 
   @Get('level')
-  @UseInterceptors(RavenInterceptor({
-    level: 'CRAZY',
+  @UseInterceptors(new RavenInterceptor({
+    level: Sentry.Severity.Critical,
   }))
   level() {
     throw new Error('Something bad happened');

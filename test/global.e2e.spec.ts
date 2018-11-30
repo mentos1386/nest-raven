@@ -1,41 +1,43 @@
 import * as request from 'supertest';
 import { Test } from '@nestjs/testing';
-import { RAVEN_SENTRY_PROVIDER } from '../lib';
 import { INestApplication } from '@nestjs/common';
-import { CaptureOptions } from 'raven';
 import { GlobalModule } from './global.module';
+import { getCurrentHub } from '@sentry/hub';
+
+declare var global: any;
 
 describe('Global', () => {
   let app: INestApplication;
-  let ravenData: {
-    error: Error,
-    options: CaptureOptions,
-  };
-  let ravenSentry = {
-    captureException: (error: Error, options?: CaptureOptions) => ravenData = { error, options },
+  const client = {
+    captureException: jest.fn(async () => Promise.resolve()),
   };
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       imports: [GlobalModule],
     })
-    .overrideProvider(RAVEN_SENTRY_PROVIDER)
-    .useValue(ravenSentry)
     .compile();
 
     app = module.createNestApplication();
     await app.init();
   });
 
-  beforeEach(() => ravenData = null);
+  beforeEach(() => {
+    global.__SENTRY__ = {
+      hub: undefined,
+    };
+  });
 
   it(`/GET error`, async () => {
-    await request(app.getHttpServer())
-    .get('/error')
-    .expect(500);
+    getCurrentHub().withScope(async () => {
+      getCurrentHub().bindClient(client);
 
-    expect(ravenData).not.toBeNull();
-    expect(ravenData.error).toBeInstanceOf(Error);
+      await request(app.getHttpServer())
+      .get('/error')
+      .expect(500);
+      
+      expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
+    });
   });
 
   afterAll(async () => {

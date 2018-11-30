@@ -1,6 +1,6 @@
 {
   "name": "nest-raven",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Sentry Raven Module for Nest Framework",
   "directories": {
     "lib": "lib"
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/mentos1386/nest-raven#readme",
   "dependencies": {
-    "raven": "^2.4.1"
+    "@sentry/minimal": "^4.4.1"
   },
   "devDependencies": {
     "@nestjs/common": "^5.0.1",
@@ -36,7 +36,7 @@
     "@nestjs/testing": "^5.0.1",
     "@types/jest": "^23.0.0",
     "@types/node": "^7.0.41",
-    "@types/raven": "^2.5.1",
+    "@sentry/hub": "4.4.1",
     "coveralls": "^3.0.2",
     "jest": "^23.1.0",
     "reflect-metadata": "^0.1.12",
@@ -44,7 +44,7 @@
     "supertest": "^3.1.0",
     "ts-jest": "^22.4.6",
     "ts-node": "^3.3.0",
-    "typescript": "^2.4.2"
+    "typescript": "^2.8.2"
   },
   "jest": {
     "transform": {

@@ -4,7 +4,7 @@ import { HelloController } from './hello.controller';
 
 @Module({
   imports: [
-      RavenModule.forRoot('https://your:sdn@sentry.io/290747'),
+      RavenModule,
   ],
   controllers: [
     HelloController

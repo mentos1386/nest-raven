@@ -5,7 +5,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
   imports: [
-      RavenModule.forRoot('https://your:sdn@sentry.io/290747'),
+      RavenModule,
   ],
   controllers: [
     GlobalController,
@@ -13,7 +13,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
   providers: [
     {
         provide: APP_INTERCEPTOR,
-        useClass: RavenInterceptor(),
+        useValue: new RavenInterceptor(),
     },
   ]
 })
