@@ -1,9 +1,4 @@
-import * as Raven from 'raven';
-
-export interface IRavenConfig {
-  dsn: string;
-  options: Raven.ConstructorOptions;
-}
+import * as Sentry from '@sentry/types';
 
 export interface IRavenFilterFunction {
   (exception: any): boolean;
@@ -19,5 +14,5 @@ export interface IRavenInterceptorOptions {
   tags?: { [key: string]: string };
   extra?: { [key: string]: any };
   fingerprint?: string[];
-  level?: string;
+  level?: Sentry.Severity;
 }

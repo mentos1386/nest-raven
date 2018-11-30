@@ -1,67 +1,80 @@
 import * as request from 'supertest';
 import { Test } from '@nestjs/testing';
 import { HelloModule } from './hello.module';
-import { RAVEN_SENTRY_PROVIDER } from '../lib';
 import { INestApplication } from '@nestjs/common';
-import { CaptureOptions } from 'raven';
+import { getCurrentHub } from '@sentry/hub';
+
+declare var global: any;
 
 describe('Hello', () => {
   let app: INestApplication;
-  let ravenData: {
-    error: Error,
-    options: CaptureOptions,
-  };
-  let ravenSentry = {
-    captureException: (error: Error, options?: CaptureOptions) => ravenData = { error, options },
+  const client = {
+    captureException: jest.fn(async () => Promise.resolve()),
   };
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       imports: [HelloModule],
     })
-    .overrideProvider(RAVEN_SENTRY_PROVIDER)
-    .useValue(ravenSentry)
     .compile();
 
     app = module.createNestApplication();
     await app.init();
   });
 
-  beforeEach(() => ravenData = null);
+  beforeEach(() => {
+    global.__SENTRY__ = {
+      hub: undefined,
+    };
+  });
 
   it(`/GET works`, async () => {
-    await request(app.getHttpServer())
-    .get('/works')
-    .expect(200);
-
-    expect(ravenData).toBeNull();
+    getCurrentHub().withScope(async () => {
+      getCurrentHub().bindClient(client);
+      await request(app.getHttpServer())
+      .get('/works')
+      .expect(200);
+  
+      expect(client.captureException.mock.calls).toBeNull();
+    });
   });
 
   it(`/GET intercepted`, async () => {
-    await request(app.getHttpServer())
-    .get('/intercepted')
-    .expect(500);
+    getCurrentHub().withScope(async () => {
+      getCurrentHub().bindClient(client);
 
-    expect(ravenData).not.toBeNull();
-    expect(ravenData.error).toBeInstanceOf(Error);
+      await request(app.getHttpServer())
+      .get('/intercepted')
+      .expect(500);
+
+      expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
+    });
   });
 
   it(`/GET filter`, async () => {
-    await request(app.getHttpServer())
-    .get('/filter')
-    .expect(404);
+    getCurrentHub().withScope(async () => {
+      getCurrentHub().bindClient(client);
+    
+      await request(app.getHttpServer())
+      .get('/filter')
+      .expect(404);
 
-    expect(ravenData).toBeNull();
+    });
   });
 
   it(`/GET tags`, async () => {
-    await request(app.getHttpServer())
-    .get('/tags')
-    .expect(500);
+    getCurrentHub().withScope(async () => {
+      getCurrentHub().bindClient(client);
 
-    expect(ravenData).not.toBeNull();
-    expect(ravenData.error).toBeInstanceOf(Error);
-    expect(ravenData.options.tags).toEqual({ 'A': 'AAA', 'B': 'BBB' });
+      await request(app.getHttpServer())
+      .get('/tags')
+      .expect(500);
+
+      expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
+
+      // TODO: Figure out how to check for scope changes!
+      console.log(global.__SENTRY__);
+    });
   });
 
   it(`/GET extra`, async () => {
