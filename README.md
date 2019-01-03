@@ -14,26 +14,30 @@
 </p>
 
 ## Description
-This's a [Raven](https://github.com/getsentry/raven-node) module for [Nest](https://github.com/nestjs/nest).
+This's a [@sentry/minimal](https://github.com/getsentry/sentry-javascript/tree/master/packages/minimal) module for [Nest](https://github.com/nestjs/nest).
 
 ## Installation
 
 ```bash
-$ npm i --save nest-raven raven @types/raven
+$ npm i --save nest-raven
 ```
 
 ### Versions
 
+ * **3.x** Is for nest v5.x and introduces @sentry/minimal
  * **2.x** Is for Nest v5.x
  * **1.x** Is for Nest v4.x
+
+#### Breaking Changes in version 3.x
+- Client needs to be initialised by the user (outside of this module).
+- Instead of `@UseInterceptors(RavenInterceptor())` you now have to do `@UseInterceptors(new RavenInterceptor())`
+- When importing, you just specify module, there is no need for calling `forRoot()` anymore.
 
 ## Quick Start
 
 ### Include Module
-Configuration can be directly provided, or taken from ENV.
-
-[Optional Settings](https://docs.sentry.io/clients/node/config/#optional-settings)
-can be provided as second argument.
+For Module to work you need to [setup Sentry SDK yourself](https://docs.sentry.io/error-reporting/quickstart/?platform=node),
+this should be done in your `main.ts` file where you initialize the NestJS application.
 
 > app.module.ts
 
@@ -41,7 +45,7 @@ can be provided as second argument.
 @Module({
     imports: [
         ...
-        RavenModule.forRoot('https://your:sdn@sentry.io/290747'),
+        RavenModule,
     ]
 })
 export class ApplicationModule implements NestModule {
@@ -53,7 +57,7 @@ export class ApplicationModule implements NestModule {
 > app.controller.ts
 
 ```ts
-  @UseInterceptors(RavenInterceptor())
+  @UseInterceptors(new RavenInterceptor())
   @Get('/some/route')
   public async someRoute() {
     ...
@@ -70,17 +74,16 @@ this:
 > app.module.ts
 
 ```ts
-import { Module } from '@nestjs/common';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
   imports: [
-      RavenModule.forRoot('https://your:sdn@sentry.io/290747'),
+      RavenModule,
   ],
   providers: [
     {
       provide: APP_INTERCEPTOR,
-      useClass: RavenInterceptor(),
+      useValue: new RavenInterceptor(),
     },
   ],
 })
@@ -95,7 +98,7 @@ to filter out good exceptions.
 > app.controller.ts
 
 ```ts
-  @UseInterceptors(RavenInterceptor({
+  @UseInterceptors(new RavenInterceptor({
     filters: [
         // Filter exceptions of type HttpException. Ignore those that
         // have status code of less than 500
@@ -120,7 +123,7 @@ Other additional data can be added for each interceptor.
 > app.controller.ts
 
 ```ts
-  @UseInterceptors(RavenInterceptor({
+  @UseInterceptors(new RavenInterceptor({
     tags: {
       type: 'fileUpload',
     },
@@ -131,4 +134,3 @@ Other additional data can be added for each interceptor.
     ...
   }
 ```
-
