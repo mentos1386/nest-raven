@@ -4,7 +4,7 @@ import { HelloController } from './hello.controller';
 
 @Module({
   imports: [
-      RavenModule,
+    RavenModule,
   ],
   controllers: [
     HelloController
