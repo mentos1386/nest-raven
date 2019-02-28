@@ -3,6 +3,7 @@ import { Test } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import { getCurrentHub } from '@sentry/hub';
 import { GlobalModule } from './global.module';
+import * as io from 'socket.io-client';
 
 declare var global: any;
 
@@ -36,6 +37,21 @@ describe('Global', () => {
     await request(app.getHttpServer())
     .get('/error')
     .expect(500);
+
+    expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
+  });
+
+  it(`emit: test_error`, async () => {
+    const socket = io.connect('http://localhost:4466')
+
+    await new Promise((resolve, reject) => {
+      socket.on('connect', () => {
+        if (!socket.connected) reject(new Error('Socket not connected!'));
+
+        socket.emit('test_error');
+        setTimeout(resolve, 1000); // Hacky way to "wait" for server to finish it's stuff
+      });
+    })
 
     expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
   });
