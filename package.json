@@ -1,6 +1,6 @@
 {
   "name": "nest-raven",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Sentry Raven Module for Nest Framework",
   "directories": {
     "lib": "lib"
@@ -31,20 +31,23 @@
     "@sentry/minimal": "^4.4.1"
   },
   "devDependencies": {
-    "@nestjs/common": "^5.0.1",
-    "@nestjs/core": "^5.0.1",
-    "@nestjs/testing": "^5.0.1",
-    "@types/jest": "^23.0.0",
-    "@types/node": "^7.0.41",
-    "@sentry/hub": "4.4.1",
+    "@nestjs/common": "^5.7.3",
+    "@nestjs/core": "^5.7.3",
+    "@nestjs/testing": "^5.7.3",
+    "@nestjs/websockets": "^5.7.3",
+    "@sentry/hub": "4.6.4",
+    "@types/jest": "^24.0.9",
+    "@types/node": "^11.9.6",
+    "@types/socket.io-client": "^1.4.32",
     "coveralls": "^3.0.2",
-    "jest": "^23.1.0",
+    "jest": "^24.1.0",
     "reflect-metadata": "^0.1.12",
     "rxjs": "^6.0.0",
+    "socket.io-client": "^2.2.0",
     "supertest": "^3.1.0",
-    "ts-jest": "^22.4.6",
-    "ts-node": "^3.3.0",
-    "typescript": "^2.8.2"
+    "ts-jest": "^24.0.0",
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3333"
   },
   "jest": {
     "transform": {
@@ -52,6 +55,13 @@
     },
     "collectCoverage": true,
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "globals": {
+      "ts-jest": {
+        "diagnostics": {
+          "warnOnly": true
+        }
+      }
+    },
     "moduleFileExtensions": [
       "ts",
       "tsx",
