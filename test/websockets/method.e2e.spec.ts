@@ -30,7 +30,7 @@ describe('Websockets:Method', () => {
     client.captureException.mockClear();
     getCurrentHub().pushScope();
     getCurrentHub().bindClient(client);
-    socket = io.connect('http://localhost:4455');
+    socket = io.connect('http://localhost:4466');
   });
 
   afterEach(() => {
