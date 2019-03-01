@@ -1,8 +1,8 @@
 import { WebSocketGateway, SubscribeMessage } from '@nestjs/websockets'
-import { RavenInterceptor } from '../lib';
+import { RavenInterceptor } from '../../lib';
 import { UseInterceptors } from '@nestjs/common';
 
-@WebSocketGateway(4466)
+@WebSocketGateway(4455)
 export class GlobalGateway {
 
     @SubscribeMessage('test_error')

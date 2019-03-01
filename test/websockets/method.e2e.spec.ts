@@ -2,19 +2,20 @@ import * as io from 'socket.io-client';
 import { Test } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import { getCurrentHub } from '@sentry/hub';
-import { WebsocketsModule } from './websockets.module';
+import { MethodModule } from './method.module';
 
 declare var global: any;
 
-describe('Websockets', () => {
+describe('Websockets:Method', () => {
   let app: INestApplication;
+  let socket: SocketIOClient.Socket;
   const client = {
     captureException: jest.fn(async () => Promise.resolve()),
   };
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      imports: [WebsocketsModule],
+      imports: [MethodModule],
     })
     .compile();
 
@@ -29,12 +30,14 @@ describe('Websockets', () => {
     client.captureException.mockClear();
     getCurrentHub().pushScope();
     getCurrentHub().bindClient(client);
+    socket = io.connect('http://localhost:4455');
   });
 
+  afterEach(() => {
+    socket.disconnect();
+  })
 
-  it(`emit: test_error`, async () => {
-    const socket = io.connect('http://localhost:4455')
-
+  it(`emit:test_error`, async () => {
     await new Promise((resolve, reject) => {
       socket.on('connect', () => {
         if (!socket.connected) reject(new Error('Socket not connected!'));

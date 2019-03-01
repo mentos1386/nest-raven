@@ -1,9 +1,9 @@
 import { Controller, Get, HttpException, HttpStatus, UseInterceptors } from '@nestjs/common';
-import { RavenInterceptor } from '../lib';
+import { RavenInterceptor } from '../../lib';
 import * as Sentry from '@sentry/types';
 
 @Controller('')
-export class HelloController {
+export class MethodController {
 
   @Get('works')
   @UseInterceptors(new RavenInterceptor())
