@@ -1,6 +1,7 @@
 import {
   ExecutionContext, Injectable,
   NestInterceptor,
+  CallHandler,
 } from '@nestjs/common';
 import { IRavenInterceptorOptions } from './raven.interfaces';
 import { Observable } from 'rxjs';
@@ -18,13 +19,14 @@ export class RavenInterceptor implements NestInterceptor {
   
   intercept(
     context: ExecutionContext,
-    call$: Observable<any>,
+    next: CallHandler,
   ): Observable<any> {
     const httpRequest = context.switchToHttp().getRequest();
     const userData = httpRequest ? httpRequest.user : null;
     
     // first param would be for events, second is for errors
-    return call$.pipe(
+    return next.handle()
+    .pipe(
       tap(null, (exception) => {
         if (this.shouldReport(exception)) {
           Sentry.withScope(scope => this.captureException(scope, httpRequest, userData, exception));
