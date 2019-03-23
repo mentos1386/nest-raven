@@ -23,8 +23,8 @@ $ npm i --save nest-raven
 ```
 
 ### Versions
-
- * **3.x** Is for nest v5.x and introduces @sentry/minimal
+ * **4.x** Is for Next v6.x
+ * **3.x** Is for Nest v5.x and introduces @sentry/minimal
  * **2.x** Is for Nest v5.x
  * **1.x** Is for Nest v4.x
 
@@ -69,7 +69,7 @@ With this setup, sentry will pick up all exceptions (even 400 types).
 #### Global
 If you want to set up interceptor as global, you have to follow Nest
 instructions [here](https://docs.nestjs.com/interceptors). Something like
-this:
+this. This only works for Controllers not for Gateways (limitation by NestJS):
 
 > app.module.ts
 
