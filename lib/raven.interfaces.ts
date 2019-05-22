@@ -16,4 +16,11 @@ export interface IRavenInterceptorOptions {
   fingerprint?: string[];
   level?: Sentry.Severity;
   context?: 'Http' | 'Ws' | 'Rpc';
+
+  // https://github.com/getsentry/sentry-javascript/blob/master/packages/node/src/handlers.ts#L163
+  request?: boolean;
+  serverName?: boolean;
+  transaction?: boolean | 'path' | 'methodPath' | 'handler'; // https://github.com/getsentry/sentry-javascript/blob/master/packages/node/src/handlers.ts#L16
+  user?: boolean | string[];
+  version?: boolean;
 }

@@ -346,6 +346,17 @@
     consola "^2.3.0"
     node-fetch "^2.3.0"
 
+"@sentry/core@5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-5.3.0.tgz#554c4f8cec42ed3ca8b28c717959bf8685b82696"
+  integrity sha512-m4kB1RB5Ilx7/QTvhfRblyEfyGdV8dDLqE6CS3ftqjbFG0lhkqHjhj3Zai7wphfRnnZsfLGpYT8VJOgS9jUQuQ==
+  dependencies:
+    "@sentry/hub" "5.3.0"
+    "@sentry/minimal" "5.3.0"
+    "@sentry/types" "5.2.0"
+    "@sentry/utils" "5.3.0"
+    tslib "^1.9.3"
+
 "@sentry/hub@5.2.0":
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-5.2.0.tgz#4fde4b8b97aec3d6375d000f1151600c42cd2d72"
@@ -364,13 +375,27 @@
     "@sentry/utils" "5.3.0"
     tslib "^1.9.3"
 
-"@sentry/minimal@^5.2.0":
+"@sentry/minimal@5.3.0", "@sentry/minimal@^5.2.0":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-5.3.0.tgz#ba900bd793e969e293d1ee60ddf5f1905c6b1b90"
   integrity sha512-s1ok1AI7FQZx+zvgFVjcj1on090VSHo6Bf3f8idGRI2EvAB868q8DJoEcMXJGdJE59zZQ6YCEF5PXAmBm/h9Uw==
   dependencies:
     "@sentry/hub" "5.3.0"
     "@sentry/types" "5.2.0"
+    tslib "^1.9.3"
+
+"@sentry/node@^5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@sentry/node/-/node-5.3.0.tgz#fd103e1d83f80a693d54f21b192327f0db33af2e"
+  integrity sha512-7TSDW0rsQUUoClT1oAuNKEaBPKOFDkoetdXtlkqF4YkL903WJQL8mt2vxPQ6rQcLM+DpBUppDOlzdBSrieQ0RQ==
+  dependencies:
+    "@sentry/core" "5.3.0"
+    "@sentry/hub" "5.3.0"
+    "@sentry/types" "5.2.0"
+    "@sentry/utils" "5.3.0"
+    cookie "0.3.1"
+    https-proxy-agent "2.2.1"
+    lru_map "0.3.3"
     tslib "^1.9.3"
 
 "@sentry/types@5.2.0":
@@ -532,6 +557,13 @@ after@0.8.2:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/after/-/after-0.8.2.tgz#fedb394f9f0e02aa9768e702bda23b505fae7e1f"
   integrity sha1-/ts5T58OAqqXaOcCvaI7UF+ufh8=
+
+agent-base@^4.1.0:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/agent-base/-/agent-base-4.2.1.tgz#d89e5999f797875674c07d87f260fc41e83e8ca9"
+  integrity sha512-JVwXMr9nHYTUXsBFKUqhJwvlcYU/blreOEUkhNR2eXZIvwd+c+o5V4MgDPKWnMS/56awN3TRzIP+KoPn+roQtg==
+  dependencies:
+    es6-promisify "^5.0.0"
 
 ajv@^6.5.5:
   version "6.10.0"
@@ -1413,6 +1445,18 @@ es6-iterator@^2.0.1, es6-iterator@^2.0.3, es6-iterator@~2.0.3:
     es5-ext "^0.10.35"
     es6-symbol "^3.1.1"
 
+es6-promise@^4.0.3:
+  version "4.2.6"
+  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.2.6.tgz#b685edd8258886365ea62b57d30de28fadcd974f"
+  integrity sha512-aRVgGdnmW2OiySVPUC9e6m+plolMAJKjZnQlCwNSuK5yQ0JN61DZSO1X1Ufd1foqWRAlig0rhduTCHe7sVtK5Q==
+
+es6-promisify@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/es6-promisify/-/es6-promisify-5.0.0.tgz#5109d62f3e56ea967c4b63505aef08291c8a5203"
+  integrity sha1-UQnWLz5W6pZ8S2NQWu8IKRyKUgM=
+  dependencies:
+    es6-promise "^4.0.3"
+
 es6-symbol@^3.1.1, es6-symbol@~3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/es6-symbol/-/es6-symbol-3.1.1.tgz#bf00ef4fdab6ba1b46ecb7b629b4c7ed5715cc77"
@@ -1934,6 +1978,14 @@ http-signature@~1.2.0:
     assert-plus "^1.0.0"
     jsprim "^1.2.2"
     sshpk "^1.7.0"
+
+https-proxy-agent@2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-2.2.1.tgz#51552970fa04d723e04c56d04178c3f92592bbc0"
+  integrity sha512-HPCTS1LW51bcyMYbxUIOO4HEOlQ1/1qRaFWcyxvwaqUS9TY88aoEuHUY33kuAh1YhVVaDQhLZsnPd+XNARWZlQ==
+  dependencies:
+    agent-base "^4.1.0"
+    debug "^3.1.0"
 
 iconv-lite@0.4.24, iconv-lite@^0.4.4:
   version "0.4.24"
@@ -2793,6 +2845,11 @@ lru-queue@0.1:
   integrity sha1-Jzi9nw089PhEkMVzbEhpmsYyzaM=
   dependencies:
     es5-ext "~0.10.2"
+
+lru_map@0.3.3:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/lru_map/-/lru_map-0.3.3.tgz#b5c8351b9464cbd750335a79650a0ec0e56118dd"
+  integrity sha1-tcg1G5Rky9dQM1p5ZQoOwOVhGN0=
 
 make-dir@^1.3.0:
   version "1.3.0"

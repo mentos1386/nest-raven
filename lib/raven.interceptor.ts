@@ -9,6 +9,7 @@ import { tap } from 'rxjs/operators';
 import * as Sentry from '@sentry/minimal'
 import { Scope } from '@sentry/hub';
 import { RpcArgumentsHost, WsArgumentsHost, HttpArgumentsHost } from '@nestjs/common/interfaces';
+import { Handlers } from '@sentry/node'
 
 @Injectable()
 export class RavenInterceptor implements NestInterceptor {
@@ -37,9 +38,9 @@ export class RavenInterceptor implements NestInterceptor {
           Sentry.withScope(scope => {
             // TODO: When https://github.com/nestjs/nest/issues/1581 gets implemented switch to that
             switch(this.options.context){
-              case 'Http': return this.captureHttpException(scope, http, exception);
-              case 'Ws': return this.captureWsException(scope, ws, exception);
-              case 'Rpc': return this.captureRpcException(scope, rpc, exception);
+              case 'Http': return this.captureHttpException(scope as any, http, exception);
+              case 'Ws': return this.captureWsException(scope as any, ws, exception);
+              case 'Rpc': return this.captureRpcException(scope as any, rpc, exception);
             }
           });
         }
@@ -48,10 +49,13 @@ export class RavenInterceptor implements NestInterceptor {
   }
 
   private captureHttpException(scope: Scope, http: HttpArgumentsHost, exception): void {
-    scope.setExtra('req', http.getRequest());
-    scope.setExtra('res', http.getResponse());
+    const data = Handlers.parseRequest(<any>{}, http.getRequest(), this.options)
 
-    if (http.getRequest() && http.getRequest().user) scope.setUser(http.getRequest().user);
+    scope.setExtra('req', data.request);
+
+    scope.setExtras(data.extra);
+
+    if (data.user) scope.setUser(data.user);
 
     this.captureException(scope, exception);
   }
@@ -72,12 +76,8 @@ export class RavenInterceptor implements NestInterceptor {
   private captureException(scope: Scope, exception): void {
     if (this.options.level) scope.setLevel(this.options.level);
     if (this.options.fingerprint) scope.setFingerprint(this.options.fingerprint);
-    if (this.options.extra) for (const key in this.options.extra) {
-      if(this.options.extra.hasOwnProperty(key)) scope.setExtra(key, this.options.extra[key]);
-    }
-    for (const tag in this.options.tags) {
-      scope.setTag(tag, this.options.tags[tag])
-    }
+    if (this.options.extra) scope.setExtras(this.options.extra);
+    if (this.options.tags) scope.setTags(this.options.tags);
 
     Sentry.captureException(exception);
   }
