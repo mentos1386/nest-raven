@@ -15,4 +15,5 @@ export interface IRavenInterceptorOptions {
   extra?: { [key: string]: any };
   fingerprint?: string[];
   level?: Sentry.Severity;
+  context?: 'Http' | 'Ws' | 'Rpc';
 }

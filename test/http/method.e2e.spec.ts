@@ -1,13 +1,13 @@
 import * as request from 'supertest';
 import { Test } from '@nestjs/testing';
-import { HelloModule } from './hello.module';
 import { INestApplication } from '@nestjs/common';
 import { getCurrentHub } from '@sentry/hub';
 import * as Sentry from '@sentry/types';
+import { MethodModule } from './method.module';
 
 declare var global: any;
 
-describe('Hello', () => {
+describe('Http:Method', () => {
   let app: INestApplication;
   const client = {
     captureException: jest.fn(async () => Promise.resolve()),
@@ -15,7 +15,7 @@ describe('Hello', () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      imports: [HelloModule],
+      imports: [MethodModule],
     })
     .compile();
 

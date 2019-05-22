@@ -134,3 +134,22 @@ Other additional data can be added for each interceptor.
     ...
   }
 ```
+
+#### Websockets
+> **Note:** Websockets ignore Global interceptors.
+
+When using with websockets, you should provide context, as we cannot autmaticly detarmin if
+we are capturing http or websocket exception.
+
+It will add `ws_client` and `ws_data` extras.
+
+>app.gateway.ts
+```ts
+  @UseInterceptors(new RavenInterceptor({
+    context: 'Ws'
+  }))
+  @SubscribeMessage('message_name')
+  public someMessage(client, data: string): string {
+    ...
+  }
+```

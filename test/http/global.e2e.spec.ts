@@ -6,7 +6,7 @@ import { GlobalModule } from './global.module';
 
 declare var global: any;
 
-describe('Global', () => {
+describe('Http:Global', () => {
   let app: INestApplication;
   const client = {
     captureException: jest.fn(async () => Promise.resolve()),
