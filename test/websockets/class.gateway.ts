@@ -2,7 +2,7 @@ import { WebSocketGateway, SubscribeMessage } from '@nestjs/websockets'
 import { RavenInterceptor } from '../../lib';
 import { UseInterceptors } from '@nestjs/common';
 
-@UseInterceptors(new RavenInterceptor())
+@UseInterceptors(new RavenInterceptor({ context: 'Ws' }))
 @WebSocketGateway(4444)
 export class classGateway {
 

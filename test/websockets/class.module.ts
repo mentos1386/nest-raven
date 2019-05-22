@@ -11,7 +11,7 @@ import { classGateway } from './class.gateway';
     classGateway,
     {
       provide: APP_INTERCEPTOR,
-      useValue: new RavenInterceptor(),
+      useValue: new RavenInterceptor({ context: 'Ws' }),
     },
   ],
 })
