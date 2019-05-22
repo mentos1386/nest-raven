@@ -50,7 +50,7 @@ describe('Http:Method', () => {
     .expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
-    expect(client.captureException.mock.calls[0][2].extra).toHaveProperty('req');
+    expect(client.captureException.mock.calls[0][2]._extra).toHaveProperty('req');
   });
 
   it(`/GET filter`, async () => {
@@ -67,7 +67,7 @@ describe('Http:Method', () => {
     .expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
-    expect(client.captureException.mock.calls[0][2].tags).toEqual({ 'A': 'AAA', 'B': 'BBB' });
+    expect(client.captureException.mock.calls[0][2]._tags).toEqual({ 'A': 'AAA', 'B': 'BBB' });
   });
 
   it(`/GET extra`, async () => {
@@ -76,8 +76,8 @@ describe('Http:Method', () => {
     .expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
-    expect(client.captureException.mock.calls[0][2].extra).toHaveProperty('A', 'AAA');
-    expect(client.captureException.mock.calls[0][2].extra).toHaveProperty('B', 'BBB');
+    expect(client.captureException.mock.calls[0][2]._extra).toHaveProperty('A', 'AAA');
+    expect(client.captureException.mock.calls[0][2]._extra).toHaveProperty('B', 'BBB');
   });
 
   it(`/GET fingerprint`, async () => {
@@ -86,7 +86,7 @@ describe('Http:Method', () => {
     .expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
-    expect(client.captureException.mock.calls[0][2].fingerprint).toEqual(["A", "B"]);
+    expect(client.captureException.mock.calls[0][2]._fingerprint).toEqual(["A", "B"]);
   });
 
   it(`/GET level`, async () => {
@@ -95,7 +95,7 @@ describe('Http:Method', () => {
     .expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
-    expect(client.captureException.mock.calls[0][2].level).toEqual(Sentry.Severity.Critical);
+    expect(client.captureException.mock.calls[0][2]._level).toEqual(Sentry.Severity.Critical);
   });
 
   afterAll(async () => {
