@@ -52,9 +52,7 @@ export class RavenInterceptor implements NestInterceptor {
     const data = Handlers.parseRequest(<any>{}, http.getRequest(), this.options)
 
     scope.setExtra('req', data.request);
-
     scope.setExtras(data.extra);
-
     if (data.user) scope.setUser(data.user);
 
     this.captureException(scope, exception);

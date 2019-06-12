@@ -23,6 +23,7 @@ $ npm i --save nest-raven
 ```
 
 ### Versions
+ * **5.x** Upgrades @sentry/minimal to v5.x from v4.x
  * **4.x** Is for Next v6.x
  * **3.x** Is for Nest v5.x and introduces @sentry/minimal
  * **2.x** Is for Nest v5.x
