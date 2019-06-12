@@ -10,6 +10,7 @@ import * as Sentry from '@sentry/minimal'
 import { Scope } from '@sentry/hub';
 import { RpcArgumentsHost, WsArgumentsHost, HttpArgumentsHost } from '@nestjs/common/interfaces';
 import { Handlers } from '@sentry/node'
+import { GqlArgumentsHost, GraphQLArgumentsHost } from '@nestjs/graphql'
 
 @Injectable()
 export class RavenInterceptor implements NestInterceptor {
@@ -41,6 +42,7 @@ export class RavenInterceptor implements NestInterceptor {
               case 'Http': return this.captureHttpException(scope as any, http, exception);
               case 'Ws': return this.captureWsException(scope as any, ws, exception);
               case 'Rpc': return this.captureRpcException(scope as any, rpc, exception);
+              case 'GraphQL': return this.captureGraphQLException(scope as any, GqlArgumentsHost.create(context), exception);
             }
           });
         }
@@ -48,8 +50,25 @@ export class RavenInterceptor implements NestInterceptor {
     );
   }
 
+  private captureGraphQLException(scope: Scope, gqlHost: GraphQLArgumentsHost, exception): void {
+
+    // Same as HttpException
+    const data = Handlers.parseRequest(<any>{}, gqlHost.getContext(), this.options);
+    scope.setExtra('req', data.request);
+    scope.setExtras(data.extra);
+    if (data.user) scope.setUser(data.user);
+    
+    // GraphQL Specifics
+    const info = gqlHost.getInfo();
+    scope.setExtra('fieldName', info.fieldName);
+    const args = gqlHost.getArgs();
+    scope.setExtra('args', args);
+
+    this.captureException(scope, exception);
+  }
+
   private captureHttpException(scope: Scope, http: HttpArgumentsHost, exception): void {
-    const data = Handlers.parseRequest(<any>{}, http.getRequest(), this.options)
+    const data = Handlers.parseRequest(<any>{}, http.getRequest(), this.options);
 
     scope.setExtra('req', data.request);
     scope.setExtras(data.extra);

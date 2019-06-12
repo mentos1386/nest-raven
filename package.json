@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/mentos1386/nest-raven#readme",
   "dependencies": {
+    "@nestjs/graphql": "^6.2.4",
     "@sentry/minimal": "^5.2.0",
     "@sentry/node": "^5.3.0"
   },

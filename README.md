@@ -154,3 +154,21 @@ It will add `ws_client` and `ws_data` extras.
     ...
   }
 ```
+
+#### GraphQL
+
+When using with graphql, you should provide context, as we cannot autmaticly detarmin if
+we are capturing http or graphql exception.
+
+It will add `fieldname` and `args` extras.
+
+>app.gateway.ts
+```ts
+  @Mutation()
+  @UseInterceptors(new RavenInterceptor({
+    context: 'GraphQL'
+  }))
+  async upvotePost(@Args('postId') postId: number) {
+    ...
+  }
+```

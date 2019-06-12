@@ -15,7 +15,7 @@ export interface IRavenInterceptorOptions {
   extra?: { [key: string]: any };
   fingerprint?: string[];
   level?: Sentry.Severity;
-  context?: 'Http' | 'Ws' | 'Rpc';
+  context?: 'Http' | 'Ws' | 'Rpc' | "GraphQL";
 
   // https://github.com/getsentry/sentry-javascript/blob/master/packages/node/src/handlers.ts#L163
   request?: boolean;
