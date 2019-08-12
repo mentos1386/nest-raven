@@ -23,7 +23,7 @@ $ npm i --save nest-raven
 ```
 
 ### Versions
- * **5.x** Upgrades @sentry/minimal to v5.x from v4.x
+ * **5.x** Upgrades @sentry/minimal to v5.x from v4.x. Addes @sentry/node to dependencies.
  * **4.x** Is for Next v6.x
  * **3.x** Is for Nest v5.x and introduces @sentry/minimal
  * **2.x** Is for Nest v5.x
@@ -156,6 +156,7 @@ It will add `ws_client` and `ws_data` extras.
 ```
 
 #### GraphQL
+>**Warning**: This is an ALPHA level of support. There are bugs, not intended for production.
 
 When using with graphql, you should provide context, as we cannot autmaticly detarmin if
 we are capturing http or graphql exception.
