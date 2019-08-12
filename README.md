@@ -23,6 +23,7 @@ $ npm i --save nest-raven
 ```
 
 ### Versions
+ * **5.x** Upgrades @sentry/minimal to v5.x from v4.x
  * **4.x** Is for Next v6.x
  * **3.x** Is for Nest v5.x and introduces @sentry/minimal
  * **2.x** Is for Nest v5.x
@@ -150,6 +151,24 @@ It will add `ws_client` and `ws_data` extras.
   }))
   @SubscribeMessage('message_name')
   public someMessage(client, data: string): string {
+    ...
+  }
+```
+
+#### GraphQL
+
+When using with graphql, you should provide context, as we cannot autmaticly detarmin if
+we are capturing http or graphql exception.
+
+It will add `fieldname` and `args` extras.
+
+>app.gateway.ts
+```ts
+  @Mutation()
+  @UseInterceptors(new RavenInterceptor({
+    context: 'GraphQL'
+  }))
+  async upvotePost(@Args('postId') postId: number) {
     ...
   }
 ```
