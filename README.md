@@ -124,11 +124,13 @@ Other additional data can be added for each interceptor.
 > app.controller.ts
 
 ```ts
+import { Severity } from '@sentry/node';
+
   @UseInterceptors(new RavenInterceptor({
     tags: {
       type: 'fileUpload',
     },
-    level: 'warning',
+    level: Severity.Info,
   }))
   @Get('/some/route')
   public async someRoute()
