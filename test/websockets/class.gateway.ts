@@ -7,7 +7,7 @@ import { UseInterceptors } from '@nestjs/common';
 export class classGateway {
 
     @SubscribeMessage('test_error')
-    on_test_error(client, data: string): string {
+    on_test_error(_client, _data): string {
         throw new Error('Something bad happened');
     }
 }

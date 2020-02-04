@@ -4,6 +4,5 @@ import { Injectable, InternalServerErrorException } from '@nestjs/common';
 export class AppService {
   getHello(): string {
     throw new InternalServerErrorException('This is not good?');
-    return 'Hello World!';
   }
 }

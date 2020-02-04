@@ -1,6 +1,6 @@
 import { Controller, Get, UseInterceptors } from '@nestjs/common';
 import { AppService } from './app.service';
-import { RavenInterceptor } from 'nest-raven';
+import { RavenInterceptor } from '../../lib';
 
 @Controller()
 @UseInterceptors(new RavenInterceptor())

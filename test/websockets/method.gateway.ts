@@ -8,7 +8,7 @@ export class MethodGateway {
 
     @UseInterceptors(new RavenInterceptor({ context: 'Ws' }))
     @SubscribeMessage('test_error')
-    on_test_error(client, data: string): string {
+    on_test_error(_client, _data): string {
         throw new Error('Something bad happened');
     }
 }
