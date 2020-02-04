@@ -10,7 +10,7 @@ describe('Websockets:Class', () => {
   let app: INestApplication;
   let socket: SocketIOClient.Socket;
   const client = {
-    captureException: jest.fn(async () => Promise.resolve()),
+    captureException: jest.fn(),
   };
 
   beforeAll(async () => {
@@ -48,7 +48,9 @@ describe('Websockets:Class', () => {
       });
     });
 
-    expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
+    expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
+      `[Error: Something bad happened]`,
+    );
   });
 
   afterAll(async () => {

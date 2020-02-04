@@ -2,7 +2,7 @@ import * as request from 'supertest';
 import { Test } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import { getCurrentHub } from '@sentry/hub';
-import * as Sentry from '@sentry/types';
+import { Severity } from '@sentry/types';
 import { MethodModule } from './method.module';
 
 declare var global: any;
@@ -10,7 +10,7 @@ declare var global: any;
 describe('Http:Method', () => {
   let app: INestApplication;
   const client = {
-    captureException: jest.fn(async () => Promise.resolve()),
+    captureException: jest.fn(),
   };
 
   beforeAll(async () => {
@@ -48,7 +48,9 @@ describe('Http:Method', () => {
       .get('/intercepted')
       .expect(500);
 
-    expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
+    expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
+      `[Error: Something bad happened]`,
+    );
     expect(client.captureException.mock.calls[0][2]._extra).toHaveProperty(
       'req',
     );
@@ -67,7 +69,9 @@ describe('Http:Method', () => {
       .get('/tags')
       .expect(500);
 
-    expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
+    expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
+      `[Error: Something bad happened]`,
+    );
     expect(client.captureException.mock.calls[0][2]._tags).toEqual({
       A: 'AAA',
       B: 'BBB',
@@ -79,7 +83,9 @@ describe('Http:Method', () => {
       .get('/extra')
       .expect(500);
 
-    expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
+    expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
+      `[Error: Something bad happened]`,
+    );
     expect(client.captureException.mock.calls[0][2]._extra).toHaveProperty(
       'A',
       'AAA',
@@ -95,7 +101,9 @@ describe('Http:Method', () => {
       .get('/fingerprint')
       .expect(500);
 
-    expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
+    expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
+      `[Error: Something bad happened]`,
+    );
     expect(client.captureException.mock.calls[0][2]._fingerprint).toEqual([
       'A',
       'B',
@@ -107,9 +115,11 @@ describe('Http:Method', () => {
       .get('/level')
       .expect(500);
 
-    expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
+    expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
+      `[Error: Something bad happened]`,
+    );
     expect(client.captureException.mock.calls[0][2]._level).toEqual(
-      Sentry.Severity.Critical,
+      Severity.Critical,
     );
   });
 
