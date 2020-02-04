@@ -15,8 +15,7 @@ describe('Http:Global', () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       imports: [GlobalModule],
-    })
-    .compile();
+    }).compile();
 
     app = module.createNestApplication();
     await app.init();
@@ -31,11 +30,10 @@ describe('Http:Global', () => {
     getCurrentHub().bindClient(client);
   });
 
-
   it(`/GET error`, async () => {
     await request(app.getHttpServer())
-    .get('/error')
-    .expect(500);
+      .get('/error')
+      .expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
   });

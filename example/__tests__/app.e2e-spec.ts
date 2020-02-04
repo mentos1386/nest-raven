@@ -39,12 +39,12 @@ describe('AppModule', () => {
       .get('/graphql')
       .expect(400));
 
-  it('/graphql(POST) forbidden', async () => {
+  it('/graphql(POST) forbiddenError', async () => {
     const { query } = apolloClient;
     const result = await query({
       query: gql`
         query {
-          forbidden
+          forbiddenError
         }
       `,
       variables: {},
@@ -53,7 +53,33 @@ describe('AppModule', () => {
       Object {
         "data": null,
         "errors": Array [
-          [GraphQLError: Cannot read property 'headers' of undefined],
+          [GraphQLError: forbidden],
+        ],
+        "extensions": undefined,
+        "http": Object {
+          "headers": Headers {
+            Symbol(map): Object {},
+          },
+        },
+      }
+    `);
+  });
+
+  it('/graphql(POST) forbiddenException', async () => {
+    const { query } = apolloClient;
+    const result = await query({
+      query: gql`
+        query {
+          forbiddenException
+        }
+      `,
+      variables: {},
+    });
+    expect(result).toMatchInlineSnapshot(`
+      Object {
+        "data": null,
+        "errors": Array [
+          [GraphQLError: [object Object]],
         ],
         "extensions": undefined,
         "http": Object {

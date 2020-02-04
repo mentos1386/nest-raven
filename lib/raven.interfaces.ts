@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/types';
+import { Severity } from '@sentry/types';
 
 export interface IRavenFilterFunction {
   (exception: any): boolean;
@@ -14,8 +14,7 @@ export interface IRavenInterceptorOptions {
   tags?: { [key: string]: string };
   extra?: { [key: string]: any };
   fingerprint?: string[];
-  level?: Sentry.Severity;
-  context?: 'Http' | 'Ws' | 'Rpc' | "GraphQL";
+  level?: Severity;
 
   // https://github.com/getsentry/sentry-javascript/blob/master/packages/node/src/handlers.ts#L163
   request?: boolean;

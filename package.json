@@ -29,21 +29,20 @@
   },
   "homepage": "https://github.com/mentos1386/nest-raven#readme",
   "dependencies": {
-    "@sentry/minimal": "^5.2.0",
-    "@sentry/node": "^5.3.0"
+    "@sentry/minimal": "^5.12.0",
+    "@sentry/node": "^5.12.0"
   },
   "peerDependencies": {
     "@nestjs/graphql": "^6.2.4"
   },
   "devDependencies": {
-    "@nestjs/common": "^6.2.0",
-    "@nestjs/core": "^6.2.0",
-    "@nestjs/graphql": "^6.2.4",
-    "@nestjs/platform-express": "^6.2.0",
-    "@nestjs/platform-socket.io": "^6.2.0",
-    "@nestjs/testing": "^6.2.0",
-    "@nestjs/websockets": "^6.0.2",
-    "@sentry/hub": "5.2.0",
+    "@nestjs/common": "^6.11.5",
+    "@nestjs/core": "^6.11.5",
+    "@nestjs/graphql": "^6.5.4",
+    "@nestjs/platform-express": "^6.11.5",
+    "@nestjs/platform-socket.io": "^6.11.5",
+    "@nestjs/testing": "^6.11.5",
+    "@nestjs/websockets": "^6.11.5",
     "@types/jest": "^24.0.12",
     "@types/node": "^12.0.0",
     "@types/socket.io-client": "^1.4.32",

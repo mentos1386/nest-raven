@@ -4,16 +4,13 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { classGateway } from './class.gateway';
 
 @Module({
-  imports: [
-    RavenModule,
-  ],
+  imports: [RavenModule],
   providers: [
     classGateway,
     {
       provide: APP_INTERCEPTOR,
-      useValue: new RavenInterceptor({ context: 'Ws' }),
+      useValue: new RavenInterceptor(),
     },
   ],
 })
-export class ClassModule {
-}
+export class ClassModule {}
