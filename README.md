@@ -48,7 +48,7 @@ this should be done in your `main.ts` file where you initialize the NestJS appli
 
 ```ts
 @Module({
-  imports: [...RavenModule]
+  imports: [RavenModule],
 })
 export class ApplicationModule implements NestModule {}
 ```
@@ -126,11 +126,13 @@ Other additional data can be added for each interceptor.
 > app.controller.ts
 
 ```ts
+import { Severity } from '@sentry/node';
+
   @UseInterceptors(new RavenInterceptor({
     tags: {
       type: 'fileUpload',
     },
-    level: 'warning',
+    level: Severity.Warning,
   }))
   @Get('/some/route')
   public async someRoute()
@@ -142,17 +144,12 @@ Other additional data can be added for each interceptor.
 
 > **Note:** Websockets ignore Global interceptors.
 
-When using with websockets, you should provide context, as we cannot autmaticly detarmin if
-we are capturing http or websocket exception.
-
 It will add `ws_client` and `ws_data` extras.
 
 > app.gateway.ts
 
 ```ts
-  @UseInterceptors(new RavenInterceptor({
-    context: 'Ws'
-  }))
+  @UseInterceptors(new RavenInterceptor())
   @SubscribeMessage('message_name')
   public someMessage(client, data: string): string {
     ...
@@ -161,20 +158,13 @@ It will add `ws_client` and `ws_data` extras.
 
 #### GraphQL
 
-> **Warning**: This is an ALPHA level of support. There are bugs, not intended for production.
-
-When using with graphql, you should provide context, as we cannot automatically determine if
-we are capturing http or graphql exception.
-
-It will add `fieldname` and `args` extras.
+It will add `fieldName` and `args` extras.
 
 > app.gateway.ts
 
 ```ts
   @Mutation()
-  @UseInterceptors(new RavenInterceptor({
-    context: 'GraphQL'
-  }))
+  @UseInterceptors(new RavenInterceptor())
   async upvotePost(@Args('postId') postId: number) {
     ...
   }
