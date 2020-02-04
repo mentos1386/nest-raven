@@ -39,6 +39,23 @@ describe('AppModule', () => {
       .get('/graphql')
       .expect(400));
 
+  it('/graphql(POST) forbiddenError warning', async () => {
+    const { query } = apolloClient;
+    const result = await query({
+      query: gql`
+        query {
+          authenticationError
+        }
+      `,
+      variables: {},
+    });
+    expect(result.errors).toMatchInlineSnapshot(`
+      Array [
+        [GraphQLError: AuthenticationError],
+      ]
+    `);
+  });
+
   it('/graphql(POST) forbiddenError', async () => {
     const { query } = apolloClient;
     const result = await query({
@@ -49,19 +66,10 @@ describe('AppModule', () => {
       `,
       variables: {},
     });
-    expect(result).toMatchInlineSnapshot(`
-      Object {
-        "data": null,
-        "errors": Array [
-          [GraphQLError: forbidden],
-        ],
-        "extensions": undefined,
-        "http": Object {
-          "headers": Headers {
-            Symbol(map): Object {},
-          },
-        },
-      }
+    expect(result.errors).toMatchInlineSnapshot(`
+      Array [
+        [GraphQLError: forbidden],
+      ]
     `);
   });
 
@@ -75,19 +83,10 @@ describe('AppModule', () => {
       `,
       variables: {},
     });
-    expect(result).toMatchInlineSnapshot(`
-      Object {
-        "data": null,
-        "errors": Array [
-          [GraphQLError: [object Object]],
-        ],
-        "extensions": undefined,
-        "http": Object {
-          "headers": Headers {
-            Symbol(map): Object {},
-          },
-        },
-      }
+    expect(result.errors).toMatchInlineSnapshot(`
+      Array [
+        [GraphQLError: [object Object]],
+      ]
     `);
   });
 });

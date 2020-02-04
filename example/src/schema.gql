@@ -6,4 +6,5 @@
 type Query {
   forbiddenError: Boolean!
   forbiddenException: Boolean!
+  authenticationError: Boolean!
 }

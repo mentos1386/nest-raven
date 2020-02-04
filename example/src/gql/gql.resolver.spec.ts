@@ -14,6 +14,11 @@ describe('GqlResolver', () => {
 
   it('should be defined', () => expect(resolver).toBeDefined());
 
+  it('apollo-server-errors (AuthenticationError)', () =>
+    expect(
+      resolver.authenticationError(),
+    ).rejects.toThrowErrorMatchingInlineSnapshot(`"AuthenticationError"`));
+
   it('apollo-server-errors (Forbidden)', () =>
     expect(
       resolver.forbiddenError(),
