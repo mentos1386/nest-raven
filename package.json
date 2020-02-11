@@ -10,7 +10,7 @@
     "format": "prettier \"{example,lib,test}/**/*.ts\" --write",
     "lint": "prettier \"{example,lib,test}/**/*.ts\"  --check",
     "coverage": "cat ./coverage/lcov.info | coveralls",
-    "test": "yarn lint && jest",
+    "test": "jest",
     "start": "ts-node -r tsconfig-paths/register example/src/main.ts"
   },
   "repository": {

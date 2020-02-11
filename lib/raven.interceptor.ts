@@ -19,7 +19,11 @@ import { GqlArgumentsHost, GraphQLArgumentsHost } from '@nestjs/graphql';
 
 @Injectable()
 export class RavenInterceptor implements NestInterceptor {
-  constructor(private readonly options: IRavenInterceptorOptions = {}) {}
+  constructor(
+    private readonly options: IRavenInterceptorOptions = {
+      withGraphQL: false,
+    },
+  ) {}
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     // first param would be for events, second is for errors
@@ -47,11 +51,14 @@ export class RavenInterceptor implements NestInterceptor {
                   exception,
                 );
               default:
-                return this.captureGraphQLException(
-                  scope as any,
-                  GqlArgumentsHost.create(context),
-                  exception,
-                );
+                if (this.options.withGraphQL) {
+                  return this.captureGraphQLException(
+                    scope as any,
+                    GqlArgumentsHost.create(context),
+                    exception,
+                  );
+                }
+                return this.captureException(scope, exception);
             }
           });
         }

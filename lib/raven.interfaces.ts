@@ -15,6 +15,7 @@ export interface IRavenInterceptorOptions {
   extra?: { [key: string]: any };
   fingerprint?: string[];
   level?: Severity;
+  withGraphQL?: boolean;
 
   // https://github.com/getsentry/sentry-javascript/blob/master/packages/node/src/handlers.ts#L163
   request?: boolean;
