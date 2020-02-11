@@ -72,21 +72,4 @@ describe('AppModule', () => {
       ]
     `);
   });
-
-  it('/graphql(POST) forbiddenException', async () => {
-    const { query } = apolloClient;
-    const result = await query({
-      query: gql`
-        query {
-          forbiddenException
-        }
-      `,
-      variables: {},
-    });
-    expect(result.errors).toMatchInlineSnapshot(`
-      Array [
-        [GraphQLError: [object Object]],
-      ]
-    `);
-  });
 });

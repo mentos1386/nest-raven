@@ -71,10 +71,11 @@ export class RavenInterceptor implements NestInterceptor {
     gqlHost: GraphQLArgumentsHost,
     exception,
   ): void {
+    const context = gqlHost.getContext();
     // Same as HttpException
     const data = Handlers.parseRequest(
       <any>{},
-      gqlHost.getContext(),
+      context?.req || context,
       this.options,
     );
     scope.setExtra('req', data.request);
