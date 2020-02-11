@@ -1,7 +1,7 @@
 import { Resolver, Query } from '@nestjs/graphql';
 import { ForbiddenError, AuthenticationError } from 'apollo-server-errors';
 import { ForbiddenException, UseInterceptors } from '@nestjs/common';
-import { Severity } from '@sentry/node'
+import { Severity } from '@sentry/node';
 import { RavenInterceptor } from '../../../lib';
 
 @Resolver('Gql')
@@ -18,7 +18,7 @@ export class GqlResolver {
 
   @UseInterceptors(new RavenInterceptor({ level: Severity.Warning }))
   @Query(() => Boolean)
-  async authenticationError () {
-    throw new AuthenticationError('AuthenticationError')
+  async authenticationError() {
+    throw new AuthenticationError('AuthenticationError');
   }
 }
