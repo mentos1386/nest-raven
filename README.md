@@ -14,6 +14,7 @@
 </p>
 
 ## Description
+
 This's a [@sentry/minimal](https://github.com/getsentry/sentry-javascript/tree/master/packages/minimal) module for [Nest](https://github.com/nestjs/nest).
 
 ## Installation
@@ -23,13 +24,15 @@ $ npm i --save nest-raven
 ```
 
 ### Versions
- * **5.x** Upgrades @sentry/minimal to v5.x from v4.x. Addes @sentry/node to dependencies.
- * **4.x** Is for Next v6.x
- * **3.x** Is for Nest v5.x and introduces @sentry/minimal
- * **2.x** Is for Nest v5.x
- * **1.x** Is for Nest v4.x
+
+- **5.x** Upgrades @sentry/minimal to v5.x from v4.x. Addes @sentry/node to dependencies.
+- **4.x** Is for Next v6.x
+- **3.x** Is for Nest v5.x and introduces @sentry/minimal
+- **2.x** Is for Nest v5.x
+- **1.x** Is for Nest v4.x
 
 #### Breaking Changes in version 3.x
+
 - Client needs to be initialised by the user (outside of this module).
 - Instead of `@UseInterceptors(RavenInterceptor())` you now have to do `@UseInterceptors(new RavenInterceptor())`
 - When importing, you just specify module, there is no need for calling `forRoot()` anymore.
@@ -37,6 +40,7 @@ $ npm i --save nest-raven
 ## Quick Start
 
 ### Include Module
+
 For Module to work you need to [setup Sentry SDK yourself](https://docs.sentry.io/error-reporting/quickstart/?platform=node),
 this should be done in your `main.ts` file where you initialize the NestJS application.
 
@@ -44,17 +48,13 @@ this should be done in your `main.ts` file where you initialize the NestJS appli
 
 ```ts
 @Module({
-    imports: [
-        ...
-        RavenModule,
-    ]
+  imports: [...RavenModule]
 })
-export class ApplicationModule implements NestModule {
-}
-
+export class ApplicationModule implements NestModule {}
 ```
 
 ### Using Interceptor
+
 > app.controller.ts
 
 ```ts
@@ -68,6 +68,7 @@ export class ApplicationModule implements NestModule {
 With this setup, sentry will pick up all exceptions (even 400 types).
 
 #### Global
+
 If you want to set up interceptor as global, you have to follow Nest
 instructions [here](https://docs.nestjs.com/interceptors). Something like
 this. This only works for Controllers not for Gateways (limitation by NestJS):
@@ -75,23 +76,22 @@ this. This only works for Controllers not for Gateways (limitation by NestJS):
 > app.module.ts
 
 ```ts
-import { APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_INTERCEPTOR } from "@nestjs/core";
 
 @Module({
-  imports: [
-      RavenModule,
-  ],
+  imports: [RavenModule],
   providers: [
     {
       provide: APP_INTERCEPTOR,
-      useValue: new RavenInterceptor(),
-    },
-  ],
+      useValue: new RavenInterceptor()
+    }
+  ]
 })
 export class ApplicationModule {}
 ```
 
 #### Filters
+
 Sometimes we don't want to catch all exceptions but only 500 or those
 that we didn't handle properly. For that we can add filters on interceptor
 to filter out good exceptions.
@@ -113,13 +113,15 @@ to filter out good exceptions.
 ```
 
 #### Additional data
+
 Interceptor automatically adds `req` and `req.user` (as user) to additional data.
 
 Other additional data can be added for each interceptor.
- * tags
- * extra
- * fingerprint
- * level
+
+- tags
+- extra
+- fingerprint
+- level
 
 > app.controller.ts
 
@@ -137,6 +139,7 @@ Other additional data can be added for each interceptor.
 ```
 
 #### Websockets
+
 > **Note:** Websockets ignore Global interceptors.
 
 When using with websockets, you should provide context, as we cannot autmaticly detarmin if
@@ -144,7 +147,8 @@ we are capturing http or websocket exception.
 
 It will add `ws_client` and `ws_data` extras.
 
->app.gateway.ts
+> app.gateway.ts
+
 ```ts
   @UseInterceptors(new RavenInterceptor({
     context: 'Ws'
@@ -156,14 +160,16 @@ It will add `ws_client` and `ws_data` extras.
 ```
 
 #### GraphQL
->**Warning**: This is an ALPHA level of support. There are bugs, not intended for production.
 
-When using with graphql, you should provide context, as we cannot autmaticly detarmin if
+> **Warning**: This is an ALPHA level of support. There are bugs, not intended for production.
+
+When using with graphql, you should provide context, as we cannot automatically determine if
 we are capturing http or graphql exception.
 
 It will add `fieldname` and `args` extras.
 
->app.gateway.ts
+> app.gateway.ts
+
 ```ts
   @Mutation()
   @UseInterceptors(new RavenInterceptor({
