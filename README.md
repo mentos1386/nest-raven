@@ -76,16 +76,16 @@ this. This only works for Controllers not for Gateways (limitation by NestJS):
 > app.module.ts
 
 ```ts
-import { APP_INTERCEPTOR } from "@nestjs/core";
+import { APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
   imports: [RavenModule],
   providers: [
     {
       provide: APP_INTERCEPTOR,
-      useValue: new RavenInterceptor()
-    }
-  ]
+      useValue: new RavenInterceptor(),
+    },
+  ],
 })
 export class ApplicationModule {}
 ```
