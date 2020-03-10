@@ -3,12 +3,7 @@ import { Module } from '@nestjs/common';
 import { MethodGateway } from './method.gateway';
 
 @Module({
-  imports: [
-    RavenModule,
-  ],
-  providers: [
-    MethodGateway,
-  ]
+  imports: [RavenModule],
+  providers: [MethodGateway],
 })
-export class MethodModule {
-}
+export class MethodModule {}

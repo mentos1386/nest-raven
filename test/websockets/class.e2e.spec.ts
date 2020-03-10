@@ -10,14 +10,13 @@ describe('Websockets:Class', () => {
   let app: INestApplication;
   let socket: SocketIOClient.Socket;
   const client = {
-    captureException: jest.fn(async () => Promise.resolve()),
+    captureException: jest.fn(),
   };
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       imports: [ClassModule],
-    })
-    .compile();
+    }).compile();
 
     app = module.createNestApplication();
     await app.init();
@@ -35,10 +34,10 @@ describe('Websockets:Class', () => {
 
   afterEach(() => {
     socket.disconnect();
-  })
+  });
 
   it(`emit:test_error`, async () => {
-    const socket = io.connect('http://localhost:4444')
+    const socket = io.connect('http://localhost:4444');
 
     await new Promise((resolve, reject) => {
       socket.on('connect', () => {
@@ -47,9 +46,11 @@ describe('Websockets:Class', () => {
         socket.emit('test_error');
         setTimeout(resolve, 1000); // Hacky way to "wait" for server to finish it's stuff
       });
-    })
+    });
 
-    expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
+    expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
+      `[Error: Something bad happened]`,
+    );
   });
 
   afterAll(async () => {

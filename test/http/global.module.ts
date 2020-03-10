@@ -4,12 +4,8 @@ import { GlobalController } from './global.controller';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
-  imports: [
-      RavenModule,
-  ],
-  controllers: [
-    GlobalController,
-  ],
+  imports: [RavenModule],
+  controllers: [GlobalController],
   providers: [
     {
       provide: APP_INTERCEPTOR,
@@ -17,5 +13,4 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
     },
   ],
 })
-export class GlobalModule {
-}
+export class GlobalModule {}
