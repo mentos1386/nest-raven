@@ -765,13 +765,31 @@
     "@sentry/utils" "5.14.0"
     tslib "^1.9.3"
 
-"@sentry/minimal@5.14.0", "@sentry/minimal@^5.12.0":
+"@sentry/hub@5.14.1":
+  version "5.14.1"
+  resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-5.14.1.tgz#1a4515558705b2680a6e9f3cb8092555ed31324a"
+  integrity sha512-FTqeLcOWbww18WRQ8F3Z0DryQwD5DeuapXlinez7Y+HDZZAOm7HdPDEY5xjrUzi4V0n9BtgfJDp27UKJENWtYA==
+  dependencies:
+    "@sentry/types" "5.14.1"
+    "@sentry/utils" "5.14.1"
+    tslib "^1.9.3"
+
+"@sentry/minimal@5.14.0":
   version "5.14.0"
   resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-5.14.0.tgz#f12e2a95d9abd0fbe11546cfca87e15bc70af8c8"
   integrity sha512-uEHMhOJiLLHsvF4eihlTdiOMtDHUPlPbXtOcTkPw0lmLC2FuHOMtnvZJb/MxIFVrsFhE7yRUMKda45NHF2Wm9w==
   dependencies:
     "@sentry/hub" "5.14.0"
     "@sentry/types" "5.14.0"
+    tslib "^1.9.3"
+
+"@sentry/minimal@^5.12.0":
+  version "5.14.1"
+  resolved "https://registry.yarnpkg.com/@sentry/minimal/-/minimal-5.14.1.tgz#3ec74503cd72772de56188f010a35d9bc956dc94"
+  integrity sha512-TC+i37rGBomu74xcSdPA4xeqSeWEvTHP5dx+LIJunntk4/mDi5/aC3HSMxRy3ifoJiUwZO+gyJJ7I/UMzvOMEw==
+  dependencies:
+    "@sentry/hub" "5.14.1"
+    "@sentry/types" "5.14.1"
     tslib "^1.9.3"
 
 "@sentry/node@^5.12.3":
@@ -794,12 +812,25 @@
   resolved "https://registry.yarnpkg.com/@sentry/types/-/types-5.14.0.tgz#4681f07d58e6edbe2f995080f005ecc3d4cd22b6"
   integrity sha512-XQxSUWAcpFH7m2vWzUAc8YhKCofNMtGNk555Nn5kplj83r+jBXdZwAfVqYBqy8Yw5SYSfof+2RN38u7IE8RerQ==
 
+"@sentry/types@5.14.1":
+  version "5.14.1"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-5.14.1.tgz#564f9b703c06c2a97e756f60a3c873b977b2bbd2"
+  integrity sha512-Eht+qI68BxELKQRnaV6q1PxS9/E+YatUHjG80ov9/azLbIJElQhWUDzyyJCefDD/fEI37VQ2SrsQsVqS9W7ZOQ==
+
 "@sentry/utils@5.14.0":
   version "5.14.0"
   resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-5.14.0.tgz#2bc9a5bf32ca6a9d55570fc4d5bb51b92cff5913"
   integrity sha512-GCZ0rTT6bK6P0G8+NapY7yZX8erjyi0Pfjgmd5srgY6PkxAgMSI6mXtwPNqnp5T7Z9L27CMe6UGsOiMc680Mjg==
   dependencies:
     "@sentry/types" "5.14.0"
+    tslib "^1.9.3"
+
+"@sentry/utils@5.14.1":
+  version "5.14.1"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-5.14.1.tgz#577a9dd7b5f4b3436e8e2847d058547eab2ed5c4"
+  integrity sha512-iCN5p+ArPVMkt09bRfYuldtKSTQEqRfNuoCxPFJKDfMyLO9YetIwRCwHluIRoJoEIFE4JTM2F4HfmTsxoTqw4g==
+  dependencies:
+    "@sentry/types" "5.14.1"
     tslib "^1.9.3"
 
 "@sinonjs/commons@^1.7.0":
