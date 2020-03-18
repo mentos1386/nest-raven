@@ -587,9 +587,9 @@
     uuid "7.0.2"
 
 "@nestjs/graphql@^7.0.6":
-  version "7.0.6"
-  resolved "https://registry.yarnpkg.com/@nestjs/graphql/-/graphql-7.0.6.tgz#2f4335526d6897617ad47278e204b2840cc407a8"
-  integrity sha512-+im1OzauKykjtzjXTNM3kIa5wJ+6KiIhYCCBee2WIvTrxzWjuo4SOajS3THeiOt1bT17CVZ7tN8DCfoxXpCNEQ==
+  version "7.0.9"
+  resolved "https://registry.yarnpkg.com/@nestjs/graphql/-/graphql-7.0.9.tgz#492d25dc51887d679fc8814472b2bd3d5e953415"
+  integrity sha512-NQg1HqDYux/GhlujndVX2Au+/UY3g7CGpV2BVoeCKIbN24p6bC+JSLhTTfvCGpzqbQPUIzdb5RV783McI6yiog==
   dependencies:
     chokidar "3.3.1"
     fast-glob "3.2.2"
