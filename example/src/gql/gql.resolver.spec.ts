@@ -25,11 +25,7 @@ describe('GqlResolver', () => {
     ).rejects.toThrowErrorMatchingInlineSnapshot(`"forbidden"`));
 
   it('@nestjs/common (Forbidden)', () =>
-    expect(resolver.forbiddenException()).rejects
-      .toThrowErrorMatchingInlineSnapshot(`
-Object {
-  "error": "Forbidden",
-  "statusCode": 403,
-}
-`));
+    expect(
+      resolver.forbiddenException(),
+    ).rejects.toThrowErrorMatchingInlineSnapshot(`"Forbidden"`));
 });
