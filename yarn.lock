@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@apollo/federation@^0.13.0", "@apollo/federation@^0.13.2":
+"@apollo/federation@^0.13.2":
   version "0.13.2"
   resolved "https://registry.yarnpkg.com/@apollo/federation/-/federation-0.13.2.tgz#a9f842abd1619fe5cd732c56cfbc45dab0ae784a"
   integrity sha512-62uXIIHxHXG71gSwROFt8yxtYeUZ2BaIgAkxZ1H82GB4+s1gt4xwizcmmCWqQhK3KBy4LbPOfI1YyHW4Wv5ZpQ==
@@ -12,7 +12,7 @@
     core-js "^3.4.0"
     lodash.xorby "^4.7.0"
 
-"@apollo/gateway@^0.13.0":
+"@apollo/gateway@^0.13.2":
   version "0.13.2"
   resolved "https://registry.yarnpkg.com/@apollo/gateway/-/gateway-0.13.2.tgz#b97ebf48c6491256f05ce0c12ddbe9c536036e68"
   integrity sha512-1f5qCzplvE4sGFhK/ir2YUuFLTRO8ujEcSbsFFsHA+n4E8e8S92V+9X32MRXzu3gZYkfqdhnrd/bJFtTVtlkWA==
@@ -587,9 +587,9 @@
     uuid "7.0.2"
 
 "@nestjs/graphql@^7.0.6":
-  version "7.0.9"
-  resolved "https://registry.yarnpkg.com/@nestjs/graphql/-/graphql-7.0.9.tgz#492d25dc51887d679fc8814472b2bd3d5e953415"
-  integrity sha512-NQg1HqDYux/GhlujndVX2Au+/UY3g7CGpV2BVoeCKIbN24p6bC+JSLhTTfvCGpzqbQPUIzdb5RV783McI6yiog==
+  version "7.0.15"
+  resolved "https://registry.yarnpkg.com/@nestjs/graphql/-/graphql-7.0.15.tgz#5f702187f80282c5655f3eb15fe17d13ae72f947"
+  integrity sha512-ixbX4moI1yVeeLNzSOtqf8mJA9DJ/rgVjjWcbccoe18uopF3AlOVCKjLLNzrkYhUKnz7gjS7MEyOVI0Ar97R8A==
   dependencies:
     chokidar "3.3.1"
     fast-glob "3.2.2"
@@ -601,10 +601,9 @@
     tslib "1.11.1"
     uuid "7.0.2"
   optionalDependencies:
-    "@apollo/federation" "^0.13.0"
-    "@apollo/gateway" "^0.13.0"
+    "@apollo/federation" "^0.13.2"
+    "@apollo/gateway" "^0.13.2"
     ts-morph "^7.0.0"
-    type-graphql "^0.17.3"
 
 "@nestjs/platform-express@^7.0.2":
   version "7.0.3"
@@ -1054,11 +1053,6 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.14.15.tgz#e8f7729b631be1b02ae130ff0b61f3e018000640"
   integrity sha512-CBR5avlLcu0YCILJiDIXeU2pTw7UK/NIxfC63m7d7CVamho1qDEzXKkOtEauQRPMy6MI8mLozth+JJkas7HY6g==
 
-"@types/node@^11.13.7":
-  version "11.13.14"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.13.14.tgz#03e9416f7d699d71742e5a1e455def7bd55f8fb9"
-  integrity sha512-9NjFOB6UUGjJLNANmyIouuaN8YPsPgC4DCOd5lU+DL7HSX/RCfzz0JOtHlspEJq1Ll/JUu/8Cm4wzxpZ8w5sjQ==
-
 "@types/node@^12.0.0":
   version "12.0.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.2.tgz#3452a24edf9fea138b48fad4a0a028a683da1e40"
@@ -1073,11 +1067,6 @@
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.3.tgz#7ee330ba7caafb98090bece86a5ee44115904c2c"
   integrity sha512-ewFXqrQHlFsgc09MK5jP5iR7vumV/BYayNC6PgJO2LPe8vrnNFyjQjSppfEngITi0qvfKtzFvgKymGheFM9UOA==
-
-"@types/semver@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@types/semver/-/semver-6.0.0.tgz#86ba89f02a414e39c68d02b351872e4ed31bd773"
-  integrity sha512-OO0srjOGH99a4LUN2its3+r6CBYcplhJ466yLqs+zvAWgphCpS8hYZEZ797tRDP/QKcqTdb/YCN6ifASoAWkrQ==
 
 "@types/semver@^6.0.1":
   version "6.2.1"
@@ -3019,13 +3008,6 @@ graphql-extensions@^0.11.0:
     "@apollographql/apollo-tools" "^0.4.3"
     apollo-server-env "^2.4.3"
     apollo-server-types "^0.3.0"
-
-graphql-query-complexity@^0.2.3:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/graphql-query-complexity/-/graphql-query-complexity-0.2.3.tgz#ca26790fd5d22cb3d4ca8f43d19605929d8cf27f"
-  integrity sha512-XLvEsqGTJmJmgof8u5NjIkBHL75b4Inw1F8JQ3jGRBhr3hVFx6aWOTL7C2aknp1uIh8dRmqwzrb9gas2NLHnfA==
-  dependencies:
-    lodash.get "^4.4.2"
 
 graphql-query-complexity@^0.3.0:
   version "0.3.0"
@@ -5905,21 +5887,6 @@ type-fest@^0.8.1:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.8.1.tgz#09e249ebde851d3b1e48d27c105444667f17b83d"
   integrity sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==
-
-type-graphql@^0.17.3:
-  version "0.17.4"
-  resolved "https://registry.yarnpkg.com/type-graphql/-/type-graphql-0.17.4.tgz#b99a11e8814e2158c11a8149871d09b97895e01d"
-  integrity sha512-vrY0wVRo3EsnTMGcEdkieP/a5dgsSibWBlA0lT8/gBh/M9R72H2R6YtwdlfUMPDxRIVo6KdHh7cHNzn19bQbpw==
-  dependencies:
-    "@types/glob" "^7.1.1"
-    "@types/node" "^11.13.7"
-    "@types/semver" "^6.0.0"
-    class-validator ">=0.9.1"
-    glob "^7.1.3"
-    graphql-query-complexity "^0.2.3"
-    graphql-subscriptions "^1.1.0"
-    semver "^6.0.0"
-    tslib "^1.9.3"
 
 type-graphql@^0.17.6:
   version "0.17.6"
