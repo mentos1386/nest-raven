@@ -572,12 +572,13 @@
     uuid "^3.1.0"
 
 "@nestjs/common@^7.0.2":
-  version "7.0.6"
-  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.0.6.tgz#881d5922547f98bc041c52039abb7119e85373d6"
-  integrity sha512-El7uZjfGf8EOmIoRMxh8ZXTiWt80EKHC+sa2TBgFPNQXs/qRbVSznXH0htN2s17kawJuhaTCFhRSrDHNoI790A==
+  version "7.0.7"
+  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.0.7.tgz#c79b742d9181dc5c8fda51b60bbf69c553cec3cf"
+  integrity sha512-qAYtNtEv5GvHOeHEJVYOHYeqT+vVMW4YM63D8xWAAkQRcFUFDO9oRzi+Y27gRA1nY7DfgMk2OO5bD4+OzIm//g==
   dependencies:
     axios "0.19.2"
     cli-color "2.0.0"
+    iterare "1.2.0"
     tslib "1.11.1"
     uuid "7.0.2"
 
