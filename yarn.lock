@@ -614,9 +614,9 @@
     ts-morph "^7.0.0"
 
 "@nestjs/platform-express@^7.0.2":
-  version "7.0.6"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-7.0.6.tgz#67a6e538aefdd827f16d8de22b85021ad31d4b87"
-  integrity sha512-vRF0Za99sQk+GvnvANHQYGA7xK6B8JC4BB/nU+oIwjdlQJbaoN4YUkV0pGP4G4RTNzccGnV+oUCBDlIjAbq71Q==
+  version "7.0.7"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-7.0.7.tgz#98067007365b015319d9d8421a1fc9d066f7b4df"
+  integrity sha512-jaQiJjz56Xv9BRBanTlEU+l8eo1fbugNoc4hNKeTFUPSPHQP3NULb5aeL8tbMnfHIxAdWhVueCmK+/TYLyQH8A==
   dependencies:
     body-parser "1.19.0"
     cors "2.8.5"
