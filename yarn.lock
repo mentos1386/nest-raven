@@ -634,9 +634,9 @@
     tslib "1.11.1"
 
 "@nestjs/testing@^7.0.2":
-  version "7.0.6"
-  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-7.0.6.tgz#fe57fa854ab8da27b619f2a6d0bb89a9b46b51af"
-  integrity sha512-PCRkIcpF2xIGJcM5uwDWSstlXG3o+WMNNfdYN6zZz9UWZOhWpRyGtIjkBctdJ5nFIAW3WSFMgrmwi68iklZONw==
+  version "7.0.7"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-7.0.7.tgz#c734ec7927efeccf24a6c58582ee0ee910d3045a"
+  integrity sha512-Qh6hXmRihHTNR5kzqvVmdFeRhhgpIeZxWibQoS+fvLqy8uLf2yoEAJge49eRgI4OSzAwEa/DkeovhMW/idxfFw==
   dependencies:
     optional "0.1.4"
     tslib "1.11.1"
