@@ -28,9 +28,9 @@ export class RavenInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     // first param would be for events, second is for errors
     return next.handle().pipe(
-      tap(null, exception => {
+      tap(null, (exception) => {
         if (this.shouldReport(exception)) {
-          Sentry.withScope(scope => {
+          Sentry.withScope((scope) => {
             switch (context.getType()) {
               case 'http':
                 return this.captureHttpException(
