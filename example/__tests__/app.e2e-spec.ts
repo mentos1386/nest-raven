@@ -29,15 +29,10 @@ describe('AppModule', () => {
 
   it('defined', () => expect(app).toBeDefined());
 
-  it('/ (GET)', () =>
-    request(app.getHttpServer())
-      .get('/')
-      .expect(500));
+  it('/ (GET)', () => request(app.getHttpServer()).get('/').expect(500));
 
   it('/graphql (GET)', () =>
-    request(app.getHttpServer())
-      .get('/graphql')
-      .expect(400));
+    request(app.getHttpServer()).get('/graphql').expect(400));
 
   it('/graphql(POST) forbiddenError warning', async () => {
     const { query } = apolloClient;

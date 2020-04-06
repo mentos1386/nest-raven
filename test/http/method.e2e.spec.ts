@@ -36,17 +36,13 @@ describe('Http:Method', () => {
   });
 
   it(`/GET works`, async () => {
-    await request(app.getHttpServer())
-      .get('/works')
-      .expect(200);
+    await request(app.getHttpServer()).get('/works').expect(200);
 
     expect(client.captureException.mock.calls).toEqual([]);
   });
 
   it(`/GET intercepted`, async () => {
-    await request(app.getHttpServer())
-      .get('/intercepted')
-      .expect(500);
+    await request(app.getHttpServer()).get('/intercepted').expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
       `[Error: Something bad happened]`,
@@ -57,17 +53,13 @@ describe('Http:Method', () => {
   });
 
   it(`/GET filter`, async () => {
-    await request(app.getHttpServer())
-      .get('/filter')
-      .expect(404);
+    await request(app.getHttpServer()).get('/filter').expect(404);
 
     expect(client.captureException.mock.calls).toEqual([]);
   });
 
   it(`/GET tags`, async () => {
-    await request(app.getHttpServer())
-      .get('/tags')
-      .expect(500);
+    await request(app.getHttpServer()).get('/tags').expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
       `[Error: Something bad happened]`,
@@ -79,9 +71,7 @@ describe('Http:Method', () => {
   });
 
   it(`/GET extra`, async () => {
-    await request(app.getHttpServer())
-      .get('/extra')
-      .expect(500);
+    await request(app.getHttpServer()).get('/extra').expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
       `[Error: Something bad happened]`,
@@ -97,9 +87,7 @@ describe('Http:Method', () => {
   });
 
   it(`/GET fingerprint`, async () => {
-    await request(app.getHttpServer())
-      .get('/fingerprint')
-      .expect(500);
+    await request(app.getHttpServer()).get('/fingerprint').expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
       `[Error: Something bad happened]`,
@@ -111,9 +99,7 @@ describe('Http:Method', () => {
   });
 
   it(`/GET level`, async () => {
-    await request(app.getHttpServer())
-      .get('/level')
-      .expect(500);
+    await request(app.getHttpServer()).get('/level').expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
       `[Error: Something bad happened]`,
