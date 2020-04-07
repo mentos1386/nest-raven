@@ -46,7 +46,7 @@ describe('AppModule', () => {
     });
     expect(result.errors).toMatchInlineSnapshot(`
       Array [
-        [GraphQLError: AuthenticationError],
+        [GraphQLError: Unauthorized],
       ]
     `);
   });
@@ -63,7 +63,7 @@ describe('AppModule', () => {
     });
     expect(result.errors).toMatchInlineSnapshot(`
       Array [
-        [GraphQLError: forbidden],
+        [ValidationError: Cannot query field "forbiddenError" on type "Query". Did you mean "forbiddenException"?],
       ]
     `);
   });
