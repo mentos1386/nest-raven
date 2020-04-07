@@ -1,5 +1,9 @@
 import { Resolver, Query } from '@nestjs/graphql';
-import { ForbiddenException, UseInterceptors, UnauthorizedException } from '@nestjs/common';
+import {
+  ForbiddenException,
+  UseInterceptors,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { Severity } from '@sentry/node';
 import { RavenInterceptor } from '../../../lib';
 

@@ -15,13 +15,15 @@ import {
   HttpArgumentsHost,
 } from '@nestjs/common/interfaces';
 import { Handlers } from '@sentry/node';
-import { GqlArgumentsHost, GraphQLArgumentsHost, GqlContextType } from '@nestjs/graphql';
+import {
+  GqlArgumentsHost,
+  GraphQLArgumentsHost,
+  GqlContextType,
+} from '@nestjs/graphql';
 
 @Injectable()
 export class RavenInterceptor implements NestInterceptor {
-  constructor(
-    private readonly options: IRavenInterceptorOptions = {}
-  ) {}
+  constructor(private readonly options: IRavenInterceptorOptions = {}) {}
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     // first param would be for events, second is for errors
