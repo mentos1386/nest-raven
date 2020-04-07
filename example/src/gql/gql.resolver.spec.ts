@@ -16,7 +16,7 @@ describe('GqlResolver', () => {
 
   it('UnauthorizedException', () =>
     expect(
-      resolver.authenticationError(),
+      resolver.unauthorizedException(),
     ).rejects.toThrowErrorMatchingInlineSnapshot(`"Unauthorized"`));
 
   it('@nestjs/common (Forbidden)', () =>

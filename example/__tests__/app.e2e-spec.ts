@@ -39,7 +39,7 @@ describe('AppModule', () => {
     const result = await query({
       query: gql`
         query {
-          authenticationError
+          unauthorizedException
         }
       `,
       variables: {},
@@ -56,14 +56,14 @@ describe('AppModule', () => {
     const result = await query({
       query: gql`
         query {
-          forbiddenError
+          forbiddenException
         }
       `,
       variables: {},
     });
     expect(result.errors).toMatchInlineSnapshot(`
       Array [
-        [ValidationError: Cannot query field "forbiddenError" on type "Query". Did you mean "forbiddenException"?],
+        [GraphQLError: Forbidden],
       ]
     `);
   });

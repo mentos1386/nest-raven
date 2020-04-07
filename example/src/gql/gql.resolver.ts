@@ -16,7 +16,7 @@ export class GqlResolver {
 
   @UseInterceptors(new RavenInterceptor({ level: Severity.Warning }))
   @Query(() => Boolean)
-  async authenticationError() {
+  async unauthorizedException() {
     throw new UnauthorizedException();
   }
 }
