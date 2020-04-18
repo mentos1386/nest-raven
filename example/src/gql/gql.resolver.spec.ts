@@ -14,15 +14,10 @@ describe('GqlResolver', () => {
 
   it('should be defined', () => expect(resolver).toBeDefined());
 
-  it('apollo-server-errors (AuthenticationError)', () =>
+  it('UnauthorizedException', () =>
     expect(
-      resolver.authenticationError(),
-    ).rejects.toThrowErrorMatchingInlineSnapshot(`"AuthenticationError"`));
-
-  it('apollo-server-errors (Forbidden)', () =>
-    expect(
-      resolver.forbiddenError(),
-    ).rejects.toThrowErrorMatchingInlineSnapshot(`"forbidden"`));
+      resolver.unauthorizedException(),
+    ).rejects.toThrowErrorMatchingInlineSnapshot(`"Unauthorized"`));
 
   it('@nestjs/common (Forbidden)', () =>
     expect(

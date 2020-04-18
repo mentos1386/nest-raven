@@ -39,14 +39,14 @@ describe('AppModule', () => {
     const result = await query({
       query: gql`
         query {
-          authenticationError
+          unauthorizedException
         }
       `,
       variables: {},
     });
     expect(result.errors).toMatchInlineSnapshot(`
       Array [
-        [GraphQLError: AuthenticationError],
+        [GraphQLError: Unauthorized],
       ]
     `);
   });
@@ -56,14 +56,14 @@ describe('AppModule', () => {
     const result = await query({
       query: gql`
         query {
-          forbiddenError
+          forbiddenException
         }
       `,
       variables: {},
     });
     expect(result.errors).toMatchInlineSnapshot(`
       Array [
-        [GraphQLError: forbidden],
+        [GraphQLError: Forbidden],
       ]
     `);
   });

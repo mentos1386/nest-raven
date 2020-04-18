@@ -9,7 +9,7 @@ import { GqlModule } from './gql/gql.module';
 @Module({
   imports: [
     GraphQLModule.forRoot({
-      autoSchemaFile: 'example/src/schema.gql',
+      autoSchemaFile: true,
       debug: true,
       playground: true,
     }),

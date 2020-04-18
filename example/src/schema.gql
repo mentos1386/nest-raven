@@ -1,9 +1,0 @@
-# ------------------------------------------------------
-# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
-# ------------------------------------------------------
-
-type Query {
-  forbiddenError: Boolean!
-  forbiddenException: Boolean!
-  authenticationError: Boolean!
-}

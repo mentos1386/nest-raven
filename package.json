@@ -6,7 +6,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json && cp *.md dist && cp LICENSE dist && cp package.json dist",
+    "build": "rm -rf dist && tsc -p tsconfig.json && cp *.md dist && cp LICENSE dist && cp package.json dist",
     "format": "prettier \"{example,lib,test}/**/*.ts\" --write",
     "lint": "prettier \"{example,lib,test}/**/*.ts\"  --check",
     "coverage": "cat ./coverage/lcov.info | coveralls",
@@ -35,7 +35,7 @@
     "@sentry/node": "^5.12.3"
   },
   "peerDependencies": {
-    "@nestjs/graphql": "^6.2.4"
+    "@nestjs/graphql": "^6.2.4 || ^7.0.0"
   },
   "devDependencies": {
     "@nestjs/common": "^7.0.2",
@@ -62,7 +62,6 @@
     "ts-jest": "^25.2.0",
     "ts-node": "^8.1.0",
     "tsconfig-paths": "^3.9.0",
-    "type-graphql": "^0.17.6",
     "typescript": "^3.7.5"
   },
   "prettier": {

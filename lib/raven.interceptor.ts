@@ -15,15 +15,15 @@ import {
   HttpArgumentsHost,
 } from '@nestjs/common/interfaces';
 import { Handlers } from '@sentry/node';
-import { GqlArgumentsHost, GraphQLArgumentsHost } from '@nestjs/graphql';
+import {
+  GqlArgumentsHost,
+  GraphQLArgumentsHost,
+  GqlContextType,
+} from '@nestjs/graphql';
 
 @Injectable()
 export class RavenInterceptor implements NestInterceptor {
-  constructor(
-    private readonly options: IRavenInterceptorOptions = {
-      withGraphQL: false,
-    },
-  ) {}
+  constructor(private readonly options: IRavenInterceptorOptions = {}) {}
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     // first param would be for events, second is for errors
@@ -31,7 +31,7 @@ export class RavenInterceptor implements NestInterceptor {
       tap(null, (exception) => {
         if (this.shouldReport(exception)) {
           Sentry.withScope((scope) => {
-            switch (context.getType()) {
+            switch (context.getType<GqlContextType>()) {
               case 'http':
                 return this.captureHttpException(
                   scope as any,
@@ -50,14 +50,13 @@ export class RavenInterceptor implements NestInterceptor {
                   context.switchToRpc(),
                   exception,
                 );
+              case 'graphql':
+                return this.captureGraphQLException(
+                  scope as any,
+                  GqlArgumentsHost.create(context),
+                  exception,
+                );
               default:
-                if (this.options.withGraphQL) {
-                  return this.captureGraphQLException(
-                    scope as any,
-                    GqlArgumentsHost.create(context),
-                    exception,
-                  );
-                }
                 return this.captureException(scope, exception);
             }
           });
