@@ -13,6 +13,8 @@
 <a href="https://coveralls.io/github/mentos1386/nest-raven"><img src="https://coveralls.io/repos/github/mentos1386/nest-raven/badge.svg?branch=master" alt="Coveralls" /></a>
 </p>
 
+__Looking for new Maintainer [mentos1386/nest-raven#39](https://github.com/mentos1386/nest-raven/issues/39)__
+
 ## Description
 
 This's a [@sentry/minimal](https://github.com/getsentry/sentry-javascript/tree/master/packages/minimal) module for [Nest](https://github.com/nestjs/nest).
@@ -22,20 +24,6 @@ This's a [@sentry/minimal](https://github.com/getsentry/sentry-javascript/tree/m
 ```bash
 $ npm i --save nest-raven
 ```
-
-### Versions
-
-- **5.x** Upgrades @sentry/minimal to v5.x from v4.x. Addes @sentry/node to dependencies.
-- **4.x** Is for Next v6.x
-- **3.x** Is for Nest v5.x and introduces @sentry/minimal
-- **2.x** Is for Nest v5.x
-- **1.x** Is for Nest v4.x
-
-#### Breaking Changes in version 3.x
-
-- Client needs to be initialised by the user (outside of this module).
-- Instead of `@UseInterceptors(RavenInterceptor())` you now have to do `@UseInterceptors(new RavenInterceptor())`
-- When importing, you just specify module, there is no need for calling `forRoot()` anymore.
 
 ## Quick Start
 
