@@ -20,9 +20,7 @@ import { GqlModule } from './gql/gql.module';
     AppService,
     {
       provide: APP_INTERCEPTOR,
-      useValue: new RavenInterceptor({
-        withGraphQL: true,
-      }),
+      useValue: new RavenInterceptor(),
     },
   ],
 })
