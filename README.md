@@ -13,8 +13,6 @@
 <a href="https://coveralls.io/github/mentos1386/nest-raven"><img src="https://coveralls.io/repos/github/mentos1386/nest-raven/badge.svg?branch=master" alt="Coveralls" /></a>
 </p>
 
-__Looking for new Maintainer [mentos1386/nest-raven#39](https://github.com/mentos1386/nest-raven/issues/39)__
-
 ## Description
 
 This's a [@sentry/minimal](https://github.com/getsentry/sentry-javascript/tree/master/packages/minimal) module for [Nest](https://github.com/nestjs/nest).
