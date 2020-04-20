@@ -13,10 +13,5 @@
     "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true
-  },
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts",
-    "example"
-  ]
+  }
 }

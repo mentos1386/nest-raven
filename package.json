@@ -2,14 +2,13 @@
   "name": "nest-raven",
   "version": "6.0.0",
   "description": "Sentry Raven Module for Nest Framework",
-  "directories": {
-    "lib": "lib"
-  },
+  "files": ["dist"],
   "scripts": {
-    "build": "rm -rf dist && tsc -p tsconfig.json && cp *.md dist && cp LICENSE dist && cp package.json dist",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
     "format": "prettier \"{example,lib,test}/**/*.ts\" --write",
     "lint": "prettier \"{example,lib,test}/**/*.ts\"  --check",
     "coverage": "cat ./coverage/lcov.info | coveralls",
+    "prepublish": "npm run build",
     "test": "jest",
     "start": "ts-node -r tsconfig-paths/register example/src/main.ts"
   },
@@ -64,6 +63,8 @@
     "tsconfig-paths": "^3.9.0",
     "typescript": "^3.7.5"
   },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "prettier": {
     "singleQuote": true,
     "trailingComma": "all"
