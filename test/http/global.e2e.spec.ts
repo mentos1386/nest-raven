@@ -27,13 +27,13 @@ describe('Http:Global', () => {
     };
     client.captureException.mockClear();
     getCurrentHub().pushScope();
-    getCurrentHub().bindClient(client);
+    getCurrentHub().bindClient(client as any);
   });
 
   it(`/GET error`, async () => {
     await request(app.getHttpServer()).get('/error').expect(500);
 
-    expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
+    expect(client.captureException.mock.calls[0]).rejects.toBeInstanceOf(Error);
   });
 
   afterAll(async () => {
