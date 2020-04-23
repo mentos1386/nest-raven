@@ -28,7 +28,7 @@ describe('Http:Method', () => {
     };
     client.captureException.mockClear();
     getCurrentHub().pushScope();
-    getCurrentHub().bindClient(client);
+    getCurrentHub().bindClient(client as any);
   });
 
   afterEach(() => {

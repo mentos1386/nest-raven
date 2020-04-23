@@ -6,7 +6,7 @@ import { UseInterceptors } from '@nestjs/common';
 export class MethodGateway {
   @UseInterceptors(new RavenInterceptor())
   @SubscribeMessage('test_error')
-  on_test_error(_client, _data): string {
+  on_test_error(_client: any, _data: any): string {
     throw new Error('Something bad happened');
   }
 }

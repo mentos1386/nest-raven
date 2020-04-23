@@ -34,25 +34,25 @@ export class RavenInterceptor implements NestInterceptor {
             switch (context.getType<GqlContextType>()) {
               case 'http':
                 return this.captureHttpException(
-                  scope as any,
+                  scope,
                   context.switchToHttp(),
                   exception,
                 );
               case 'ws':
                 return this.captureWsException(
-                  scope as any,
+                  scope,
                   context.switchToWs(),
                   exception,
                 );
               case 'rpc':
                 return this.captureRpcException(
-                  scope as any,
+                  scope,
                   context.switchToRpc(),
                   exception,
                 );
               case 'graphql':
                 return this.captureGraphQLException(
-                  scope as any,
+                  scope,
                   GqlArgumentsHost.create(context),
                   exception,
                 );
@@ -68,17 +68,17 @@ export class RavenInterceptor implements NestInterceptor {
   private captureGraphQLException(
     scope: Scope,
     gqlHost: GraphQLArgumentsHost,
-    exception,
+    exception: any,
   ): void {
     const context = gqlHost.getContext();
     // Same as HttpException
     const data = Handlers.parseRequest(
-      <any>{},
+      {},
       context?.req || context,
       this.options,
     );
     scope.setExtra('req', data.request);
-    scope.setExtras(data.extra);
+    data.extra && scope.setExtras(data.extra);
     if (data.user) scope.setUser(data.user);
 
     // GraphQL Specifics
@@ -93,7 +93,7 @@ export class RavenInterceptor implements NestInterceptor {
   private captureHttpException(
     scope: Scope,
     http: HttpArgumentsHost,
-    exception,
+    exception: any,
   ): void {
     const data = Handlers.parseRequest(
       <any>{},
@@ -102,7 +102,7 @@ export class RavenInterceptor implements NestInterceptor {
     );
 
     scope.setExtra('req', data.request);
-    scope.setExtras(data.extra);
+    data.extra && scope.setExtras(data.extra);
     if (data.user) scope.setUser(data.user);
 
     this.captureException(scope, exception);
@@ -111,7 +111,7 @@ export class RavenInterceptor implements NestInterceptor {
   private captureRpcException(
     scope: Scope,
     rpc: RpcArgumentsHost,
-    exception,
+    exception: any,
   ): void {
     scope.setExtra('rpc_data', rpc.getData());
 
@@ -121,7 +121,7 @@ export class RavenInterceptor implements NestInterceptor {
   private captureWsException(
     scope: Scope,
     ws: WsArgumentsHost,
-    exception,
+    exception: any,
   ): void {
     scope.setExtra('ws_client', ws.getClient());
     scope.setExtra('ws_data', ws.getData());
@@ -129,7 +129,7 @@ export class RavenInterceptor implements NestInterceptor {
     this.captureException(scope, exception);
   }
 
-  private captureException(scope: Scope, exception): void {
+  private captureException(scope: Scope, exception: any): void {
     if (this.options.level) scope.setLevel(this.options.level);
     if (this.options.fingerprint)
       scope.setFingerprint(this.options.fingerprint);

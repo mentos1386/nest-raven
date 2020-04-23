@@ -9,7 +9,7 @@ declare var global: any;
 describe('Http:Global', () => {
   let app: INestApplication;
   const client = {
-    captureException: jest.fn(async () => Promise.resolve()),
+    captureException: jest.fn(),
   };
 
   beforeAll(async () => {
@@ -27,7 +27,7 @@ describe('Http:Global', () => {
     };
     client.captureException.mockClear();
     getCurrentHub().pushScope();
-    getCurrentHub().bindClient(client);
+    getCurrentHub().bindClient(client as any);
   });
 
   it(`/GET error`, async () => {

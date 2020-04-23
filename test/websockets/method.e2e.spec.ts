@@ -28,7 +28,7 @@ describe('Websockets:Method', () => {
     };
     client.captureException.mockClear();
     getCurrentHub().pushScope();
-    getCurrentHub().bindClient(client);
+    getCurrentHub().bindClient(client as any);
     socket = io.connect('http://localhost:4466');
   });
 
