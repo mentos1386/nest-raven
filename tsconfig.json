@@ -21,6 +21,7 @@
     "alwaysStrict": true,
     "moduleResolution": "node",
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true
   }
 }
