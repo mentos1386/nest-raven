@@ -9,7 +9,7 @@
 <a href="https://www.npmjs.com/package/nest-raven"><img src="https://img.shields.io/npm/v/nest-raven.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/package/nest-raven"><img src="https://img.shields.io/npm/l/nest-raven.svg" alt="Package License" /></a>
 <a href="https://www.npmjs.com/package/nest-raven"><img src="https://img.shields.io/npm/dm/nest-raven.svg" alt="NPM Downloads" /></a>
-<a href="https://github.com/mentos1386/nest-raven/actions?query=workflow%3ATest"><img src="https://github.com/mentos1386/nest-raven/workflows/Test/badge.svg?event=push" alt="Push Github Actions" /></a>
+<a href="https://github.com/mentos1386/nest-raven/actions?query=workflow%3AMaster"><img src="https://github.com/mentos1386/nest-raven/workflows/Master/badge.svg?event=push" alt="Push Github Actions" /></a>
 <a href="https://coveralls.io/github/mentos1386/nest-raven"><img src="https://coveralls.io/repos/github/mentos1386/nest-raven/badge.svg?branch=master" alt="Coveralls" /></a>
 </p>
 
