@@ -4,5 +4,8 @@
     "node_modules",
     "example",
     "test"
-  ]
+  ],
+  "compilerOptions": {
+    "esModuleInterop": true,
+  }
 }
