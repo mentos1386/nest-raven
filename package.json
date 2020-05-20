@@ -1,6 +1,6 @@
 {
   "name": "nest-raven",
-  "version": "6.0.0-alpha.1",
+  "version": "6.0.0-alpha.2",
   "description": "Sentry Raven Module for Nest Framework",
   "files": [
     "dist"
