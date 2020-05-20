@@ -1,6 +1,6 @@
 {
   "name": "nest-raven",
-  "version": "6.0.0",
+  "version": "6.0.0-alpha.1",
   "description": "Sentry Raven Module for Nest Framework",
   "files": [
     "dist"
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mentos1386/nest-raven.git"
+    "url": "https://github.com/mentos1386/nest-raven.git"
   },
   "keywords": [
     "nestjs",
