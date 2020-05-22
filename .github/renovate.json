@@ -1,0 +1,4 @@
+{
+  "extends": ["config:js-lib", "schedule:weekly"],
+  "semanticCommits": true
+}
