@@ -48,7 +48,7 @@
     "@nestjs/platform-socket.io": "7.3.2",
     "@nestjs/testing": "7.3.2",
     "@nestjs/websockets": "7.3.2",
-    "@types/jest": "26.0.7",
+    "@types/jest": "26.0.8",
     "@types/node": "12.12.53",
     "@types/socket.io-client": "1.4.33",
     "@types/supertest": "2.0.10",
