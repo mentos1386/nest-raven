@@ -57,7 +57,7 @@
     "coveralls": "3.1.0",
     "dotenv": "8.2.0",
     "graphql": "15.3.0",
-    "jest": "26.1.0",
+    "jest": "26.2.2",
     "prettier": "2.0.5",
     "reflect-metadata": "0.1.13",
     "rxjs": "6.6.0",
