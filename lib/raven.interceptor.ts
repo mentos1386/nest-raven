@@ -15,11 +15,12 @@ import {
   HttpArgumentsHost,
 } from '@nestjs/common/interfaces';
 import { Handlers } from '@sentry/node';
-import {
-  GqlArgumentsHost,
-  GraphQLArgumentsHost,
-  GqlContextType,
-} from '@nestjs/graphql';
+import type { GraphQLArgumentsHost, GqlContextType } from '@nestjs/graphql';
+
+let GqlArgumentsHost: any;
+try {
+  ({ GqlArgumentsHost } = require('@nestjs/graphql'));
+} catch (e) {}
 
 @Injectable()
 export class RavenInterceptor implements NestInterceptor {
@@ -51,6 +52,8 @@ export class RavenInterceptor implements NestInterceptor {
                   exception,
                 );
               case 'graphql':
+                if (!GqlArgumentsHost)
+                  return this.captureException(scope, exception);
                 return this.captureGraphQLException(
                   scope,
                   GqlArgumentsHost.create(context),
