@@ -46,8 +46,10 @@ export class MethodController {
   @UseInterceptors(
     new RavenInterceptor({
       transformers: [
-        (scope) => { scope.setExtra('A', 'AAA') }
-      ]
+        (scope) => {
+          scope.setExtra('A', 'AAA');
+        },
+      ],
     }),
   )
   transformer() {
