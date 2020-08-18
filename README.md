@@ -98,6 +98,28 @@ to filter out good exceptions.
   }
 ```
 
+#### Transformers
+
+It may be useful to add some extra data to the Sentry's context before sending
+the payload. Adding some request-related properties for instance. To achieve
+this we can add scope transformers on interceptor to injecte some data
+dynamically.
+
+> app.controller.ts
+
+```ts
+  @UseInterceptors(new RavenInterceptor({
+    transformers: [
+        // Add an extra property to Sentry's scope
+        (scope: Scope) => { scope.addExtra('important key', 'useful value') }
+    ],
+  }))
+  @Get('/some/route')
+  public async someRoute() {
+    ...
+  }
+```
+
 #### Additional data
 
 Interceptor automatically adds `req` and `req.user` (as user) to additional data.
