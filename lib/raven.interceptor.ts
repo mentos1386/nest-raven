@@ -139,6 +139,9 @@ export class RavenInterceptor implements NestInterceptor {
     if (this.options.extra) scope.setExtras(this.options.extra);
     if (this.options.tags) scope.setTags(this.options.tags);
 
+    if (this.options.transformers)
+      this.options.transformers.forEach((transformer) => transformer(scope));
+
     Sentry.captureException(exception);
   }
 

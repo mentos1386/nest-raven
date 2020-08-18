@@ -42,6 +42,18 @@ export class MethodController {
     );
   }
 
+  @Get('transformer')
+  @UseInterceptors(
+    new RavenInterceptor({
+      transformers: [
+        (scope) => { scope.setExtra('A', 'AAA') }
+      ]
+    }),
+  )
+  transformer() {
+    throw new Error('Something bad happened');
+  }
+
   @Get('tags')
   @UseInterceptors(
     new RavenInterceptor({

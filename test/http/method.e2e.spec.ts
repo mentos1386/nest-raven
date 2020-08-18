@@ -58,6 +58,18 @@ describe('Http:Method', () => {
     expect(client.captureException.mock.calls).toEqual([]);
   });
 
+  it(`/GET transformer`, async () => {
+    await request(app.getHttpServer()).get('/transformer').expect(500);
+
+    expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
+      `[Error: Something bad happened]`,
+    );
+    expect(client.captureException.mock.calls[0][2]._extra).toHaveProperty(
+      'A',
+      'AAA',
+    );
+  });
+
   it(`/GET tags`, async () => {
     await request(app.getHttpServer()).get('/tags').expect(500);
 
