@@ -70,6 +70,34 @@ describe('Http:Method', () => {
     );
   });
 
+  it(`/GET local-transformer`, async () => {
+    await request(app.getHttpServer()).get('/local-transformer').expect(500);
+
+    expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
+      `[Error: Something bad happened]`,
+    );
+    expect(client.captureException.mock.calls[0][2]._extra).toHaveProperty(
+      'A',
+      'AAA',
+    );
+  });
+
+  it(`/GET combo-transformer`, async () => {
+    await request(app.getHttpServer()).get('/combo-transformer').expect(500);
+
+    expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
+      `[Error: Something bad happened]`,
+    );
+    expect(client.captureException.mock.calls[0][2]._extra).toHaveProperty(
+      'A',
+      'AAA',
+    );
+    expect(client.captureException.mock.calls[0][2]._extra).toHaveProperty(
+      'B',
+      'BBB',
+    );
+  });
+
   it(`/GET tags`, async () => {
     await request(app.getHttpServer()).get('/tags').expect(500);
 

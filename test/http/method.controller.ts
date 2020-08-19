@@ -5,7 +5,7 @@ import {
   HttpStatus,
   UseInterceptors,
 } from '@nestjs/common';
-import { RavenInterceptor } from '../../lib';
+import { RavenInterceptor, RavenTransformer } from '../../lib';
 import * as Sentry from '@sentry/types';
 
 @Controller('')
@@ -53,6 +53,32 @@ export class MethodController {
     }),
   )
   transformer() {
+    throw new Error('Something bad happened');
+  }
+
+  @Get('local-transformer')
+  @UseInterceptors(new RavenInterceptor())
+  @RavenTransformer((scope) => {
+    scope.setExtra('A', 'AAA');
+  })
+  localTransformer() {
+    throw new Error('Something bad happened');
+  }
+
+  @Get('combo-transformer')
+  @UseInterceptors(
+    new RavenInterceptor({
+      transformers: [
+        (scope) => {
+          scope.setExtra('A', 'AAA');
+        },
+      ],
+    }),
+  )
+  @RavenTransformer((scope) => {
+    scope.setExtra('B', 'BBB');
+  })
+  comboTransformer() {
     throw new Error('Something bad happened');
   }
 
