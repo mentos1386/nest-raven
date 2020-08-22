@@ -1,4 +1,9 @@
 import { Severity } from '@sentry/types';
+import { Scope } from '@sentry/node';
+
+export interface IRavenScopeTransformerFunction {
+  (scope: Scope): void;
+}
 
 export interface IRavenFilterFunction {
   (exception: any): boolean;
@@ -11,6 +16,7 @@ export interface IRavenInterceptorOptionsFilter {
 
 export interface IRavenInterceptorOptions {
   filters?: IRavenInterceptorOptionsFilter[];
+  transformers?: IRavenScopeTransformerFunction[];
   tags?: { [key: string]: string };
   extra?: { [key: string]: any };
   fingerprint?: string[];

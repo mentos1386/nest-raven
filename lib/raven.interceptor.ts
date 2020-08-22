@@ -3,8 +3,12 @@ import {
   Injectable,
   NestInterceptor,
   CallHandler,
+  Inject,
 } from '@nestjs/common';
-import { IRavenInterceptorOptions } from './raven.interfaces';
+import {
+  IRavenInterceptorOptions,
+  IRavenScopeTransformerFunction,
+} from './raven.interfaces';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import * as Sentry from '@sentry/minimal';
@@ -16,6 +20,8 @@ import {
 } from '@nestjs/common/interfaces';
 import { Handlers } from '@sentry/node';
 import type { GraphQLArgumentsHost, GqlContextType } from '@nestjs/graphql';
+import { Reflector } from '@nestjs/core';
+import { RAVEN_LOCAL_TRANSFORMERS_METADATA } from './raven.decorators';
 
 let GqlArgumentsHost: any;
 try {
@@ -24,9 +30,16 @@ try {
 
 @Injectable()
 export class RavenInterceptor implements NestInterceptor {
-  constructor(private readonly options: IRavenInterceptorOptions = {}) {}
+  constructor(
+    private readonly options: IRavenInterceptorOptions = {},
+    private readonly reflector: Reflector = new Reflector(),
+  ) {}
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+    const localTransformers = this.reflector.get<
+      IRavenScopeTransformerFunction[]
+    >(RAVEN_LOCAL_TRANSFORMERS_METADATA, context.getHandler());
+
     // first param would be for events, second is for errors
     return next.handle().pipe(
       tap(null, (exception) => {
@@ -34,33 +47,48 @@ export class RavenInterceptor implements NestInterceptor {
           Sentry.withScope((scope) => {
             switch (context.getType<GqlContextType>()) {
               case 'http':
-                return this.captureHttpException(
+                this.addHttpExceptionMetadatas(scope, context.switchToHttp());
+                return this.captureException(
                   scope,
-                  context.switchToHttp(),
                   exception,
+                  localTransformers,
                 );
               case 'ws':
-                return this.captureWsException(
+                this.addWsExceptionMetadatas(scope, context.switchToWs());
+                return this.captureException(
                   scope,
-                  context.switchToWs(),
                   exception,
+                  localTransformers,
                 );
               case 'rpc':
-                return this.captureRpcException(
+                this.addRpcExceptionMetadatas(scope, context.switchToRpc());
+                return this.captureException(
                   scope,
-                  context.switchToRpc(),
                   exception,
+                  localTransformers,
                 );
               case 'graphql':
                 if (!GqlArgumentsHost)
-                  return this.captureException(scope, exception);
-                return this.captureGraphQLException(
+                  return this.captureException(
+                    scope,
+                    exception,
+                    localTransformers,
+                  );
+                this.addGraphQLExceptionMetadatas(
                   scope,
                   GqlArgumentsHost.create(context),
+                );
+                return this.captureException(
+                  scope,
                   exception,
+                  localTransformers,
                 );
               default:
-                return this.captureException(scope, exception);
+                return this.captureException(
+                  scope,
+                  exception,
+                  localTransformers,
+                );
             }
           });
         }
@@ -68,10 +96,9 @@ export class RavenInterceptor implements NestInterceptor {
     );
   }
 
-  private captureGraphQLException(
+  private addGraphQLExceptionMetadatas(
     scope: Scope,
     gqlHost: GraphQLArgumentsHost,
-    exception: any,
   ): void {
     const context = gqlHost.getContext();
     // Same as HttpException
@@ -89,14 +116,11 @@ export class RavenInterceptor implements NestInterceptor {
     scope.setExtra('fieldName', info.fieldName);
     const args = gqlHost.getArgs();
     scope.setExtra('args', args);
-
-    this.captureException(scope, exception);
   }
 
-  private captureHttpException(
+  private addHttpExceptionMetadatas(
     scope: Scope,
     http: HttpArgumentsHost,
-    exception: any,
   ): void {
     const data = Handlers.parseRequest(
       <any>{},
@@ -107,37 +131,32 @@ export class RavenInterceptor implements NestInterceptor {
     scope.setExtra('req', data.request);
     data.extra && scope.setExtras(data.extra);
     if (data.user) scope.setUser(data.user);
-
-    this.captureException(scope, exception);
   }
 
-  private captureRpcException(
-    scope: Scope,
-    rpc: RpcArgumentsHost,
-    exception: any,
-  ): void {
+  private addRpcExceptionMetadatas(scope: Scope, rpc: RpcArgumentsHost): void {
     scope.setExtra('rpc_data', rpc.getData());
-
-    this.captureException(scope, exception);
   }
 
-  private captureWsException(
-    scope: Scope,
-    ws: WsArgumentsHost,
-    exception: any,
-  ): void {
+  private addWsExceptionMetadatas(scope: Scope, ws: WsArgumentsHost): void {
     scope.setExtra('ws_client', ws.getClient());
     scope.setExtra('ws_data', ws.getData());
-
-    this.captureException(scope, exception);
   }
 
-  private captureException(scope: Scope, exception: any): void {
+  private captureException(
+    scope: Scope,
+    exception: any,
+    localTransformers: IRavenScopeTransformerFunction[] | undefined,
+  ): void {
     if (this.options.level) scope.setLevel(this.options.level);
     if (this.options.fingerprint)
       scope.setFingerprint(this.options.fingerprint);
     if (this.options.extra) scope.setExtras(this.options.extra);
     if (this.options.tags) scope.setTags(this.options.tags);
+
+    if (this.options.transformers)
+      this.options.transformers.forEach((transformer) => transformer(scope));
+    if (localTransformers)
+      localTransformers.forEach((transformer) => transformer(scope));
 
     Sentry.captureException(exception);
   }
