@@ -3,7 +3,6 @@ import {
   Injectable,
   NestInterceptor,
   CallHandler,
-  Inject,
 } from '@nestjs/common';
 import {
   IRavenInterceptorOptions,
