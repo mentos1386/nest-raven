@@ -1,4 +1,4 @@
-# [7.0.0](https://github.com/mentos1386/nest-raven/compare/v6.0.0-alpha.2...v7.0.0) (2020-08-23)
+# [7.0.0](https://github.com/mentos1386/nest-raven/compare/v6.0.0-alpha.2...v7.0.0) (2020-08-24)
 
 
 ### Bug Fixes
