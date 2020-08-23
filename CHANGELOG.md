@@ -1,4 +1,4 @@
-# [7.0.0](https://github.com/mentos1386/nest-raven/compare/v6.0.0-alpha.2...v7.0.0) (2020-08-19)
+# [7.0.0](https://github.com/mentos1386/nest-raven/compare/v6.0.0-alpha.2...v7.0.0) (2020-08-23)
 
 
 ### Bug Fixes
@@ -8,6 +8,7 @@
 
 ### Features
 
+* Add support for scope transformers [#99](https://github.com/mentos1386/nest-raven/issues/84)
 * @nestjs/graphql optionalDependencies ([#84](https://github.com/mentos1386/nest-raven/issues/84)) ([1bb1125](https://github.com/mentos1386/nest-raven/commit/1bb11252f06054fcd44cc04af22fb3056a772c92))
 * **.github:** Added renovate config ([#46](https://github.com/mentos1386/nest-raven/issues/46)) ([508e2eb](https://github.com/mentos1386/nest-raven/commit/508e2eba37c50c0cd1dc80bfaf64e4cca2a98d3e))
 
