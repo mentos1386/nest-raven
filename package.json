@@ -71,8 +71,8 @@
     "tsconfig-paths": "3.9.0",
     "typescript": "3.9.7"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "prettier": {
     "singleQuote": true,
     "trailingComma": "all"
