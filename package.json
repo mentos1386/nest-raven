@@ -61,7 +61,7 @@
     "dotenv": "8.2.0",
     "graphql": "15.3.0",
     "jest": "26.4.2",
-    "prettier": "2.0.5",
+    "prettier": "2.1.1",
     "reflect-metadata": "0.1.13",
     "rxjs": "6.6.2",
     "socket.io-client": "2.3.0",
