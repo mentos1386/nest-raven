@@ -63,7 +63,7 @@
     "jest": "26.4.2",
     "prettier": "2.1.1",
     "reflect-metadata": "0.1.13",
-    "rxjs": "6.6.2",
+    "rxjs": "6.6.3",
     "socket.io-client": "2.3.0",
     "supertest": "4.0.2",
     "ts-jest": "26.3.0",
