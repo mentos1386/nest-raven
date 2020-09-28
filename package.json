@@ -65,7 +65,7 @@
     "reflect-metadata": "0.1.13",
     "rxjs": "6.6.3",
     "socket.io-client": "2.3.0",
-    "supertest": "4.0.2",
+    "supertest": "5.0.0",
     "ts-jest": "26.4.0",
     "ts-node": "9.0.0",
     "tsconfig-paths": "3.9.0",
