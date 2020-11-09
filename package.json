@@ -44,12 +44,12 @@
     "rxjs": "^6.0.0"
   },
   "devDependencies": {
-    "@nestjs/common": "7.4.4",
-    "@nestjs/core": "7.4.4",
-    "@nestjs/platform-express": "7.4.4",
-    "@nestjs/platform-socket.io": "7.4.4",
-    "@nestjs/testing": "7.4.4",
-    "@nestjs/websockets": "7.4.4",
+    "@nestjs/common": "7.5.1",
+    "@nestjs/core": "7.5.1",
+    "@nestjs/platform-express": "7.5.1",
+    "@nestjs/platform-socket.io": "7.5.1",
+    "@nestjs/testing": "7.5.1",
+    "@nestjs/websockets": "7.5.1",
     "@types/jest": "26.0.15",
     "@types/node": "12.19.3",
     "@types/socket.io-client": "1.4.34",
