@@ -50,7 +50,7 @@
     "@nestjs/platform-socket.io": "7.5.5",
     "@nestjs/testing": "7.5.5",
     "@nestjs/websockets": "7.5.5",
-    "@types/jest": "26.0.15",
+    "@types/jest": "26.0.16",
     "@types/node": "12.19.7",
     "@types/socket.io-client": "1.4.34",
     "@types/supertest": "2.0.10",
