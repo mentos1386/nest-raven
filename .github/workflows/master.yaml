@@ -24,7 +24,7 @@ jobs:
       uses: actions/cache@v1
       with:
         # npm cache files are stored in `~/.npm` on Linux/macOS
-        path: ~/.npm 
+        path: ~/.npm
         key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.lock') }}
         restore-keys: |
           ${{ runner.OS }}-node-
@@ -33,6 +33,6 @@ jobs:
     - run: npm run lint
     - run: npm run test
     - name: Coverage
-      uses: coverallsapp/github-action@master
+      uses: coverallsapp/github-action@v1.1.2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
