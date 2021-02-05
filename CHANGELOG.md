@@ -1,14 +1,20 @@
-# [7.0.0](https://github.com/mentos1386/nest-raven/compare/v6.0.0-alpha.2...v7.0.0) (2020-08-24)
+# [7.1.0](https://github.com/mentos1386/nest-raven/compare/v7.0.0...v7.1.0) (2021-02-05)
+
+### Features
+
+* Upgrade @sentry/node version to 6.0.4 #187 ([#187](https://github.com/mentos1386/nest-raven/pull/187))
+
+# [7.0.0](https://github.com/mentos1386/nest-raven/compare/v6.0.0-alpha.2...v7.0.0) (2020-08-23)
 
 
 ### Bug Fixes
 
 * Added peerDependencies ([#83](https://github.com/mentos1386/nest-raven/issues/83)) ([e367e05](https://github.com/mentos1386/nest-raven/commit/e367e050d5d38fec4307ad4165ae3818da55265c))
+* remove unused ([#100](https://github.com/mentos1386/nest-raven/issues/100)) ([219d1f8](https://github.com/mentos1386/nest-raven/commit/219d1f8f502c1fe3c647e25600fa6919f6060e00))
 
 
 ### Features
 
-* Add support for scope transformers [#99](https://github.com/mentos1386/nest-raven/issues/84)
 * @nestjs/graphql optionalDependencies ([#84](https://github.com/mentos1386/nest-raven/issues/84)) ([1bb1125](https://github.com/mentos1386/nest-raven/commit/1bb11252f06054fcd44cc04af22fb3056a772c92))
 * **.github:** Added renovate config ([#46](https://github.com/mentos1386/nest-raven/issues/46)) ([508e2eb](https://github.com/mentos1386/nest-raven/commit/508e2eba37c50c0cd1dc80bfaf64e4cca2a98d3e))
 
@@ -21,7 +27,6 @@
 
 * export main and types ([#40](https://github.com/mentos1386/nest-raven/issues/40)) ([fd719ef](https://github.com/mentos1386/nest-raven/commit/fd719ef3e91ab08100d75a73764f96a4fd1ba42b))
 * **example:** not using withGraphQL anymore ([5f133d0](https://github.com/mentos1386/nest-raven/commit/5f133d0c7074daccf159e4adaee96314d6bd0cca))
-
 
 
 # [6.0.0-aplha.1](https://github.com/mentos1386/nest-raven/compare/v5.0.0...v6.0.0-aplha.1) (2020-04-18)
@@ -84,6 +89,3 @@
 ### Features
 
 * **RavenModule:** initial release ([95bf047](https://github.com/mentos1386/nest-raven/commit/95bf04714e48d0eaec73e4b714ce12a32f8924f7))
-
-
-
