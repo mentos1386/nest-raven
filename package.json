@@ -98,7 +98,7 @@
   },
   "husky": {
     "hooks": {
-      "*.ts" : [
+      "*.ts": [
         "prettier --write"
       ],
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"

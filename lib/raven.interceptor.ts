@@ -41,56 +41,58 @@ export class RavenInterceptor implements NestInterceptor {
 
     // first param would be for events, second is for errors
     return next.handle().pipe(
-      tap(null, (exception) => {
-        if (this.shouldReport(exception)) {
-          Sentry.withScope((scope) => {
-            switch (context.getType<GqlContextType>()) {
-              case 'http':
-                this.addHttpExceptionMetadatas(scope, context.switchToHttp());
-                return this.captureException(
-                  scope,
-                  exception,
-                  localTransformers,
-                );
-              case 'ws':
-                this.addWsExceptionMetadatas(scope, context.switchToWs());
-                return this.captureException(
-                  scope,
-                  exception,
-                  localTransformers,
-                );
-              case 'rpc':
-                this.addRpcExceptionMetadatas(scope, context.switchToRpc());
-                return this.captureException(
-                  scope,
-                  exception,
-                  localTransformers,
-                );
-              case 'graphql':
-                if (!GqlArgumentsHost)
+      tap({
+        error: (exception) => {
+          if (this.shouldReport(exception)) {
+            Sentry.withScope((scope) => {
+              switch (context.getType<GqlContextType>()) {
+                case 'http':
+                  this.addHttpExceptionMetadatas(scope, context.switchToHttp());
                   return this.captureException(
                     scope,
                     exception,
                     localTransformers,
                   );
-                this.addGraphQLExceptionMetadatas(
-                  scope,
-                  GqlArgumentsHost.create(context),
-                );
-                return this.captureException(
-                  scope,
-                  exception,
-                  localTransformers,
-                );
-              default:
-                return this.captureException(
-                  scope,
-                  exception,
-                  localTransformers,
-                );
-            }
-          });
-        }
+                case 'ws':
+                  this.addWsExceptionMetadatas(scope, context.switchToWs());
+                  return this.captureException(
+                    scope,
+                    exception,
+                    localTransformers,
+                  );
+                case 'rpc':
+                  this.addRpcExceptionMetadatas(scope, context.switchToRpc());
+                  return this.captureException(
+                    scope,
+                    exception,
+                    localTransformers,
+                  );
+                case 'graphql':
+                  if (!GqlArgumentsHost)
+                    return this.captureException(
+                      scope,
+                      exception,
+                      localTransformers,
+                    );
+                  this.addGraphQLExceptionMetadatas(
+                    scope,
+                    GqlArgumentsHost.create(context),
+                  );
+                  return this.captureException(
+                    scope,
+                    exception,
+                    localTransformers,
+                  );
+                default:
+                  return this.captureException(
+                    scope,
+                    exception,
+                    localTransformers,
+                  );
+              }
+            });
+          }
+        },
       }),
     );
   }
