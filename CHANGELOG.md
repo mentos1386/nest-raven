@@ -1,8 +1,15 @@
+# [7.2.0](https://github.com/mentos1386/nest-raven/compare/v7.1.0...v7.2.0) (2021-03-03)
+
+
+### Bug Fixes
+
+* remove null parameter signatures for tap ([#198](https://github.com/mentos1386/nest-raven/issues/198)) ([57132be](https://github.com/mentos1386/nest-raven/commit/57132be910a9aa0e9305583bcd8454029bbc1bea))
+
+
+
 # [7.1.0](https://github.com/mentos1386/nest-raven/compare/v7.0.0...v7.1.0) (2021-02-05)
 
-### Features
 
-* Upgrade @sentry/node version to 6.0.4 #187 ([#187](https://github.com/mentos1386/nest-raven/pull/187))
 
 # [7.0.0](https://github.com/mentos1386/nest-raven/compare/v6.0.0-alpha.2...v7.0.0) (2020-08-23)
 
@@ -27,6 +34,7 @@
 
 * export main and types ([#40](https://github.com/mentos1386/nest-raven/issues/40)) ([fd719ef](https://github.com/mentos1386/nest-raven/commit/fd719ef3e91ab08100d75a73764f96a4fd1ba42b))
 * **example:** not using withGraphQL anymore ([5f133d0](https://github.com/mentos1386/nest-raven/commit/5f133d0c7074daccf159e4adaee96314d6bd0cca))
+
 
 
 # [6.0.0-aplha.1](https://github.com/mentos1386/nest-raven/compare/v5.0.0...v6.0.0-aplha.1) (2020-04-18)
@@ -89,3 +97,6 @@
 ### Features
 
 * **RavenModule:** initial release ([95bf047](https://github.com/mentos1386/nest-raven/commit/95bf04714e48d0eaec73e4b714ce12a32f8924f7))
+
+
+
