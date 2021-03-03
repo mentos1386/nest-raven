@@ -1,6 +1,6 @@
 {
   "name": "nest-raven",
-  "version": "7.1.0",
+  "version": "7.2.0",
   "description": "Sentry Raven Module for Nest Framework",
   "files": [
     "dist"
@@ -41,7 +41,7 @@
   "peerDependencies": {
     "@nestjs/common": "^7.0.0",
     "reflect-metadata": "^0.1.12",
-    "rxjs": "^6.0.0"
+    "rxjs": "^6.4.0"
   },
   "devDependencies": {
     "@commitlint/cli": "11.0.0",
