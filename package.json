@@ -52,7 +52,7 @@
     "@nestjs/platform-socket.io": "7.6.11",
     "@nestjs/testing": "7.6.11",
     "@nestjs/websockets": "7.6.11",
-    "@types/jest": "26.0.20",
+    "@types/jest": "26.0.21",
     "@types/node": "12.20.5",
     "@types/socket.io-client": "1.4.35",
     "@types/supertest": "2.0.10",
