@@ -54,7 +54,7 @@
     "@nestjs/websockets": "7.6.11",
     "@types/jest": "26.0.22",
     "@types/node": "12.20.7",
-    "@types/socket.io-client": "1.4.35",
+    "@types/socket.io-client": "1.4.36",
     "@types/supertest": "2.0.10",
     "apollo-server-express": "2.22.2",
     "apollo-server-testing": "2.22.2",
