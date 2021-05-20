@@ -18,9 +18,8 @@ describe('AppModule', () => {
     app = moduleFixture.createNestApplication();
     await app.init();
 
-    const module: GraphQLModule = moduleFixture.get<GraphQLModule>(
-      GraphQLModule,
-    );
+    const module: GraphQLModule =
+      moduleFixture.get<GraphQLModule>(GraphQLModule);
     // apolloServer is protected, we need to cast module to any to get it
     apolloClient = createTestClient((module as any).apolloServer);
   });
