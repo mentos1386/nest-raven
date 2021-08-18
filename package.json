@@ -36,7 +36,7 @@
     "@sentry/node": "^6.0.4"
   },
   "optionalDependencies": {
-    "@nestjs/graphql": "^6.2.4 || ^7.0.0"
+    "@nestjs/graphql": "^8.0.0"
   },
   "peerDependencies": {
     "@nestjs/common": "^7.0.0",
