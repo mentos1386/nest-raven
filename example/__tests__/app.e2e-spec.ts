@@ -1,14 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
 import { INestApplication } from '@nestjs/common';
-import { GraphQLModule } from '@nestjs/graphql';
-import { createTestClient } from 'apollo-server-testing';
+import { getApolloServer } from '@nestjs/graphql';
+import type { ApolloServerBase } from 'apollo-server-core';
 import gql from 'graphql-tag';
 import { AppModule } from './../src/app.module';
 
 describe('AppModule', () => {
   let app: INestApplication;
-  let apolloClient: ReturnType<typeof createTestClient>;
+  let apolloClient: ApolloServerBase;
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -18,10 +18,7 @@ describe('AppModule', () => {
     app = moduleFixture.createNestApplication();
     await app.init();
 
-    const module: GraphQLModule =
-      moduleFixture.get<GraphQLModule>(GraphQLModule);
-    // apolloServer is protected, we need to cast module to any to get it
-    apolloClient = createTestClient((module as any).apolloServer);
+    apolloClient = getApolloServer(moduleFixture);
   });
 
   afterAll(() => app.close());
@@ -34,8 +31,7 @@ describe('AppModule', () => {
     request(app.getHttpServer()).get('/graphql').expect(400));
 
   it('/graphql(POST) forbiddenError warning', async () => {
-    const { query } = apolloClient;
-    const result = await query({
+    const result = await apolloClient.executeOperation({
       query: gql`
         query {
           unauthorizedException
@@ -43,16 +39,11 @@ describe('AppModule', () => {
       `,
       variables: {},
     });
-    expect(result.errors).toMatchInlineSnapshot(`
-      Array [
-        [GraphQLError: Unauthorized],
-      ]
-    `);
+    expect(result.errors).toMatchSnapshot();
   });
 
   it('/graphql(POST) forbiddenError', async () => {
-    const { query } = apolloClient;
-    const result = await query({
+    const result = await apolloClient.executeOperation({
       query: gql`
         query {
           forbiddenException
@@ -60,10 +51,6 @@ describe('AppModule', () => {
       `,
       variables: {},
     });
-    expect(result.errors).toMatchInlineSnapshot(`
-      Array [
-        [GraphQLError: Forbidden],
-      ]
-    `);
+    expect(result.errors).toMatchSnapshot();
   });
 });

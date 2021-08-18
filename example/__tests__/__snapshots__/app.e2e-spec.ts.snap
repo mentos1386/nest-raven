@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppModule /graphql(POST) forbiddenError 1`] = `
+Array [
+  Object {
+    "extensions": Object {
+      "code": "FORBIDDEN",
+      "response": Object {
+        "message": "Forbidden",
+        "statusCode": 403,
+      },
+    },
+    "message": "Forbidden",
+  },
+]
+`;
+
+exports[`AppModule /graphql(POST) forbiddenError warning 1`] = `
+Array [
+  Object {
+    "extensions": Object {
+      "code": "UNAUTHENTICATED",
+      "response": Object {
+        "message": "Unauthorized",
+        "statusCode": 401,
+      },
+    },
+    "message": "Unauthorized",
+  },
+]
+`;
