@@ -1,4 +1,4 @@
-import * as io from 'socket.io-client';
+import { io } from 'socket.io-client';
 import { Test } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import { getCurrentHub } from '@sentry/hub';
@@ -8,7 +8,6 @@ declare var global: any;
 
 describe('Websockets:Class', () => {
   let app: INestApplication;
-  let socket: SocketIOClient.Socket;
   const client = {
     captureException: jest.fn(),
   };
@@ -29,15 +28,10 @@ describe('Websockets:Class', () => {
     client.captureException.mockClear();
     getCurrentHub().pushScope();
     getCurrentHub().bindClient(client as any);
-    socket = io.connect('http://localhost:4455');
-  });
-
-  afterEach(() => {
-    socket.disconnect();
   });
 
   it(`emit:test_error`, async () => {
-    const socket = io.connect('http://localhost:4444');
+    const socket = io('http://localhost:4444');
 
     await new Promise((resolve, reject) => {
       socket.on('connect', () => {
@@ -51,6 +45,8 @@ describe('Websockets:Class', () => {
     expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
       `[Error: Something bad happened]`,
     );
+
+    socket.disconnect();
   });
 
   afterAll(async () => {
