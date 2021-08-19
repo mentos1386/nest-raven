@@ -1,4 +1,4 @@
-import * as io from 'socket.io-client';
+import { io } from 'socket.io-client';
 import { Test } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import { getCurrentHub } from '@sentry/hub';
@@ -8,7 +8,7 @@ declare var global: any;
 
 describe('Websockets:Method', () => {
   let app: INestApplication;
-  let socket: SocketIOClient.Socket;
+  let socket: ReturnType<typeof io>;
   const client = {
     captureException: jest.fn(),
   };
@@ -29,7 +29,7 @@ describe('Websockets:Method', () => {
     client.captureException.mockClear();
     getCurrentHub().pushScope();
     getCurrentHub().bindClient(client as any);
-    socket = io.connect('http://localhost:4466');
+    socket = io('http://localhost:4466');
   });
 
   afterEach(() => {
