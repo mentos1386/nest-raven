@@ -1,3 +1,7 @@
+# [8.0.0](https://github.com/mentos1386/nest-raven/compare/v7.2.0...v8.0.0) (2021-08-19)
+
+* upgrade @nestjs v8 ([#293](https://github.com/mentos1386/nest-raven/pull/293) 
+
 # [7.2.0](https://github.com/mentos1386/nest-raven/compare/v7.1.0...v7.2.0) (2021-03-03)
 
 
@@ -22,8 +26,8 @@
 
 ### Features
 
-* @nestjs/graphql optionalDependencies ([#84](https://github.com/mentos1386/nest-raven/issues/84)) ([1bb1125](https://github.com/mentos1386/nest-raven/commit/1bb11252f06054fcd44cc04af22fb3056a772c92))
 * **.github:** Added renovate config ([#46](https://github.com/mentos1386/nest-raven/issues/46)) ([508e2eb](https://github.com/mentos1386/nest-raven/commit/508e2eba37c50c0cd1dc80bfaf64e4cca2a98d3e))
+* @nestjs/graphql optionalDependencies ([#84](https://github.com/mentos1386/nest-raven/issues/84)) ([1bb1125](https://github.com/mentos1386/nest-raven/commit/1bb11252f06054fcd44cc04af22fb3056a772c92))
 
 
 
@@ -32,8 +36,8 @@
 
 ### Bug Fixes
 
-* export main and types ([#40](https://github.com/mentos1386/nest-raven/issues/40)) ([fd719ef](https://github.com/mentos1386/nest-raven/commit/fd719ef3e91ab08100d75a73764f96a4fd1ba42b))
 * **example:** not using withGraphQL anymore ([5f133d0](https://github.com/mentos1386/nest-raven/commit/5f133d0c7074daccf159e4adaee96314d6bd0cca))
+* export main and types ([#40](https://github.com/mentos1386/nest-raven/issues/40)) ([fd719ef](https://github.com/mentos1386/nest-raven/commit/fd719ef3e91ab08100d75a73764f96a4fd1ba42b))
 
 
 
