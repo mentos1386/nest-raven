@@ -62,7 +62,7 @@
     "class-validator": "0.13.1",
     "conventional-changelog-cli": "2.1.1",
     "dotenv": "10.0.0",
-    "graphql": "15.5.1",
+    "graphql": "15.5.2",
     "husky": "7.0.2",
     "jest": "27.0.6",
     "lint-staged": "11.1.2",
