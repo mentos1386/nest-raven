@@ -66,7 +66,7 @@
     "husky": "7.0.2",
     "jest": "27.2.1",
     "lint-staged": "11.1.2",
-    "prettier": "2.3.2",
+    "prettier": "2.4.1",
     "reflect-metadata": "0.1.13",
     "rxjs": "7.3.0",
     "socket.io-client": "4.1.3",
