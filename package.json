@@ -60,7 +60,7 @@
     "apollo-server-express": "2.25.3",
     "class-transformer": "0.5.1",
     "class-validator": "0.13.2",
-    "conventional-changelog-cli": "2.1.1",
+    "conventional-changelog-cli": "2.2.2",
     "dotenv": "10.0.0",
     "graphql": "15.8.0",
     "husky": "7.0.4",
