@@ -55,7 +55,7 @@
     "@sentry/minimal": "6.11.0",
     "@sentry/node": "6.11.0",
     "@types/jest": "27.4.1",
-    "@types/node": "16.11.26",
+    "@types/node": "16.11.27",
     "@types/supertest": "2.0.12",
     "apollo-server-express": "2.25.3",
     "class-transformer": "0.5.1",
