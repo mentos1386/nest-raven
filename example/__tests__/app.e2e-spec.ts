@@ -1,10 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
 import { INestApplication } from '@nestjs/common';
-import { getApolloServer } from '@nestjs/graphql';
 import type { ApolloServerBase } from 'apollo-server-core';
 import gql from 'graphql-tag';
 import { AppModule } from './../src/app.module';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver } from '@nestjs/apollo';
 
 describe('AppModule', () => {
   let app: INestApplication;
@@ -18,7 +19,8 @@ describe('AppModule', () => {
     app = moduleFixture.createNestApplication();
     await app.init();
 
-    apolloClient = getApolloServer(moduleFixture);
+    const graphqlModule = app.get<GraphQLModule<ApolloDriver>>(GraphQLModule);
+    apolloClient = graphqlModule.graphQlAdapter?.instance;
   });
 
   afterAll(() => app.close());
