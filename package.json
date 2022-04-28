@@ -1,6 +1,6 @@
 {
   "name": "nest-raven",
-  "version": "8.0.0",
+  "version": "8.1.0",
   "description": "Sentry Raven Module for Nest Framework",
   "files": [
     "dist"
@@ -31,9 +31,9 @@
     "url": "https://github.com/mentos1386/nest-raven/issues"
   },
   "homepage": "https://github.com/mentos1386/nest-raven#readme",
-  "dependencies": {},
   "optionalDependencies": {
-    "@nestjs/graphql": "^8.0.2"
+    "@nestjs/apollo": "^10.0.0",
+    "@nestjs/graphql": "^10.0.0"
   },
   "peerDependencies": {
     "@nestjs/common": "^8.0.0",
@@ -43,7 +43,6 @@
     "rxjs": "^7.0.0"
   },
   "devDependencies": {
-    "@apollo/gateway": "0.50.1",
     "@commitlint/cli": "13.2.1",
     "@commitlint/config-conventional": "13.2.0",
     "@nestjs/common": "8.4.4",
@@ -57,7 +56,7 @@
     "@types/jest": "27.4.1",
     "@types/node": "16.11.27",
     "@types/supertest": "2.0.12",
-    "apollo-server-express": "2.25.3",
+    "@types/ws": "^8.5.3",
     "class-transformer": "0.5.1",
     "class-validator": "0.13.2",
     "conventional-changelog-cli": "2.2.2",
@@ -72,7 +71,7 @@
     "socket.io-client": "4.4.1",
     "supertest": "6.2.2",
     "ts-jest": "27.1.4",
-    "ts-morph": "11.0.3",
+    "ts-morph": "^14.0.0",
     "ts-node": "10.7.0",
     "tsconfig-paths": "3.14.1",
     "typescript": "4.6.3"
