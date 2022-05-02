@@ -69,7 +69,7 @@
     "reflect-metadata": "0.1.13",
     "rxjs": "7.5.5",
     "socket.io-client": "4.4.1",
-    "supertest": "6.2.2",
+    "supertest": "6.2.3",
     "ts-jest": "27.1.4",
     "ts-morph": "^14.0.0",
     "ts-node": "10.7.0",
