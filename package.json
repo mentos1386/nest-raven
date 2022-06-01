@@ -37,8 +37,8 @@
   },
   "peerDependencies": {
     "@nestjs/common": "^8.0.0",
-    "@sentry/minimal": "^6.0.4",
-    "@sentry/node": "^6.0.4",
+    "@sentry/hub": "^7.0.0",
+    "@sentry/node": "^7.0.0",
     "reflect-metadata": "^0.1.12",
     "rxjs": "^7.0.0"
   },
@@ -51,10 +51,10 @@
     "@nestjs/platform-socket.io": "8.4.5",
     "@nestjs/testing": "8.4.5",
     "@nestjs/websockets": "8.4.5",
-    "@sentry/minimal": "6.19.7",
-    "@sentry/node": "6.19.7",
     "@types/jest": "27.5.2",
     "@types/node": "16.11.38",
+    "@sentry/node": "^7.0.0",
+    "@sentry/types": "^7.0.0",
     "@types/supertest": "2.0.12",
     "@types/ws": "^8.5.3",
     "class-transformer": "0.5.1",

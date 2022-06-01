@@ -1,26 +1,25 @@
 import {
+  CallHandler,
   ExecutionContext,
   Injectable,
   NestInterceptor,
-  CallHandler,
 } from '@nestjs/common';
+import {
+  HttpArgumentsHost,
+  RpcArgumentsHost,
+  WsArgumentsHost,
+} from '@nestjs/common/interfaces';
+import { Reflector } from '@nestjs/core';
+import type { GqlContextType, GraphQLArgumentsHost } from '@nestjs/graphql';
+import { captureException, Scope, withScope } from '@sentry/hub';
+import { Handlers } from '@sentry/node';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { RAVEN_LOCAL_TRANSFORMERS_METADATA } from './raven.decorators';
 import {
   IRavenInterceptorOptions,
   IRavenScopeTransformerFunction,
 } from './raven.interfaces';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import * as Sentry from '@sentry/minimal';
-import { Scope } from '@sentry/hub';
-import {
-  RpcArgumentsHost,
-  WsArgumentsHost,
-  HttpArgumentsHost,
-} from '@nestjs/common/interfaces';
-import { Handlers } from '@sentry/node';
-import type { GraphQLArgumentsHost, GqlContextType } from '@nestjs/graphql';
-import { Reflector } from '@nestjs/core';
-import { RAVEN_LOCAL_TRANSFORMERS_METADATA } from './raven.decorators';
 
 let GqlArgumentsHost: any;
 try {
@@ -44,7 +43,7 @@ export class RavenInterceptor implements NestInterceptor {
       tap({
         error: (exception) => {
           if (this.shouldReport(exception)) {
-            Sentry.withScope((scope) => {
+            withScope((scope) => {
               switch (context.getType<GqlContextType>()) {
                 case 'http':
                   this.addHttpExceptionMetadatas(scope, context.switchToHttp());
@@ -159,7 +158,7 @@ export class RavenInterceptor implements NestInterceptor {
     if (localTransformers)
       localTransformers.forEach((transformer) => transformer(scope));
 
-    Sentry.captureException(exception);
+    captureException(exception);
   }
 
   private shouldReport(exception: any): boolean {
