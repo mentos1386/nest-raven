@@ -1,10 +1,9 @@
-import { Resolver, Query } from '@nestjs/graphql';
 import {
   ForbiddenException,
-  UseInterceptors,
   UnauthorizedException,
+  UseInterceptors,
 } from '@nestjs/common';
-import { Severity } from '@sentry/node';
+import { Query, Resolver } from '@nestjs/graphql';
 import { RavenInterceptor } from '../../../lib';
 
 @Resolver('Gql')
@@ -14,7 +13,7 @@ export class GqlResolver {
     throw new ForbiddenException();
   }
 
-  @UseInterceptors(new RavenInterceptor({ level: Severity.Warning }))
+  @UseInterceptors(new RavenInterceptor({ level: 'warning' }))
   @Query(() => Boolean)
   async unauthorizedException() {
     throw new UnauthorizedException();

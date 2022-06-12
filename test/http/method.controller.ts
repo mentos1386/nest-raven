@@ -6,7 +6,6 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { RavenInterceptor, RavenTransformer } from '../../lib';
-import * as Sentry from '@sentry/types';
 
 @Controller('')
 export class MethodController {
@@ -115,7 +114,7 @@ export class MethodController {
   @Get('level')
   @UseInterceptors(
     new RavenInterceptor({
-      level: Sentry.Severity.Critical,
+      level: 'fatal',
     }),
   )
   level() {

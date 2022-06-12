@@ -1,8 +1,8 @@
-import * as request from 'supertest';
-import { Test } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
+import { Test } from '@nestjs/testing';
 import { getCurrentHub } from '@sentry/hub';
-import { Severity } from '@sentry/types';
+import { SeverityLevel } from '@sentry/types';
+import * as request from 'supertest';
 import { MethodModule } from './method.module';
 
 declare var global: any;
@@ -144,9 +144,9 @@ describe('Http:Method', () => {
     expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
       `[Error: Something bad happened]`,
     );
-    expect(client.captureException.mock.calls[0][2]._level).toEqual(
-      Severity.Critical,
-    );
+    expect(
+      client.captureException.mock.calls[0][2]._level,
+    ).toEqual<SeverityLevel>('fatal');
   });
 
   afterAll(async () => {

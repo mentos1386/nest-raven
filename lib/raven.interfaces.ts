@@ -1,5 +1,5 @@
-import { Severity } from '@sentry/types';
 import { Scope } from '@sentry/node';
+import { SeverityLevel } from '@sentry/types';
 
 export interface IRavenScopeTransformerFunction {
   (scope: Scope): void;
@@ -20,7 +20,7 @@ export interface IRavenInterceptorOptions {
   tags?: { [key: string]: string };
   extra?: { [key: string]: any };
   fingerprint?: string[];
-  level?: Severity;
+  level?: SeverityLevel;
 
   // https://github.com/getsentry/sentry-javascript/blob/master/packages/node/src/handlers.ts#L163
   request?: boolean;
