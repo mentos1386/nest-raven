@@ -1,6 +1,6 @@
 {
   "name": "nest-raven",
-  "version": "8.1.0",
+  "version": "8.2.0",
   "description": "Sentry Raven Module for Nest Framework",
   "files": [
     "dist"
@@ -10,7 +10,6 @@
     "format": "prettier \"{example,lib,test}/**/*.ts\" --write",
     "lint": "prettier \"{example,lib,test}/**/*.ts\"  --check",
     "prepublishOnly": "npm run build",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test": "jest",
     "start": "ts-node -r tsconfig-paths/register example/src/main.ts"
   },
@@ -51,15 +50,14 @@
     "@nestjs/platform-socket.io": "8.4.6",
     "@nestjs/testing": "8.4.6",
     "@nestjs/websockets": "8.4.6",
-    "@types/jest": "27.5.2",
-    "@types/node": "16.11.39",
     "@sentry/node": "^7.0.0",
     "@sentry/types": "^7.0.0",
+    "@types/jest": "27.5.2",
+    "@types/node": "16.11.39",
     "@types/supertest": "2.0.12",
     "@types/ws": "^8.5.3",
     "class-transformer": "0.5.1",
     "class-validator": "0.13.2",
-    "conventional-changelog-cli": "2.2.2",
     "dotenv": "10.0.0",
     "graphql": "15.8.0",
     "husky": "7.0.4",
