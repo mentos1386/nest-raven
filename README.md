@@ -29,7 +29,7 @@ $ npm i --save nest-raven
 
 ### Include Module
 
-For Module to work you need to [setup Sentry SDK yourself](https://docs.sentry.io/error-reporting/quickstart/?platform=node),
+For Module to work you need to [setup Sentry SDK yourself](https://docs.sentry.io/platforms/node/),
 this should be done in your `main.ts` file where you initialize the NestJS application.
 
 > app.module.ts
