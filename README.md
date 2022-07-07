@@ -3,7 +3,7 @@
   <a href="https://sentry.io" target="_blank"><img src="https://sentry-brand.storage.googleapis.com/sentry-logo-black.png" width="380"></a>
 </p>
 
-<p align="center">Sentry Raven Module for Nest framework</p>
+<p align="center">Sentry Module for Nest framework</p>
 
 <p align="center">
 <a href="https://www.npmjs.com/package/nest-raven"><img src="https://img.shields.io/npm/v/nest-raven.svg" alt="NPM Version" /></a>
@@ -15,7 +15,9 @@
 
 ## Description
 
-This's a [@sentry/minimal](https://github.com/getsentry/sentry-javascript/tree/master/packages/minimal) module for [Nest](https://github.com/nestjs/nest).
+This is a [sentry](https://sentry.io/) module for [Nest](https://github.com/nestjs/nest).
+
+This package is no longer based on deprecated raven module, but rather on new stable [@sentry/node](https://www.npmjs.com/package/@sentry/node) module.
 
 ## Installation
 
