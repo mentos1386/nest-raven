@@ -70,7 +70,7 @@
     "supertest": "6.2.4",
     "ts-jest": "27.1.5",
     "ts-morph": "^14.0.0",
-    "ts-node": "10.7.0",
+    "ts-node": "10.8.2",
     "tsconfig-paths": "3.14.1",
     "typescript": "4.6.4"
   },
