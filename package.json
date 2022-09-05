@@ -53,7 +53,7 @@
     "@sentry/node": "7.9.0",
     "@sentry/types": "7.9.0",
     "@types/jest": "27.5.2",
-    "@types/node": "16.11.52",
+    "@types/node": "16.11.57",
     "@types/supertest": "2.0.12",
     "@types/ws": "8.5.3",
     "apollo-server-core": "3.10.2",
