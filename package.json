@@ -68,7 +68,7 @@
     "prettier": "2.7.1",
     "reflect-metadata": "0.1.13",
     "rxjs": "7.5.7",
-    "socket.io-client": "4.5.2",
+    "socket.io-client": "4.5.3",
     "supertest": "6.2.4",
     "ts-jest": "27.1.5",
     "ts-morph": "14.0.0",
