@@ -1,8 +1,8 @@
 import * as request from 'supertest';
 import { Test } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
-import { getCurrentHub } from '@sentry/hub';
 import { GlobalModule } from './global.module';
+import { getCurrentHub } from '@sentry/node';
 
 declare var global: any;
 
