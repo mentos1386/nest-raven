@@ -11,8 +11,7 @@ import {
 } from '@nestjs/common/interfaces';
 import { Reflector } from '@nestjs/core';
 import type { GqlContextType, GraphQLArgumentsHost } from '@nestjs/graphql';
-import { captureException, Scope, withScope } from '@sentry/hub';
-import { Handlers } from '@sentry/node';
+import { captureException, Handlers, Scope, withScope } from '@sentry/node';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { RAVEN_LOCAL_TRANSFORMERS_METADATA } from './raven.decorators';

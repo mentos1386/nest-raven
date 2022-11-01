@@ -1,7 +1,7 @@
 import { io } from 'socket.io-client';
 import { Test } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
-import { getCurrentHub } from '@sentry/hub';
+import { getCurrentHub } from '@sentry/node';
 import { ClassModule } from './class.module';
 
 declare var global: any;

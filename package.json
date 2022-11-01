@@ -36,7 +36,6 @@
   },
   "peerDependencies": {
     "@nestjs/common": "^9.0.0",
-    "@sentry/hub": "^7.0.0",
     "@sentry/node": "^7.0.0",
     "reflect-metadata": "^0.1.12",
     "rxjs": "^7.1.0"
