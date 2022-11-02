@@ -60,7 +60,7 @@
     "class-transformer": "0.5.1",
     "class-validator": "0.13.2",
     "dotenv": "10.0.0",
-    "graphql": "15.8.0",
+    "graphql": "16.6.0",
     "husky": "7.0.4",
     "jest": "27.5.1",
     "lint-staged": "13.0.3",
