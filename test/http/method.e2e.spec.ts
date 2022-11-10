@@ -59,7 +59,7 @@ describe('Http:Method', () => {
   });
 
   it(`/GET transformer`, async () => {
-    await request(app.getHttpServer()).get('/transformer').expect(500);
+    await request(app.getHttpServer()).get('/transformer?foo=bar').expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
       `[Error: Something bad happened]`,
@@ -67,6 +67,10 @@ describe('Http:Method', () => {
     expect(client.captureException.mock.calls[0][2]._extra).toHaveProperty(
       'A',
       'AAA',
+    );
+    expect(client.captureException.mock.calls[0][2]._extra).toHaveProperty(
+      'REQ',
+      'bar',
     );
   });
 

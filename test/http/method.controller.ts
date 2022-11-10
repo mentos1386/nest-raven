@@ -5,6 +5,7 @@ import {
   HttpStatus,
   UseInterceptors,
 } from '@nestjs/common';
+import { Request } from 'express';
 import { RavenInterceptor, RavenTransformer } from '../../lib';
 
 @Controller('')
@@ -45,8 +46,10 @@ export class MethodController {
   @UseInterceptors(
     new RavenInterceptor({
       transformers: [
-        (scope) => {
+        (scope, context) => {
+          const req = context.switchToHttp().getRequest<Request>();
           scope.setExtra('A', 'AAA');
+          scope.setExtra('REQ', req.query.foo);
         },
       ],
     }),
