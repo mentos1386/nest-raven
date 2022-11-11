@@ -113,7 +113,11 @@ dynamically.
   @UseInterceptors(new RavenInterceptor({
     transformers: [
         // Add an extra property to Sentry's scope
-        (scope: Scope) => { scope.addExtra('important key', 'useful value') }
+        (scope: Scope, context: ExecutionContext) => {
+          const req = context.switchToHttp().getRequest<Request>();
+          scope.addExtra('important query', req.query.important_query)
+          scope.addExtra('important key', 'useful value');
+        }
     ],
   }))
   @Get('/some/route')

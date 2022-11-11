@@ -1,8 +1,9 @@
+import { ExecutionContext } from '@nestjs/common';
 import { Scope } from '@sentry/node';
 import { SeverityLevel } from '@sentry/types';
 
 export interface IRavenScopeTransformerFunction {
-  (scope: Scope): void;
+  (scope: Scope, context: ExecutionContext): void;
 }
 
 export interface IRavenFilterFunction {

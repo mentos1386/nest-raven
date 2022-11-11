@@ -50,6 +50,7 @@ export class RavenInterceptor implements NestInterceptor {
                     scope,
                     exception,
                     localTransformers,
+                    context,
                   );
                 case 'ws':
                   this.addWsExceptionMetadatas(scope, context.switchToWs());
@@ -57,6 +58,7 @@ export class RavenInterceptor implements NestInterceptor {
                     scope,
                     exception,
                     localTransformers,
+                    context,
                   );
                 case 'rpc':
                   this.addRpcExceptionMetadatas(scope, context.switchToRpc());
@@ -64,6 +66,7 @@ export class RavenInterceptor implements NestInterceptor {
                     scope,
                     exception,
                     localTransformers,
+                    context,
                   );
                 case 'graphql':
                   if (!GqlArgumentsHost)
@@ -71,6 +74,7 @@ export class RavenInterceptor implements NestInterceptor {
                       scope,
                       exception,
                       localTransformers,
+                      context,
                     );
                   this.addGraphQLExceptionMetadatas(
                     scope,
@@ -80,12 +84,14 @@ export class RavenInterceptor implements NestInterceptor {
                     scope,
                     exception,
                     localTransformers,
+                    context,
                   );
                 default:
                   return this.captureException(
                     scope,
                     exception,
                     localTransformers,
+                    context,
                   );
               }
             });
@@ -145,6 +151,7 @@ export class RavenInterceptor implements NestInterceptor {
     scope: Scope,
     exception: any,
     localTransformers: IRavenScopeTransformerFunction[] | undefined,
+    context: ExecutionContext,
   ): void {
     if (this.options.level) scope.setLevel(this.options.level);
     if (this.options.fingerprint)
@@ -153,9 +160,11 @@ export class RavenInterceptor implements NestInterceptor {
     if (this.options.tags) scope.setTags(this.options.tags);
 
     if (this.options.transformers)
-      this.options.transformers.forEach((transformer) => transformer(scope));
+      this.options.transformers.forEach((transformer) =>
+        transformer(scope, context),
+      );
     if (localTransformers)
-      localTransformers.forEach((transformer) => transformer(scope));
+      localTransformers.forEach((transformer) => transformer(scope, context));
 
     captureException(exception);
   }
