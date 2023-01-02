@@ -54,7 +54,7 @@
     "@types/jest": "27.5.2",
     "@types/node": "18.11.18",
     "@types/supertest": "2.0.12",
-    "@types/ws": "8.5.3",
+    "@types/ws": "8.5.4",
     "apollo-server-core": "3.11.1",
     "apollo-server-express": "3.11.1",
     "class-transformer": "0.5.1",
