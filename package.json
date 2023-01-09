@@ -61,7 +61,7 @@
     "class-validator": "0.13.2",
     "dotenv": "16.0.3",
     "graphql": "16.6.0",
-    "husky": "8.0.2",
+    "husky": "8.0.3",
     "jest": "27.5.1",
     "lint-staged": "13.0.4",
     "prettier": "2.7.1",
