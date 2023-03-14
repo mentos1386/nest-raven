@@ -32,7 +32,7 @@
   "homepage": "https://github.com/mentos1386/nest-raven#readme",
   "optionalDependencies": {
     "@nestjs/apollo": "^10.0.0",
-    "@nestjs/graphql": "^10.0.0"
+    "@nestjs/graphql": "^11.0.0"
   },
   "peerDependencies": {
     "@nestjs/common": "^9.0.0",
