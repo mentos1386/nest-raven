@@ -2,7 +2,7 @@ import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { getCurrentHub } from '@sentry/node';
 import { SeverityLevel } from '@sentry/types';
-import * as request from 'supertest';
+import request from 'supertest';
 import { MethodModule } from './method.module';
 
 declare var global: any;
