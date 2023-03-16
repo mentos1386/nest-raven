@@ -4,11 +4,11 @@
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "target": "es6",
-    "sourceMap": true,
-    "outDir": "./dist",
+    "noEmit": true,
     "incremental": true
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "__tests__"]
 }

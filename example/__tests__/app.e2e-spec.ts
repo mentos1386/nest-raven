@@ -1,15 +1,16 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import * as request from 'supertest';
+import request from 'supertest';
 import { INestApplication } from '@nestjs/common';
-import type { ApolloServerBase } from 'apollo-server-core';
+import { ApolloServer } from '@apollo/server';
 import gql from 'graphql-tag';
+import { GraphQLError } from 'graphql';
 import { AppModule } from './../src/app.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver } from '@nestjs/apollo';
 
 describe('AppModule', () => {
   let app: INestApplication;
-  let apolloClient: ApolloServerBase;
+  let apolloClient: ApolloServer;
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -41,7 +42,9 @@ describe('AppModule', () => {
       `,
       variables: {},
     });
-    expect(result.errors).toMatchSnapshot();
+    expect(
+      result.body.kind === 'single' && result.body.singleResult.errors,
+    ).toEqual([new GraphQLError('Unauthorized')]);
   });
 
   it('/graphql(POST) forbiddenError', async () => {
@@ -53,6 +56,8 @@ describe('AppModule', () => {
       `,
       variables: {},
     });
-    expect(result.errors).toMatchSnapshot();
+    expect(
+      result.body.kind === 'single' && result.body.singleResult.errors,
+    ).toEqual([new GraphQLError('Forbidden')]);
   });
 });

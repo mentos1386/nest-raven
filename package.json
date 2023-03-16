@@ -10,8 +10,7 @@
     "format": "prettier \"{example,lib,test}/**/*.ts\" --write",
     "lint": "prettier \"{example,lib,test}/**/*.ts\"  --check",
     "prepublishOnly": "npm run build",
-    "test": "jest",
-    "start": "ts-node -r tsconfig-paths/register example/src/main.ts"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -30,50 +29,40 @@
     "url": "https://github.com/mentos1386/nest-raven/issues"
   },
   "homepage": "https://github.com/mentos1386/nest-raven#readme",
-  "optionalDependencies": {
-    "@nestjs/apollo": "^10.0.0",
-    "@nestjs/graphql": "^10.0.0"
-  },
   "peerDependencies": {
     "@nestjs/common": "^9.0.0",
-    "@sentry/node": "^7.0.0",
-    "reflect-metadata": "^0.1.12",
-    "rxjs": "^7.1.0"
+    "@sentry/node": "*",
+    "reflect-metadata": "*",
+    "rxjs": "*"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.4.4",
-    "@commitlint/config-conventional": "17.4.4",
-    "@nestjs/common": "9.3.9",
-    "@nestjs/core": "9.3.9",
-    "@nestjs/platform-express": "9.3.9",
-    "@nestjs/platform-socket.io": "9.3.9",
-    "@nestjs/testing": "9.3.9",
-    "@nestjs/websockets": "9.3.9",
-    "@sentry/node": "7.43.0",
-    "@sentry/types": "7.43.0",
-    "@types/jest": "27.5.2",
-    "@types/node": "18.15.2",
-    "@types/supertest": "2.0.12",
-    "@types/ws": "8.5.4",
-    "apollo-server-core": "3.12.0",
-    "apollo-server-express": "3.12.0",
-    "class-transformer": "0.5.1",
-    "class-validator": "0.14.0",
-    "dotenv": "16.0.3",
-    "graphql": "16.6.0",
-    "husky": "8.0.3",
-    "jest": "27.5.1",
-    "lint-staged": "13.2.0",
-    "prettier": "2.8.4",
-    "reflect-metadata": "0.1.13",
-    "rxjs": "7.8.0",
-    "socket.io-client": "4.6.1",
-    "supertest": "6.3.3",
-    "ts-jest": "27.1.5",
-    "ts-morph": "16.0.0",
-    "ts-node": "10.9.1",
-    "tsconfig-paths": "4.1.2",
-    "typescript": "4.9.5"
+    "@apollo/gateway": "^2.3.4",
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@nestjs/apollo": "^11.0.3",
+    "@nestjs/common": "^9.3.9",
+    "@nestjs/core": "^9.3.9",
+    "@nestjs/platform-express": "^9.3.9",
+    "@nestjs/platform-socket.io": "^9.3.9",
+    "@nestjs/testing": "^9.3.9",
+    "@nestjs/websockets": "^9.3.9",
+    "@types/jest": "^29.4.1",
+    "@types/node": "^18.15.2",
+    "@types/supertest": "^2.0.12",
+    "@types/ws": "^8.5.4",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
+    "dotenv": "^16.0.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "prettier": "^2.8.4",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.8.0",
+    "socket.io-client": "^4.6.1",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.0.5",
+    "ts-morph": "^16.0.0",
+    "typescript": "^4.9.5"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -82,17 +71,8 @@
     "trailingComma": "all"
   },
   "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
+    "preset": "ts-jest",
     "collectCoverage": true,
-    "globals": {
-      "ts-jest": {
-        "diagnostics": {
-          "warnOnly": true
-        }
-      }
-    },
     "collectCoverageFrom": [
       "lib/**"
     ]
@@ -101,5 +81,8 @@
     "*.ts": [
       "prettier --write"
     ]
+  },
+  "optionalDependencies": {
+    "@nestjs/graphql": "^11.0.0"
   }
 }

@@ -6,9 +6,10 @@
     "removeComments": true,
     "noLib": false,
     "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "target": "es6",
     "sourceMap": false,
     "skipLibCheck": true
-  },
+  }
 }
