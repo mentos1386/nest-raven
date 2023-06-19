@@ -52,7 +52,7 @@
     "@types/ws": "8.5.5",
     "class-transformer": "0.5.1",
     "class-validator": "0.14.0",
-    "dotenv": "16.0.3",
+    "dotenv": "16.3.1",
     "husky": "8.0.3",
     "lint-staged": "13.2.2",
     "prettier": "2.8.8",
