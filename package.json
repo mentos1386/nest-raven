@@ -36,7 +36,7 @@
     "rxjs": "*"
   },
   "devDependencies": {
-    "@apollo/gateway": "2.4.7",
+    "@apollo/gateway": "2.4.8",
     "@commitlint/cli": "17.6.5",
     "@commitlint/config-conventional": "17.6.5",
     "@nestjs/apollo": "11.0.6",
