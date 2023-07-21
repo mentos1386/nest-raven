@@ -83,6 +83,6 @@
     ]
   },
   "optionalDependencies": {
-    "@nestjs/graphql": "^11.0.0"
+    "@nestjs/graphql": "^12.0.0"
   }
 }
