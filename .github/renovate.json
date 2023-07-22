@@ -1,5 +1,5 @@
 {
-  "extends": ["config:js-lib", "schedule:weekly"],
+  "extends": ["config:base", "schedule:weekly"],
   "semanticCommits": true,
   "packageRules": [
     {
