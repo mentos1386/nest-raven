@@ -1,6 +1,69 @@
+## What's Changed
+* chore(deps): pin dependency @apollo/gateway to 2.3.4 by @renovate in https://github.com/mentos1386/nest-raven/pull/531
+* chore(deps): pin dependencies by @renovate in https://github.com/mentos1386/nest-raven/pull/530
+* chore(deps): update dependency @nestjs/apollo to v11.0.4 by @renovate in https://github.com/mentos1386/nest-raven/pull/521
+* chore(deps): pin dependency socket.io-client to 4.6.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/532
+* chore(deps): update dependency @types/node to v18.15.10 by @renovate in https://github.com/mentos1386/nest-raven/pull/533
+* chore(deps): update dependency @types/node to v18.15.11 by @renovate in https://github.com/mentos1386/nest-raven/pull/534
+* chore(deps): update dependency prettier to v2.8.7 by @renovate in https://github.com/mentos1386/nest-raven/pull/535
+* chore(deps): update dependency lint-staged to v13.2.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/536
+* chore(deps): update dependency @apollo/gateway to v2.4.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/537
+* chore(deps): update dependency @nestjs/apollo to v11.0.5 by @renovate in https://github.com/mentos1386/nest-raven/pull/538
+* chore(deps): update commitlint monorepo to v17.6.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/539
+* chore(deps): bump yaml from 2.2.1 to 2.2.2 by @dependabot in https://github.com/mentos1386/nest-raven/pull/540
+* chore(deps): update dependency @apollo/gateway to v2.4.2 by @renovate in https://github.com/mentos1386/nest-raven/pull/541
+* chore(deps): update dependency lint-staged to v13.2.2 by @renovate in https://github.com/mentos1386/nest-raven/pull/542
+* chore(deps): bump engine.io from 6.4.1 to 6.4.2 by @dependabot in https://github.com/mentos1386/nest-raven/pull/543
+* chore(deps): update commitlint monorepo to v17.6.3 by @renovate in https://github.com/mentos1386/nest-raven/pull/545
+* chore(deps): update dependency @apollo/gateway to v2.4.3 by @renovate in https://github.com/mentos1386/nest-raven/pull/546
+* chore(deps): update dependency @apollo/gateway to v2.4.5 by @renovate in https://github.com/mentos1386/nest-raven/pull/547
+* chore(deps): update dependency prettier to v2.8.8 by @renovate in https://github.com/mentos1386/nest-raven/pull/548
+* chore(deps): update dependency @apollo/gateway to v2.4.6 by @renovate in https://github.com/mentos1386/nest-raven/pull/550
+* chore(deps): update dependency @nestjs/apollo to v11.0.6 by @renovate in https://github.com/mentos1386/nest-raven/pull/551
+* chore(deps): update commitlint monorepo to v17.6.5 by @renovate in https://github.com/mentos1386/nest-raven/pull/554
+* chore(deps): update dependency @apollo/gateway to v2.4.7 by @renovate in https://github.com/mentos1386/nest-raven/pull/555
+* chore(deps): update dependency @types/ws to v8.5.5 by @renovate in https://github.com/mentos1386/nest-raven/pull/557
+* chore(deps): update dependency rxjs to v7.8.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/558
+* chore(deps): update dependency socket.io-client to v4.6.2 by @renovate in https://github.com/mentos1386/nest-raven/pull/559
+* chore(deps): update dependency @types/jest to v29.5.2 by @renovate in https://github.com/mentos1386/nest-raven/pull/560
+* chore(deps): bump @apollo/server from 4.5.0 to 4.7.4 by @dependabot in https://github.com/mentos1386/nest-raven/pull/561
+* chore(deps): update dependency @apollo/gateway to v2.4.8 by @renovate in https://github.com/mentos1386/nest-raven/pull/562
+* chore(deps): update dependency @types/node to v18.16.18 by @renovate in https://github.com/mentos1386/nest-raven/pull/563
+* chore(deps): update dependency dotenv to v16.3.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/564
+* chore(deps): update dependency ts-jest to v29.1.0 by @renovate in https://github.com/mentos1386/nest-raven/pull/565
+* chore(deps): update commitlint monorepo to v17.6.6 by @renovate in https://github.com/mentos1386/nest-raven/pull/567
+* chore(deps): update dependency socket.io-client to v4.7.0 by @renovate in https://github.com/mentos1386/nest-raven/pull/568
+* chore(deps): update dependency @types/node to v18.16.19 by @renovate in https://github.com/mentos1386/nest-raven/pull/570
+* chore(deps): update dependency lint-staged to v13.2.3 by @renovate in https://github.com/mentos1386/nest-raven/pull/571
+* chore(deps): update dependency @apollo/gateway to v2.4.9 by @renovate in https://github.com/mentos1386/nest-raven/pull/572
+* chore(deps): update dependency socket.io-client to v4.7.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/573
+* chore(deps): update dependency ts-jest to v29.1.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/574
+* chore(deps): update nest monorepo to v9.4.3 by @renovate in https://github.com/mentos1386/nest-raven/pull/575
+* chore(deps): update dependency @types/jest to v29.5.3 by @renovate in https://github.com/mentos1386/nest-raven/pull/576
+* chore(deps): update dependency prettier to v3 by @renovate in https://github.com/mentos1386/nest-raven/pull/579
+* chore(deps): update dependency @apollo/gateway to v2.5.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/581
+* chore: upgrade @nestjs by @9renpoto in https://github.com/mentos1386/nest-raven/pull/584
+* chore(deps): update commitlint monorepo to v17.6.7 by @renovate in https://github.com/mentos1386/nest-raven/pull/585
+* chore(deps): update nest monorepo to v10.1.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/586
+* chore(deps): update dependency jest to v29.6.2 by @renovate in https://github.com/mentos1386/nest-raven/pull/587
+* chore(deps): update nest monorepo to v10.1.2 by @renovate in https://github.com/mentos1386/nest-raven/pull/588
+* chore(deps): update dependency prettier to v3.0.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/589
+* chore(deps): update dependency socket.io-client to v4.7.2 by @renovate in https://github.com/mentos1386/nest-raven/pull/590
+* chore(deps): update nest monorepo to v10.1.3 by @renovate in https://github.com/mentos1386/nest-raven/pull/591
+* chore(deps): update commitlint monorepo by @renovate in https://github.com/mentos1386/nest-raven/pull/592
+* chore(deps): update dependency lint-staged to v13.3.0 by @renovate in https://github.com/mentos1386/nest-raven/pull/593
+* chore(deps): update dependency prettier to v3.0.2 by @renovate in https://github.com/mentos1386/nest-raven/pull/594
+* chore(deps): update dependency lint-staged to v14 by @renovate in https://github.com/mentos1386/nest-raven/pull/595
+* chore(deps): update jest monorepo by @renovate in https://github.com/mentos1386/nest-raven/pull/596
+* chore(deps): update nest monorepo to v10.2.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/597
+
+
+**Full Changelog**: https://github.com/mentos1386/nest-raven/compare/v9.2.0...v10.0.0
+
+
 # [8.0.0](https://github.com/mentos1386/nest-raven/compare/v7.2.0...v8.0.0) (2021-08-19)
 
-* upgrade @nestjs v8 ([#293](https://github.com/mentos1386/nest-raven/pull/293) 
+* upgrade @nestjs v8 ([#293](https://github.com/mentos1386/nest-raven/pull/293)
 
 # [7.2.0](https://github.com/mentos1386/nest-raven/compare/v7.1.0...v7.2.0) (2021-03-03)
 
