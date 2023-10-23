@@ -43,7 +43,7 @@
     "@nestjs/testing": "^10.0.0",
     "@nestjs/websockets": "^10.0.0",
     "@types/jest": "^29.5.3",
-    "@types/supertest": "2.0.14",
+    "@types/supertest": "2.0.15",
     "@types/ws": "8.5.7",
     "dotenv": "16.3.1",
     "husky": "8.0.3",
