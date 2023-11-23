@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - run: npm version ${{ inputs.semver }} --no-git-tag-version --workspaces
+      - run: npm version ${{ inputs.semver }} --no-git-tag-version
 
       - name: generate new version and save to env variable
         id: get_version
