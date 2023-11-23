@@ -1,0 +1,21 @@
+# .github/release.yml
+
+changelog:
+  exclude:
+    labels:
+      - ignore-for-release
+    authors:
+      - octocat
+  categories:
+    - title: ':bug: Type: Bug'
+      labels:
+        - 'bug'
+    - title: ':memo: Documentation'
+      labels:
+        - 'documentation'
+    - title: ':rocket: Type: Feature'
+      labels:
+        - 'enhancement'
+    - title: Other Changes
+      labels:
+        - '*'

@@ -61,7 +61,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          base: main
+          base: master
           branch: release-${{ steps.get_version.outputs.NEW_VERSION }}
           token: ${{secrets.GITHUB_TOKEN}}
           commit-message: "bump: v${{ steps.get_version.outputs.NEW_VERSION }}"
