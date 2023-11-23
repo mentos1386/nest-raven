@@ -1,0 +1,12 @@
+name: Bump version (cron)
+
+on:
+  schedule:
+    - cron: "15 3 * * TUE"
+
+jobs:
+  scheduled_bump:
+    uses: ./.github/workflows/bump.yml
+    secrets: inherit
+    with:
+      semver: minor

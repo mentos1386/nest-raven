@@ -1,0 +1,71 @@
+name: Bump version
+
+on:
+  workflow_dispatch:
+    inputs:
+      semver:
+        description: "Which SemVer"
+        required: true
+        default: "patch"
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+  workflow_call:
+    inputs:
+      semver:
+        description: The image_name to build for.
+        required: true
+        type: string
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: npm version ${{ inputs.semver }} --no-git-tag-version --workspaces
+
+      - name: generate new version and save to env variable
+        id: get_version
+        run: |
+          echo "NEW_VERSION=$(cat package.json | jq -r .version)" >> $GITHUB_OUTPUT
+
+      - name: Generate release notes
+        uses: actions/github-script@v7
+        id: get_release_note
+        env:
+          NEW_VERSION: ${{steps.get_version.outputs.NEW_VERSION}}
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          result-encoding: string
+          script: |
+            const notes = await github.rest.repos.generateReleaseNotes(
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                tag_name: `v${process.env.NEW_VERSION}`,
+              }
+            );
+            return notes.data.body;
+
+      - run: |
+          cat << EOF >> new
+          ## v${{ steps.get_version.outputs.NEW_VERSION }} ($(date '+%Y-%m-%d'))
+          ${{ steps.get_release_note.outputs.result }}
+          EOF
+      - run: cat new ./CHANGELOG.md > temp
+      - run: mv temp ./CHANGELOG.md
+      - run: rm new
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          base: main
+          branch: release-${{ steps.get_version.outputs.NEW_VERSION }}
+          token: ${{secrets.GITHUB_TOKEN}}
+          commit-message: "bump: v${{ steps.get_version.outputs.NEW_VERSION }}"
+          body: ${{ steps.get_release_note.outputs.result  }}
+          title: "chore: bump v${{ steps.get_version.outputs.NEW_VERSION }}"
+          draft: true
+          milestone: "v${{ steps.get_version.outputs.NEW_VERSION }}"
