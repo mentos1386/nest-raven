@@ -1,3 +1,49 @@
+## v10.0.1 (2023-12-03)
+<!-- Release notes generated using configuration in .github/release.yml at master -->
+
+## What's Changed
+### :bug: Type: Bug
+* fix: branch name by @9renpoto in https://github.com/mentos1386/nest-raven/pull/634
+### Other Changes
+* chore(deps-dev): bump @apollo/server from 4.8.1 to 4.9.3 by @dependabot in https://github.com/mentos1386/nest-raven/pull/599
+* chore(deps): update dependency prettier to v3.0.3 by @renovate in https://github.com/mentos1386/nest-raven/pull/600
+* chore(deps): update nest monorepo to v10.2.4 by @renovate in https://github.com/mentos1386/nest-raven/pull/601
+* chore(deps): update dependency @nestjs/apollo to v12.0.9 by @renovate in https://github.com/mentos1386/nest-raven/pull/602
+* chore(deps): update jest monorepo by @renovate in https://github.com/mentos1386/nest-raven/pull/603
+* chore(deps): update nest monorepo to v10.2.5 by @renovate in https://github.com/mentos1386/nest-raven/pull/604
+* chore(deps): update nest monorepo to v10.2.6 by @renovate in https://github.com/mentos1386/nest-raven/pull/606
+* chore(deps): bump graphql from 16.7.1 to 16.8.1 by @dependabot in https://github.com/mentos1386/nest-raven/pull/605
+* remove ts-morph by @9renpoto in https://github.com/mentos1386/nest-raven/pull/608
+* chore(deps): update dependency @commitlint/cli to v17.7.2 by @renovate in https://github.com/mentos1386/nest-raven/pull/609
+* chore(deps): update dependency @types/ws to v8.5.6 by @renovate in https://github.com/mentos1386/nest-raven/pull/611
+* chore(deps): update dependency @types/supertest to v2.0.13 by @renovate in https://github.com/mentos1386/nest-raven/pull/610
+* chore(deps): update dependency @types/supertest to v2.0.14 by @renovate in https://github.com/mentos1386/nest-raven/pull/613
+* chore(deps): update nest monorepo to v10.2.7 by @renovate in https://github.com/mentos1386/nest-raven/pull/614
+* chore(deps): update dependency @types/ws to v8.5.7 by @renovate in https://github.com/mentos1386/nest-raven/pull/615
+* chore(deps): update commitlint monorepo to v17.8.0 by @renovate in https://github.com/mentos1386/nest-raven/pull/616
+* chore(deps-dev): bump @babel/traverse from 7.22.8 to 7.23.2 by @dependabot in https://github.com/mentos1386/nest-raven/pull/618
+* chore(deps): update dependency lint-staged to v15 by @renovate in https://github.com/mentos1386/nest-raven/pull/617
+* test(test): add should report spec by @9renpoto in https://github.com/mentos1386/nest-raven/pull/612
+* chore(deps): update commitlint monorepo to v17.8.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/619
+* chore(deps): update dependency @types/jest to v29.5.6 by @renovate in https://github.com/mentos1386/nest-raven/pull/620
+* chore(deps): update dependency @types/supertest to v2.0.15 by @renovate in https://github.com/mentos1386/nest-raven/pull/621
+* chore(deps): update dependency @types/ws to v8.5.8 by @renovate in https://github.com/mentos1386/nest-raven/pull/622
+* chore(deps): update commitlint monorepo to v18 (major) by @renovate in https://github.com/mentos1386/nest-raven/pull/623
+* chore(deps): update dependency @types/supertest to v2.0.16 by @renovate in https://github.com/mentos1386/nest-raven/pull/627
+* chore(deps): update dependency @nestjs/apollo to v12.0.11 by @renovate in https://github.com/mentos1386/nest-raven/pull/626
+* chore(deps): update nest monorepo to v10.2.8 by @renovate in https://github.com/mentos1386/nest-raven/pull/625
+* chore(deps): update commitlint monorepo to v18.4.2 by @renovate in https://github.com/mentos1386/nest-raven/pull/630
+* chore(deps): update dependency @types/jest to v29.5.8 by @renovate in https://github.com/mentos1386/nest-raven/pull/624
+* chore(deps): update nest monorepo to v10.2.10 by @renovate in https://github.com/mentos1386/nest-raven/pull/629
+* chore(deps): update dependency @types/ws to v8.5.10 by @renovate in https://github.com/mentos1386/nest-raven/pull/628
+* chore: generate release notes by @9renpoto in https://github.com/mentos1386/nest-raven/pull/632
+* chore(deps): update dependency lint-staged to v15.1.0 by @renovate in https://github.com/mentos1386/nest-raven/pull/631
+* fix: remove --workspaces options by @9renpoto in https://github.com/mentos1386/nest-raven/pull/633
+* chore(deps): update dependency @types/jest to v29.5.10 by @renovate in https://github.com/mentos1386/nest-raven/pull/636
+* chore(deps): update dependency prettier to v3.1.0 by @renovate in https://github.com/mentos1386/nest-raven/pull/637
+
+
+**Full Changelog**: https://github.com/mentos1386/nest-raven/compare/v10.0.0...v10.0.1
 ## What's Changed
 * chore(deps): pin dependency @apollo/gateway to 2.3.4 by @renovate in https://github.com/mentos1386/nest-raven/pull/531
 * chore(deps): pin dependencies by @renovate in https://github.com/mentos1386/nest-raven/pull/530
