@@ -1,3 +1,14 @@
+## v10.1.0 (2023-12-19)
+<!-- Release notes generated using configuration in .github/release.yml at master -->
+
+## What's Changed
+### Other Changes
+* chore(deps): update dependency lint-staged to v15.2.0 by @renovate in https://github.com/mentos1386/nest-raven/pull/639
+* chore(deps): update dependency @types/jest to v29.5.11 by @renovate in https://github.com/mentos1386/nest-raven/pull/640
+* chore(deps): update dependency prettier to v3.1.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/641
+
+
+**Full Changelog**: https://github.com/mentos1386/nest-raven/compare/v10.0.1...v10.1.0
 ## v10.0.1 (2023-12-03)
 <!-- Release notes generated using configuration in .github/release.yml at master -->
 
