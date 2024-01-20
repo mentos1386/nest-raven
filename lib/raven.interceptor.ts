@@ -11,7 +11,12 @@ import {
 } from "@nestjs/common/interfaces";
 import { Reflector } from "@nestjs/core";
 import type { GqlContextType, GraphQLArgumentsHost } from "@nestjs/graphql";
-import { Handlers, Scope, captureException, withScope } from "@sentry/node";
+import {
+  Scope,
+  addRequestDataToEvent,
+  captureException,
+  withScope,
+} from "@sentry/node";
 import { Observable } from "rxjs";
 import { tap } from "rxjs/operators";
 import { RAVEN_LOCAL_TRANSFORMERS_METADATA } from "./raven.decorators";
@@ -20,6 +25,7 @@ import {
   IRavenScopeTransformerFunction,
 } from "./raven.interfaces";
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 let GqlArgumentsHost: any;
 try {
   ({ GqlArgumentsHost } = require("@nestjs/graphql"));
@@ -32,13 +38,13 @@ export class RavenInterceptor implements NestInterceptor {
     private readonly reflector: Reflector = new Reflector(),
   ) {}
 
-  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+  intercept<T>(context: ExecutionContext, next: CallHandler): Observable<T> {
     const localTransformers = this.reflector.get<
       IRavenScopeTransformerFunction[]
     >(RAVEN_LOCAL_TRANSFORMERS_METADATA, context.getHandler());
 
     // first param would be for events, second is for errors
-    return next.handle().pipe(
+    return next.handle().pipe<T>(
       tap({
         error: (exception) => {
           if (this.shouldReport(exception)) {
@@ -107,10 +113,18 @@ export class RavenInterceptor implements NestInterceptor {
   ): void {
     const context = gqlHost.getContext();
     // Same as HttpException
-    const data = Handlers.parseRequest(
+    const data = addRequestDataToEvent(
       {},
       context?.req || context,
-      this.options,
+      this.options.include
+        ? { include: this.options.include }
+        : {
+            include: {
+              request: this.options.request,
+              transaction: this.options.transaction,
+              user: this.options.user,
+            },
+          },
     );
     scope.setExtra("req", data.request);
     data.extra && scope.setExtras(data.extra);
@@ -127,10 +141,18 @@ export class RavenInterceptor implements NestInterceptor {
     scope: Scope,
     http: HttpArgumentsHost,
   ): void {
-    const data = Handlers.parseRequest(
-      <any>{},
+    const data = addRequestDataToEvent(
+      {},
       http.getRequest(),
-      this.options,
+      this.options.include
+        ? { include: this.options.include }
+        : {
+            include: {
+              request: this.options.request,
+              transaction: this.options.transaction,
+              user: this.options.user,
+            },
+          },
     );
 
     scope.setExtra("req", data.request);
@@ -147,9 +169,9 @@ export class RavenInterceptor implements NestInterceptor {
     scope.setExtra("ws_data", ws.getData());
   }
 
-  private captureException(
+  private captureException<T>(
     scope: Scope,
-    exception: any,
+    exception: T,
     localTransformers: IRavenScopeTransformerFunction[] | undefined,
     context: ExecutionContext,
   ): void {
@@ -159,17 +181,21 @@ export class RavenInterceptor implements NestInterceptor {
     if (this.options.extra) scope.setExtras(this.options.extra);
     if (this.options.tags) scope.setTags(this.options.tags);
 
-    if (this.options.transformers)
-      this.options.transformers.forEach((transformer) =>
-        transformer(scope, context),
-      );
-    if (localTransformers)
-      localTransformers.forEach((transformer) => transformer(scope, context));
+    if (this.options.transformers) {
+      for (const transformer of this.options.transformers) {
+        transformer(scope, context);
+      }
+    }
+    if (localTransformers) {
+      for (const transformer of localTransformers) {
+        transformer(scope, context);
+      }
+    }
 
     captureException(exception);
   }
 
-  private shouldReport(exception: any): boolean {
+  shouldReport<T>(exception: T): boolean {
     if (!this.options.filters) return true;
 
     // If all filters pass, then we do not report
