@@ -4,6 +4,7 @@ import { getCurrentHub } from "@sentry/node";
 import request from "supertest";
 import { GlobalModule } from "./global.module";
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 declare let global: any;
 
 describe("Http:Global", () => {
@@ -27,6 +28,7 @@ describe("Http:Global", () => {
     };
     client.captureException.mockClear();
     getCurrentHub().pushScope();
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     getCurrentHub().bindClient(client as any);
   });
 

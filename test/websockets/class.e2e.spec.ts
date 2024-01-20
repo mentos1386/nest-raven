@@ -4,6 +4,7 @@ import { getCurrentHub } from "@sentry/node";
 import { io } from "socket.io-client";
 import { ClassModule } from "./class.module";
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 declare let global: any;
 
 describe("Websockets:Class", () => {
@@ -27,6 +28,7 @@ describe("Websockets:Class", () => {
     };
     client.captureException.mockClear();
     getCurrentHub().pushScope();
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     getCurrentHub().bindClient(client as any);
   });
 

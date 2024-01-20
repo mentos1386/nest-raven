@@ -5,6 +5,7 @@ import { SeverityLevel } from "@sentry/types";
 import request from "supertest";
 import { MethodModule } from "./method.module";
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 declare let global: any;
 
 describe("Http:Method", () => {
@@ -28,6 +29,7 @@ describe("Http:Method", () => {
     };
     client.captureException.mockClear();
     getCurrentHub().pushScope();
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     getCurrentHub().bindClient(client as any);
   });
 

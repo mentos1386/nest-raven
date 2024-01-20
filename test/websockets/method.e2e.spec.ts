@@ -4,6 +4,7 @@ import { getCurrentHub } from "@sentry/node";
 import { io } from "socket.io-client";
 import { MethodModule } from "./method.module";
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 declare let global: any;
 
 describe("Websockets:Method", () => {
@@ -28,6 +29,7 @@ describe("Websockets:Method", () => {
     };
     client.captureException.mockClear();
     getCurrentHub().pushScope();
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     getCurrentHub().bindClient(client as any);
     socket = io("http://localhost:4466");
   });

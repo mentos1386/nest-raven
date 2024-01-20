@@ -6,6 +6,7 @@ import { RavenInterceptor } from "../../lib";
 @WebSocketGateway(4444)
 export class classGateway {
   @SubscribeMessage("test_error")
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   on_test_error(_client: any, _data: any): string {
     throw new Error("Something bad happened");
   }

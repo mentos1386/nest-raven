@@ -6,6 +6,7 @@ import { RavenInterceptor } from "../../lib";
 export class MethodGateway {
   @UseInterceptors(new RavenInterceptor())
   @SubscribeMessage("test_error")
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   on_test_error(_client: any, _data: any): string {
     throw new Error("Something bad happened");
   }
