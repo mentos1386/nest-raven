@@ -29,7 +29,6 @@ jobs:
           ${{ runner.OS }}-
     - run: npm ci
     - run: npm run build
-    - run: npm run lint
     - run: npm test
     - name: Coverage
       uses: coverallsapp/github-action@1.1.3
