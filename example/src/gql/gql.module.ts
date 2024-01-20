@@ -1,5 +1,5 @@
-import { Module } from '@nestjs/common';
-import { GqlResolver } from './gql.resolver';
+import { Module } from "@nestjs/common";
+import { GqlResolver } from "./gql.resolver";
 
 @Module({
   providers: [GqlResolver],

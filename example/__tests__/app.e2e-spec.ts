@@ -1,14 +1,14 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import request from 'supertest';
-import { INestApplication } from '@nestjs/common';
-import { ApolloServer } from '@apollo/server';
-import gql from 'graphql-tag';
-import { GraphQLError } from 'graphql';
-import { AppModule } from './../src/app.module';
-import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver } from '@nestjs/apollo';
+import { ApolloServer } from "@apollo/server";
+import { ApolloDriver } from "@nestjs/apollo";
+import { INestApplication } from "@nestjs/common";
+import { GraphQLModule } from "@nestjs/graphql";
+import { Test, TestingModule } from "@nestjs/testing";
+import { GraphQLError } from "graphql";
+import gql from "graphql-tag";
+import request from "supertest";
+import { AppModule } from "./../src/app.module";
 
-describe('AppModule', () => {
+describe("AppModule", () => {
   let app: INestApplication;
   let apolloClient: ApolloServer;
 
@@ -26,14 +26,14 @@ describe('AppModule', () => {
 
   afterAll(() => app.close());
 
-  it('defined', () => expect(app).toBeDefined());
+  it("defined", () => expect(app).toBeDefined());
 
-  it('/ (GET)', () => request(app.getHttpServer()).get('/').expect(500));
+  it("/ (GET)", () => request(app.getHttpServer()).get("/").expect(500));
 
-  it('/graphql (GET)', () =>
-    request(app.getHttpServer()).get('/graphql').expect(400));
+  it("/graphql (GET)", () =>
+    request(app.getHttpServer()).get("/graphql").expect(400));
 
-  it('/graphql(POST) forbiddenError warning', async () => {
+  it("/graphql(POST) forbiddenError warning", async () => {
     const result = await apolloClient.executeOperation({
       query: gql`
         query {
@@ -43,11 +43,11 @@ describe('AppModule', () => {
       variables: {},
     });
     expect(
-      result.body.kind === 'single' && result.body.singleResult.errors,
-    ).toEqual([new GraphQLError('Unauthorized')]);
+      result.body.kind === "single" && result.body.singleResult.errors,
+    ).toEqual([new GraphQLError("Unauthorized")]);
   });
 
-  it('/graphql(POST) forbiddenError', async () => {
+  it("/graphql(POST) forbiddenError", async () => {
     const result = await apolloClient.executeOperation({
       query: gql`
         query {
@@ -57,7 +57,7 @@ describe('AppModule', () => {
       variables: {},
     });
     expect(
-      result.body.kind === 'single' && result.body.singleResult.errors,
-    ).toEqual([new GraphQLError('Forbidden')]);
+      result.body.kind === "single" && result.body.singleResult.errors,
+    ).toEqual([new GraphQLError("Forbidden")]);
   });
 });

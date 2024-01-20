@@ -1,7 +1,7 @@
-import { RavenModule, RavenInterceptor } from '../../lib';
-import { Module } from '@nestjs/common';
-import { GlobalController } from './global.controller';
-import { APP_INTERCEPTOR } from '@nestjs/core';
+import { Module } from "@nestjs/common";
+import { APP_INTERCEPTOR } from "@nestjs/core";
+import { RavenInterceptor, RavenModule } from "../../lib";
+import { GlobalController } from "./global.controller";
 
 @Module({
   imports: [RavenModule],

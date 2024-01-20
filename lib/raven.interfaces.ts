@@ -1,6 +1,6 @@
-import { ExecutionContext } from '@nestjs/common';
-import { Scope } from '@sentry/node';
-import { SeverityLevel } from '@sentry/types';
+import { ExecutionContext } from "@nestjs/common";
+import { Scope } from "@sentry/node";
+import { SeverityLevel } from "@sentry/types";
 
 export interface IRavenScopeTransformerFunction {
   (scope: Scope, context: ExecutionContext): void;
@@ -26,7 +26,7 @@ export interface IRavenInterceptorOptions {
   // https://github.com/getsentry/sentry-javascript/blob/master/packages/node/src/handlers.ts#L163
   request?: boolean;
   serverName?: boolean;
-  transaction?: boolean | 'path' | 'methodPath' | 'handler'; // https://github.com/getsentry/sentry-javascript/blob/master/packages/node/src/handlers.ts#L16
+  transaction?: boolean | "path" | "methodPath" | "handler"; // https://github.com/getsentry/sentry-javascript/blob/master/packages/node/src/handlers.ts#L16
   user?: boolean | string[];
   version?: boolean;
 }

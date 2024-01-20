@@ -1,7 +1,7 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import * as Sentry from '@sentry/node';
-import { config } from 'dotenv';
+import { NestFactory } from "@nestjs/core";
+import * as Sentry from "@sentry/node";
+import { config } from "dotenv";
+import { AppModule } from "./app.module";
 
 async function bootstrap() {
   config();

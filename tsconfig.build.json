@@ -1,11 +1,7 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": [
-    "node_modules",
-    "example",
-    "test"
-  ],
+  "exclude": ["node_modules", "example", "test"],
   "compilerOptions": {
-    "esModuleInterop": true,
+    "esModuleInterop": true
   }
 }

@@ -1,12 +1,12 @@
-import request from 'supertest';
-import { Test } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
-import { GlobalModule } from './global.module';
-import { getCurrentHub } from '@sentry/node';
+import { INestApplication } from "@nestjs/common";
+import { Test } from "@nestjs/testing";
+import { getCurrentHub } from "@sentry/node";
+import request from "supertest";
+import { GlobalModule } from "./global.module";
 
-declare var global: any;
+declare let global: any;
 
-describe('Http:Global', () => {
+describe("Http:Global", () => {
   let app: INestApplication;
   const client = {
     captureException: jest.fn(),
@@ -30,8 +30,8 @@ describe('Http:Global', () => {
     getCurrentHub().bindClient(client as any);
   });
 
-  it(`/GET error`, async () => {
-    await request(app.getHttpServer()).get('/error').expect(500);
+  it("/GET error", async () => {
+    await request(app.getHttpServer()).get("/error").expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toBeInstanceOf(Error);
   });

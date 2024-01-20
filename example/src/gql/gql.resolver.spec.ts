@@ -1,7 +1,7 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { GqlResolver } from './gql.resolver';
+import { Test, TestingModule } from "@nestjs/testing";
+import { GqlResolver } from "./gql.resolver";
 
-describe('GqlResolver', () => {
+describe("GqlResolver", () => {
   let resolver: GqlResolver;
 
   beforeEach(async () => {
@@ -12,14 +12,14 @@ describe('GqlResolver', () => {
     resolver = module.get<GqlResolver>(GqlResolver);
   });
 
-  it('should be defined', () => expect(resolver).toBeDefined());
+  it("should be defined", () => expect(resolver).toBeDefined());
 
-  it('UnauthorizedException', () =>
+  it("UnauthorizedException", () =>
     expect(
       resolver.unauthorizedException(),
     ).rejects.toThrowErrorMatchingInlineSnapshot(`"Unauthorized"`));
 
-  it('@nestjs/common (Forbidden)', () =>
+  it("@nestjs/common (Forbidden)", () =>
     expect(
       resolver.forbiddenException(),
     ).rejects.toThrowErrorMatchingInlineSnapshot(`"Forbidden"`));
