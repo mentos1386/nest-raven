@@ -1,11 +1,11 @@
-import { BadRequestException, HttpException, HttpStatus } from '@nestjs/common';
-import { RavenInterceptor } from '../lib/raven.interceptor';
+import { BadRequestException, HttpException, HttpStatus } from "@nestjs/common";
+import { RavenInterceptor } from "../lib/raven.interceptor";
 
-describe('RavenInterceptor', () => {
-  describe('shouldReport', () => {
-    it('is not settings yet', () => {
+describe("RavenInterceptor", () => {
+  describe("shouldReport", () => {
+    it("is not settings yet", () => {
       const instance = new RavenInterceptor();
-      expect(instance['shouldReport'](new Error())).toBeTruthy();
+      expect(instance.shouldReport(new Error())).toBeTruthy();
     });
 
     it.each([
@@ -16,7 +16,7 @@ describe('RavenInterceptor', () => {
         ),
         new BadRequestException(),
       ],
-    ])('is not settings yet %s', (exception) => {
+    ])("is not settings yet %s", (exception) => {
       const instance = new RavenInterceptor({
         filters: [
           {
@@ -25,7 +25,7 @@ describe('RavenInterceptor', () => {
           },
         ],
       });
-      expect(instance['shouldReport'](exception)).toBeFalsy();
+      expect(instance.shouldReport(exception)).toBeFalsy();
     });
   });
 });

@@ -1,13 +1,14 @@
-import { INestApplication } from '@nestjs/common';
-import { Test } from '@nestjs/testing';
-import { getCurrentHub } from '@sentry/node';
-import { SeverityLevel } from '@sentry/types';
-import request from 'supertest';
-import { MethodModule } from './method.module';
+import { INestApplication } from "@nestjs/common";
+import { Test } from "@nestjs/testing";
+import { getCurrentHub } from "@sentry/node";
+import { SeverityLevel } from "@sentry/types";
+import request from "supertest";
+import { MethodModule } from "./method.module";
 
-declare var global: any;
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+declare let global: any;
 
-describe('Http:Method', () => {
+describe("Http:Method", () => {
   let app: INestApplication;
   const client = {
     captureException: jest.fn(),
@@ -28,6 +29,7 @@ describe('Http:Method', () => {
     };
     client.captureException.mockClear();
     getCurrentHub().pushScope();
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     getCurrentHub().bindClient(client as any);
   });
 
@@ -35,122 +37,122 @@ describe('Http:Method', () => {
     getCurrentHub().popScope();
   });
 
-  it(`/GET works`, async () => {
-    await request(app.getHttpServer()).get('/works').expect(200);
+  it("/GET works", async () => {
+    await request(app.getHttpServer()).get("/works").expect(200);
 
     expect(client.captureException.mock.calls).toEqual([]);
   });
 
-  it(`/GET intercepted`, async () => {
-    await request(app.getHttpServer()).get('/intercepted').expect(500);
+  it("/GET intercepted", async () => {
+    await request(app.getHttpServer()).get("/intercepted").expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
-      `[Error: Something bad happened]`,
+      "[Error: Something bad happened]",
     );
     expect(client.captureException.mock.calls[0][2]._extra).toHaveProperty(
-      'req',
+      "req",
     );
   });
 
-  it(`/GET filter`, async () => {
-    await request(app.getHttpServer()).get('/filter').expect(404);
+  it("/GET filter", async () => {
+    await request(app.getHttpServer()).get("/filter").expect(404);
 
     expect(client.captureException.mock.calls).toEqual([]);
   });
 
-  it(`/GET transformer`, async () => {
-    await request(app.getHttpServer()).get('/transformer?foo=bar').expect(500);
+  it("/GET transformer", async () => {
+    await request(app.getHttpServer()).get("/transformer?foo=bar").expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
-      `[Error: Something bad happened]`,
+      "[Error: Something bad happened]",
     );
     expect(client.captureException.mock.calls[0][2]._extra).toHaveProperty(
-      'A',
-      'AAA',
+      "A",
+      "AAA",
     );
     expect(client.captureException.mock.calls[0][2]._extra).toHaveProperty(
-      'REQ',
-      'bar',
+      "REQ",
+      "bar",
     );
   });
 
-  it(`/GET local-transformer`, async () => {
-    await request(app.getHttpServer()).get('/local-transformer').expect(500);
+  it("/GET local-transformer", async () => {
+    await request(app.getHttpServer()).get("/local-transformer").expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
-      `[Error: Something bad happened]`,
+      "[Error: Something bad happened]",
     );
     expect(client.captureException.mock.calls[0][2]._extra).toHaveProperty(
-      'A',
-      'AAA',
+      "A",
+      "AAA",
     );
   });
 
-  it(`/GET combo-transformer`, async () => {
-    await request(app.getHttpServer()).get('/combo-transformer').expect(500);
+  it("/GET combo-transformer", async () => {
+    await request(app.getHttpServer()).get("/combo-transformer").expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
-      `[Error: Something bad happened]`,
+      "[Error: Something bad happened]",
     );
     expect(client.captureException.mock.calls[0][2]._extra).toHaveProperty(
-      'A',
-      'AAA',
+      "A",
+      "AAA",
     );
     expect(client.captureException.mock.calls[0][2]._extra).toHaveProperty(
-      'B',
-      'BBB',
+      "B",
+      "BBB",
     );
   });
 
-  it(`/GET tags`, async () => {
-    await request(app.getHttpServer()).get('/tags').expect(500);
+  it("/GET tags", async () => {
+    await request(app.getHttpServer()).get("/tags").expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
-      `[Error: Something bad happened]`,
+      "[Error: Something bad happened]",
     );
     expect(client.captureException.mock.calls[0][2]._tags).toEqual({
-      A: 'AAA',
-      B: 'BBB',
+      A: "AAA",
+      B: "BBB",
     });
   });
 
-  it(`/GET extra`, async () => {
-    await request(app.getHttpServer()).get('/extra').expect(500);
+  it("/GET extra", async () => {
+    await request(app.getHttpServer()).get("/extra").expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
-      `[Error: Something bad happened]`,
+      "[Error: Something bad happened]",
     );
     expect(client.captureException.mock.calls[0][2]._extra).toHaveProperty(
-      'A',
-      'AAA',
+      "A",
+      "AAA",
     );
     expect(client.captureException.mock.calls[0][2]._extra).toHaveProperty(
-      'B',
-      'BBB',
+      "B",
+      "BBB",
     );
   });
 
-  it(`/GET fingerprint`, async () => {
-    await request(app.getHttpServer()).get('/fingerprint').expect(500);
+  it("/GET fingerprint", async () => {
+    await request(app.getHttpServer()).get("/fingerprint").expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
-      `[Error: Something bad happened]`,
+      "[Error: Something bad happened]",
     );
     expect(client.captureException.mock.calls[0][2]._fingerprint).toEqual([
-      'A',
-      'B',
+      "A",
+      "B",
     ]);
   });
 
-  it(`/GET level`, async () => {
-    await request(app.getHttpServer()).get('/level').expect(500);
+  it("/GET level", async () => {
+    await request(app.getHttpServer()).get("/level").expect(500);
 
     expect(client.captureException.mock.calls[0][0]).toMatchInlineSnapshot(
-      `[Error: Something bad happened]`,
+      "[Error: Something bad happened]",
     );
     expect(
       client.captureException.mock.calls[0][2]._level,
-    ).toEqual<SeverityLevel>('fatal');
+    ).toEqual<SeverityLevel>("fatal");
   });
 
   afterAll(async () => {

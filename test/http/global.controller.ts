@@ -1,9 +1,9 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get } from "@nestjs/common";
 
-@Controller('')
+@Controller("")
 export class GlobalController {
-  @Get('error')
+  @Get("error")
   error() {
-    throw new Error('Something bad happened');
+    throw new Error("Something bad happened");
   }
 }

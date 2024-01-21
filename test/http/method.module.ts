@@ -1,6 +1,6 @@
-import { RavenModule } from '../../lib';
-import { Module } from '@nestjs/common';
-import { MethodController } from './method.controller';
+import { Module } from "@nestjs/common";
+import { RavenModule } from "../../lib";
+import { MethodController } from "./method.controller";
 
 @Module({
   imports: [RavenModule],

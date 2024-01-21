@@ -10,6 +10,10 @@ jobs:
         node-version: [lts/*, latest]
     steps:
     - uses: actions/checkout@v3
+    - uses: biomejs/setup-biome@v2
+      with:
+        version: latest
+    - run: biome ci .
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -25,7 +29,6 @@ jobs:
           ${{ runner.OS }}-
     - run: npm ci
     - run: npm run build
-    - run: npm run lint
     - run: npm test
     - name: Coverage
       uses: coverallsapp/github-action@1.1.3

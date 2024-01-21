@@ -4,25 +4,25 @@ import {
   HttpException,
   HttpStatus,
   UseInterceptors,
-} from '@nestjs/common';
-import { Request } from 'express';
-import { RavenInterceptor, RavenTransformer } from '../../lib';
+} from "@nestjs/common";
+import { Request } from "express";
+import { RavenInterceptor, RavenTransformer } from "../../lib";
 
-@Controller('')
+@Controller("")
 export class MethodController {
-  @Get('works')
+  @Get("works")
   @UseInterceptors(new RavenInterceptor())
   works() {
-    return 'Works';
+    return "Works";
   }
 
-  @Get('intercepted')
+  @Get("intercepted")
   @UseInterceptors(new RavenInterceptor())
   intercepted() {
-    throw new Error('Something bad happened');
+    throw new Error("Something bad happened");
   }
 
-  @Get('filter')
+  @Get("filter")
   @UseInterceptors(
     new RavenInterceptor({
       filters: [
@@ -37,90 +37,90 @@ export class MethodController {
   )
   filter() {
     throw new HttpException(
-      'Something not so bad happened',
+      "Something not so bad happened",
       HttpStatus.NOT_FOUND,
     );
   }
 
-  @Get('transformer')
+  @Get("transformer")
   @UseInterceptors(
     new RavenInterceptor({
       transformers: [
         (scope, context) => {
           const req = context.switchToHttp().getRequest<Request>();
-          scope.setExtra('A', 'AAA');
-          scope.setExtra('REQ', req.query.foo);
+          scope.setExtra("A", "AAA");
+          scope.setExtra("REQ", req.query.foo);
         },
       ],
     }),
   )
   transformer() {
-    throw new Error('Something bad happened');
+    throw new Error("Something bad happened");
   }
 
-  @Get('local-transformer')
+  @Get("local-transformer")
   @UseInterceptors(new RavenInterceptor())
   @RavenTransformer((scope) => {
-    scope.setExtra('A', 'AAA');
+    scope.setExtra("A", "AAA");
   })
   localTransformer() {
-    throw new Error('Something bad happened');
+    throw new Error("Something bad happened");
   }
 
-  @Get('combo-transformer')
+  @Get("combo-transformer")
   @UseInterceptors(
     new RavenInterceptor({
       transformers: [
         (scope) => {
-          scope.setExtra('A', 'AAA');
+          scope.setExtra("A", "AAA");
         },
       ],
     }),
   )
   @RavenTransformer((scope) => {
-    scope.setExtra('B', 'BBB');
+    scope.setExtra("B", "BBB");
   })
   comboTransformer() {
-    throw new Error('Something bad happened');
+    throw new Error("Something bad happened");
   }
 
-  @Get('tags')
+  @Get("tags")
   @UseInterceptors(
     new RavenInterceptor({
-      tags: { A: 'AAA', B: 'BBB' },
+      tags: { A: "AAA", B: "BBB" },
     }),
   )
   tags() {
-    throw new Error('Something bad happened');
+    throw new Error("Something bad happened");
   }
 
-  @Get('extra')
+  @Get("extra")
   @UseInterceptors(
     new RavenInterceptor({
-      extra: { A: 'AAA', B: 'BBB' },
+      extra: { A: "AAA", B: "BBB" },
     }),
   )
   extra() {
-    throw new Error('Something bad happened');
+    throw new Error("Something bad happened");
   }
 
-  @Get('fingerprint')
+  @Get("fingerprint")
   @UseInterceptors(
     new RavenInterceptor({
-      fingerprint: ['A', 'B'],
+      fingerprint: ["A", "B"],
     }),
   )
   fingerprint() {
-    throw new Error('Something bad happened');
+    throw new Error("Something bad happened");
   }
 
-  @Get('level')
+  @Get("level")
   @UseInterceptors(
     new RavenInterceptor({
-      level: 'fatal',
+      level: "fatal",
     }),
   )
   level() {
-    throw new Error('Something bad happened');
+    throw new Error("Something bad happened");
   }
 }
