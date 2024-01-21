@@ -3,8 +3,13 @@ on:
   push:
     tags:
       - v*
+
 jobs:
+  test:
+    uses: ./.github/workflows/test.yaml
+
   build-and-release:
+    needs: test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
