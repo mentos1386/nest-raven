@@ -1,3 +1,36 @@
+## v10.2.0 (2024-02-20)
+<!-- Release notes generated using configuration in .github/release.yml at master -->
+
+## What's Changed
+### :rocket: Type: Feature
+* feat: use biomejs by @9renpoto in https://github.com/mentos1386/nest-raven/pull/650
+### Other Changes
+* chore(deps): update dependency lint-staged to v15.2.0 by @renovate in https://github.com/mentos1386/nest-raven/pull/639
+* chore(deps): update dependency @types/jest to v29.5.11 by @renovate in https://github.com/mentos1386/nest-raven/pull/640
+* chore(deps): update dependency prettier to v3.1.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/641
+* chore(deps): update nest monorepo to v10.3.0 by @renovate in https://github.com/mentos1386/nest-raven/pull/643
+* chore(deps): update dependency @types/supertest to v6 by @renovate in https://github.com/mentos1386/nest-raven/pull/644
+* chore(deps): update dependency @types/supertest to v6.0.2 by @renovate in https://github.com/mentos1386/nest-raven/pull/646
+* chore(deps): update dependency socket.io-client to v4.7.3 by @renovate in https://github.com/mentos1386/nest-raven/pull/647
+* chore(deps): update dependency socket.io-client to v4.7.4 by @renovate in https://github.com/mentos1386/nest-raven/pull/648
+* chore(deps): update dependency supertest to v6.3.4 by @renovate in https://github.com/mentos1386/nest-raven/pull/649
+* refactor: remove duplicated workflow by @9renpoto in https://github.com/mentos1386/nest-raven/pull/651
+* chore(deps): update dependency dotenv to v16.3.2 by @renovate in https://github.com/mentos1386/nest-raven/pull/652
+* chore: bump v10.1.0 by @github-actions in https://github.com/mentos1386/nest-raven/pull/645
+* chore(deps): update dependency @biomejs/biome to v1.5.3 by @renovate in https://github.com/mentos1386/nest-raven/pull/653
+* chore(deps): update dependency ts-jest to v29.1.2 by @renovate in https://github.com/mentos1386/nest-raven/pull/654
+* chore(deps): update dependency @types/jest to v29.5.12 by @renovate in https://github.com/mentos1386/nest-raven/pull/657
+* chore(deps): update dependency lint-staged to v15.2.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/658
+* chore(deps): update nest monorepo to v10.3.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/659
+* chore(deps): update dependency dotenv to v16.4.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/660
+* chore(deps): update dependency dotenv to v16.4.2 by @renovate in https://github.com/mentos1386/nest-raven/pull/661
+* chore(deps): update dependency lint-staged to v15.2.2 by @renovate in https://github.com/mentos1386/nest-raven/pull/662
+* chore(deps): update dependency dotenv to v16.4.4 by @renovate in https://github.com/mentos1386/nest-raven/pull/663
+* chore(deps): update nest monorepo to v10.3.3 by @renovate in https://github.com/mentos1386/nest-raven/pull/664
+* chore(deps): update dependency @nestjs/apollo to v12.1.0 by @renovate in https://github.com/mentos1386/nest-raven/pull/665
+
+
+**Full Changelog**: https://github.com/mentos1386/nest-raven/compare/v10.0.1...v10.2.0
 ## v10.1.0 (2024-01-23)
 <!-- Release notes generated using configuration in .github/release.yml at master -->
 
