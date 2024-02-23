@@ -19,6 +19,13 @@ This is a [sentry](https://sentry.io/) module for [Nest](https://github.com/nest
 
 This package is no longer based on deprecated raven module, but rather on new stable [@sentry/node](https://www.npmjs.com/package/@sentry/node) module.
 
+#### Should i use this for large projects?
+
+This is not a solution for all cases and large applications, just a quick starter that covers the common rest/graphql capturing (the basics).
+You might want deeper integration with Sentry, which means you can still use this to cover the rest/graphql error capture, but you will have to use the rest of Sentry SDK to cover other cases.
+
+For really large projects, you might have to take this library as an example of how to integrate sentry with NestJS, and write your custom integration instead.
+
 ## Installation
 
 ```bash
