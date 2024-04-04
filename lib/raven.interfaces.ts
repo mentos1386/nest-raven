@@ -2,13 +2,12 @@ import { ExecutionContext } from "@nestjs/common";
 import { AddRequestDataToEventOptions, Scope } from "@sentry/node";
 import { Extras, Primitive, SeverityLevel } from "@sentry/types";
 
-export interface IRavenScopeTransformerFunction {
-  (scope: Scope, context: ExecutionContext): void;
-}
+export type IRavenScopeTransformerFunction = (
+  scope: Scope,
+  context: ExecutionContext,
+) => void;
 
-export interface IRavenFilterFunction<T> {
-  (exception: T): boolean;
-}
+export type IRavenFilterFunction<T> = (exception: T) => boolean;
 
 export interface IRavenInterceptorOptionsFilter<T> {
   type: T;
