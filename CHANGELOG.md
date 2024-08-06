@@ -1,3 +1,30 @@
+## v10.2.0 (2024-08-06)
+<!-- Release notes generated using configuration in .github/release.yml at master -->
+
+## What's Changed
+### Other Changes
+* chore(deps): update dependency lint-staged to v15.2.5 by @renovate in https://github.com/mentos1386/nest-raven/pull/684
+* chore(deps): update dependency ts-jest to v29.1.3 by @renovate in https://github.com/mentos1386/nest-raven/pull/685
+* chore(deps): update dependency ts-jest to v29.1.4 by @renovate in https://github.com/mentos1386/nest-raven/pull/687
+* chore(deps): update nest monorepo to v10.3.9 by @renovate in https://github.com/mentos1386/nest-raven/pull/688
+* chore(deps): update dependency @biomejs/biome to v1.8.0 by @renovate in https://github.com/mentos1386/nest-raven/pull/689
+* chore(deps): update dependency @biomejs/biome to v1.8.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/690
+* chore(deps): update dependency lint-staged to v15.2.7 by @renovate in https://github.com/mentos1386/nest-raven/pull/691
+* chore(deps): update dependency ts-jest to v29.1.5 by @renovate in https://github.com/mentos1386/nest-raven/pull/692
+* chore(deps): update dependency @biomejs/biome to v1.8.2 by @renovate in https://github.com/mentos1386/nest-raven/pull/693
+* chore(deps): update dependency @biomejs/biome to v1.8.3 by @renovate in https://github.com/mentos1386/nest-raven/pull/694
+* chore(deps): update nest monorepo to v10.3.10 by @renovate in https://github.com/mentos1386/nest-raven/pull/696
+* chore(deps): update dependency @nestjs/apollo to v12.2.0 by @renovate in https://github.com/mentos1386/nest-raven/pull/697
+* chore(deps): update dependency @types/ws to v8.5.11 by @renovate in https://github.com/mentos1386/nest-raven/pull/698
+* chore(deps): update dependency ts-jest to v29.2.2 by @renovate in https://github.com/mentos1386/nest-raven/pull/699
+* chore(deps): update dependency ts-jest to v29.2.3 by @renovate in https://github.com/mentos1386/nest-raven/pull/700
+* chore(deps): update dependency husky to v9.1.1 by @renovate in https://github.com/mentos1386/nest-raven/pull/701
+* chore(deps): update dependency husky to v9.1.3 by @renovate in https://github.com/mentos1386/nest-raven/pull/702
+* chore(deps): update dependency @types/ws to v8.5.12 by @renovate in https://github.com/mentos1386/nest-raven/pull/703
+* chore(deps): update dependency husky to v9.1.4 by @renovate in https://github.com/mentos1386/nest-raven/pull/704
+
+
+**Full Changelog**: https://github.com/mentos1386/nest-raven/compare/v10.1.0...v10.2.0
 ## v10.1.0 (2024-05-23)
 <!-- Release notes generated using configuration in .github/release.yml at master -->
 
