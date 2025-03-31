@@ -9,16 +9,16 @@ jobs:
       matrix:
         node-version: [lts/*, latest]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: biomejs/setup-biome@v2
       - run: biome ci .
         continue-on-error: true
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
       - name: Cache Node.js modules
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           # npm cache files are stored in `~/.npm` on Linux/macOS
           path: ~/.npm
