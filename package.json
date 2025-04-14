@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/mentos1386/nest-raven#readme",
   "peerDependencies": {
-    "@nestjs/common": "^10.0.0",
+    "@nestjs/common": "^11.0.0",
     "@sentry/node": "*",
     "rxjs": "*"
   },
