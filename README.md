@@ -1,3 +1,9 @@
+
+> [!CAUTION]
+> **This repository/module was archived! See : https://github.com/mentos1386/nest-raven/issues/763**
+
+---
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="http://kamilmysliwiec.com/public/nest-logo.png#1" alt="Nest Logo" />   </a>
   <a href="https://sentry.io" target="_blank"><img src="https://sentry-brand.storage.googleapis.com/sentry-logo-black.png" width="380"></a>
